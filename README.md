@@ -1,7 +1,7 @@
 # LAB5: Constructing IBERT Model [Design, Simulation, Synthesis, Implementation]
 ## "Battle of Scariff", Rogue One
 
-Deadline: 23rd April 2025 09:00am!
+Deadline: 25td April 2025 09:00am!
 
 ## Getting started
 First, clone the git repository onto your home directory on the `eceubuntu` lab server.
