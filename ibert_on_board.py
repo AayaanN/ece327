@@ -247,6 +247,7 @@ def run():
 
         compare(out_buffer=out_buffer_layer, true_out=layer_true_out.flatten())
         end_layer_time = time.time()
+        np.save(f"O_out{r}.npy",out_buffer_layer.reshape((32,768)));
         print(f"One Layer Time spent: {(end_layer_time - start_layer_time)}s")
     end_all_layers_time = time.time()
     print(f"All Layer Time spent: {(end_all_layers_time - start_all_layers_time)}s")
