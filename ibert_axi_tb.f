@@ -1,4 +1,7 @@
 acc.sv
+dims.sv
+axi_stream_if.sv
+attn_head_fsm.sv
 attn_head_on_axis.v
 attn_head_tb.sv
 attn_head_wrap.sv
@@ -6,7 +9,6 @@ attn_head.sv
 control_pp.sv
 control.sv
 counter.sv
-dims.sv
 div.sv
 exp.sv
 fifo.sv
