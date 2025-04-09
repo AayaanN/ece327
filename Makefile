@@ -1,4 +1,4 @@
-PYNQ_IP ?= pynq-lab-10.eng.uwaterloo.ca
+YNQ_IP ?= pynq-lab-10.eng.uwaterloo.ca
 GUI ?= 0
 MODE ?=
 USE_BOARD ?= 0
@@ -70,7 +70,7 @@ XELAB_FLAGS := --O3
 XELAB_FLAGS += --generic_top "N1=${N1}"
 XELAB_FLAGS += --generic_top "N2=${N2}"
 XELAB_FLAGS += --generic_top "MATRIXSIZE_W=${MATRIXSIZE_W}"
-XELAB_FLAGS += -debug typical
+XELAB_FLAGS += -debug off
 
 XELAB_SYNTH_FLAGS := -maxdelay
 XELAB_SYNTH_FLAGS += -L secureip
@@ -81,6 +81,7 @@ XELAB_SYNTH_FLAGS += -pulse_int_r 0
 
 XSIM_FLAGS :=
 XVLOG_FLAGS :=
+MVLOG_FLAGS :=
 
 VIVADO_FLAGS := -nolog
 VIVADO_FLAGS := -nojournal
@@ -221,6 +222,7 @@ endif
 
 VFLAGS += -DDIR="\"${TB_DIR}/\""
 XVLOG_FLAGS += -d DIR="\"${TB_DIR}/\""
+MVLOG_FLAGS += -define DIR="\"${TB_DIR}/\""
 
 ifeq (${TIMING},1)
 VFLAGS += --timing
@@ -233,6 +235,7 @@ ifeq (${TRACE},1)
 VFLAGS += --trace-fst
 VFLAGS += -DTRACE
 XVLOG_FLAGS += -d TRACE
+MVLOG_FLAGS += -define TRACE
 endif
 
 ifneq (${BLOCKS},1)
@@ -242,18 +245,21 @@ endif
 ifeq (${PING_PONG},1)
 VFLAGS += -DPING_PONG
 XVLOG_FLAGS += -d PING_PONG
+MVLOG_FLAGS += -define PING_PONG
 DEFINES += PING_PONG
 endif
 
 ifeq (${ONESYS},1)
 VFLAGS += -DONESYS
 XVLOG_FLAGS += -d ONESYS
+MVLOG_FLAGS += -define ONESYS
 DEFINES += ONESYS
 endif
 
 ifeq (${READ_A},1)
 VFLAGS += -DREAD_A
 XVLOG_FLAGS += -d READ_A
+MVLOG_FLAGS += -define READ_A
 endif
 
 ifeq (${BLOCKED_A},1)
@@ -295,6 +301,7 @@ endif
 ifeq (${DEBUG},1)
 VFLAGS += -DDEBUG
 XVLOG_FLAGS += -d DEBUG
+MVLOG_FLAGS += -define DEBUG
 DEFINES += DEBUG
 endif
 
@@ -302,6 +309,7 @@ ifeq (${MODE},synth)
 XELAB_FLAGS += ${XELAB_SYNTH_FLAGS}
 XELAB_FLAGS += glbl
 XVLOG_FLAGS += -d XIL_TIMING
+MVLOG_FLAGS += -define XIL_TIMING
 endif
 
 ifeq (${MODE},impl)
@@ -310,6 +318,7 @@ XELAB_FLAGS += -pulse_e 0
 XELAB_FLAGS += -pulse_int_e 0
 XELAB_FLAGS += glbl
 XVLOG_FLAGS += -d XIL_TIMING
+MVLOG_FLAGS += -define XIL_TIMING
 endif
 
 ifeq (${GUI},1)
@@ -327,6 +336,12 @@ xbuild:
 	xvlog ${XVLOG_FLAGS} -sv ${SRC}
 	xelab ${XELAB_FLAGS} ${TB} -s ${TB}
 
+mbuild:
+	echo 'set GUI ${GUI}' > args.tcl
+	rm -Rf worl
+	vlib work
+	vlog -O5 ${MVLOG_FLAGS} -sv ${SRC}
+
 verilator: vbuild
 	rm -rf ${TB_DIR}/tb_*.mem
 	./verilator/top
@@ -334,6 +349,11 @@ verilator: vbuild
 xsim: xbuild
 	rm -rf ${TB_DIR}/tb_*.mem
 	xsim ${TB} ${XSIM_FLAGS} -t xsim.tcl
+	python3 ${TEST_SCRIPT} ${TEST_FLAGS}
+
+msim: mbuild
+	rm -rf ${TB_DIR}/tb_*.mem
+	vsim -c ${TB} 
 
 data:
 	mkdir -p ${TB_DIR}
