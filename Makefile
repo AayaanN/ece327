@@ -1,4 +1,4 @@
-YNQ_IP ?= pynq-lab-10.eng.uwaterloo.ca
+PYNQ_IP ?= pynq-lab-10.eng.uwaterloo.ca
 GUI ?= 0
 MODE ?=
 USE_BOARD ?= 0
