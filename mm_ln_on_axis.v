@@ -103,6 +103,18 @@ assign x_TREADY = in_tready_signals[curr_state];
 assign in_tready_signals_r[0] = 0;  // IDLE
 
 always @(posedge clk) begin
+  if(~rst_n) begin
+    states[0]  <= 0;
+    states[1]  <= 0;
+    states[2]  <= 0;
+    states[3]  <= 0;
+    states[4]  <= 0;
+    states[5]  <= 0;
+    states[6]  <= 0;
+    states[7]  <= 0;
+    states[8]  <= 0;
+    states[9]  <= 0;
+  end else begin
     states[0]  <= STATE_W;
     states[1]  <= STATE_R_m;
     states[2]  <= STATE_R_e;
@@ -113,9 +125,22 @@ always @(posedge clk) begin
     states[7]  <= STATE_out_m;
     states[8]  <= STATE_out_e;
     states[9]  <= STATE_W;
+  end
 end
 
 always @(posedge clk) begin
+  if(~rst_n) begin
+    rdaddr_lengths[0]  <= 0;
+    rdaddr_lengths[1]  <= 0;
+    rdaddr_lengths[2]  <= 0;
+    rdaddr_lengths[3]  <= 0;
+    rdaddr_lengths[4]  <= 0;
+    rdaddr_lengths[5]  <= 0;
+    rdaddr_lengths[6]  <= 0;
+    rdaddr_lengths[7]  <= 0;
+    rdaddr_lengths[8]  <= 0;
+    rdaddr_lengths[9]  <= 0;
+  end else begin
     rdaddr_lengths[0]  <= 123;
     rdaddr_lengths[1]  <= M2xM3;
     rdaddr_lengths[2]  <= 1;
@@ -126,6 +151,7 @@ always @(posedge clk) begin
     rdaddr_lengths[7]  <= M3;
     rdaddr_lengths[8]  <= M3;
     rdaddr_lengths[9]  <= M3;
+  end
 end
 
 always @(posedge clk) begin

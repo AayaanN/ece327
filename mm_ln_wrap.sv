@@ -170,12 +170,6 @@ assign R_e_if.tlast = s_axis_s2mm_tlast_R_e;
 assign s_axis_s2mm_tready_R_e = R_e_if.tready;
 assign R_e_if.tvalid = s_axis_s2mm_tvalid_R_e;
 
-axi_stream_if I_if();
-assign I_if.tdata = s_axis_s2mm_tdata_R_e;
-assign I_if.tlast = s_axis_s2mm_tlast_R_e;
-assign s_axis_s2mm_tready_R_e = I_if.tready;
-assign I_if.tvalid = s_axis_s2mm_tvalid_R_e;
-
 axi_stream_if ln_bias_if();
 assign ln_bias_if.tdata = s_axis_s2mm_tdata_ln_bias;
 assign ln_bias_if.tlast = s_axis_s2mm_tlast_ln_bias;
