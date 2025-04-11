@@ -216,6 +216,7 @@ else ifeq (${TG},ibert)
 TB_DIR = tb_ibert
 # BOARD_SCRIPT = ibert_board.py
 BOARD_SCRIPT = ibert_on_board.py
+BOARD_DEPS += board-data
 OVERLAY_DIR = ibert_overlay
 BOARD_FLAFS = ${N1} ${N2}
 endif
