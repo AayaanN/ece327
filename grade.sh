@@ -2,9 +2,11 @@
 
 USE_BOARD=$1
 PYNQ_IP=$2
-# default
-USE_SYNTH_ALL=0
 
+USE_SYNTH_ALL=0
+USE_SYNTH_SYSTOLIC=0
+USE_SYNTH_SOFTMAX=0
+USE_SYNTH_LN=0
 if grep -qEv '^\s*USE_SYNTH[A-Za-z0-9_]*=(0|1)\s*$' synth_config.sh; then
     echo "Invalid lines in synth_config.sh, only USE_SYNTH* assignments allowed."
     return 1
@@ -76,6 +78,7 @@ if [[ $inter_err -eq 0 && $inter_pass -eq 1 ]]; then inter_sim=10; fi
 
 # All-layers IBERT simulation
 ibert_sim=0
+make clean
 if [[ $attn_sim -gt 0 && $self_out_sim -gt 0 && $inter_sim -gt 0 ]]; then
     make ibert_axi_tb.sv BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_ibert.txt
     ibert_err=`grep "HISSSSS" grade_ibert.txt | wc -l`

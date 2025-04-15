@@ -351,12 +351,14 @@ synth-sol-cleanup:
 	zsh synth_sol.sh 1
 
 vbuild:
+	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	verilator ${VFLAGS} \
 		--top top dims.sv ${TB}.sv ${UNISIMS} top.cpp \
 		--Mdir ${shell pwd}/verilator \
 		-o top
 
 xbuild:
+	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	echo 'set GUI ${GUI}' > args.tcl
 	xvlog ${XVLOG_FLAGS} -sv ${SRC}
 	xelab ${XELAB_FLAGS} ${TB} -s ${TB}
@@ -368,12 +370,10 @@ mbuild:
 	vlog -O5 ${MVLOG_FLAGS} -sv ${SRC}
 
 verilator: vbuild
-	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	rm -rf ${TB_DIR}/tb_*.mem
 	./verilator/top
 
 xsim: xbuild
-	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	rm -rf ${TB_DIR}/tb_*.mem
 	xsim ${TB} ${XSIM_FLAGS} -t xsim.tcl
 	python3 ${TEST_SCRIPT} ${TEST_FLAGS}
