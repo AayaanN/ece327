@@ -10,6 +10,9 @@ TG ?= $(patsubst %_tb,%,$(patsubst %_axi_tb,%,$(patsubst %_on_axis_tb,%,${TB})))
 SRC = ${shell cat ${TB}.f}
 SIM ?= verilator
 USE_SYNTH ?= 0
+USE_SYNTH_SYSTOLIC ?= 0
+USE_SYNTH_SOFTMAX ?= 0
+USE_SYNTH_LN ?= 0
 UNISIMS=
 
 M1 ?= 32
@@ -117,6 +120,12 @@ VFLAGS += -GSLICES=${SLICES}
 endif
 
 ifeq (${USE_SYNTH}, 1)
+UNISIMS = unisims/*.v
+else ifeq (${USE_SYNTH_SYSTOLIC}, 1)
+UNISIMS = unisims/*.v
+else ifeq (${USE_SYNTH_SOFTMAX}, 1)
+UNISIMS = unisims/*.v
+else ifeq (${USE_SYNTH_LN}, 1)
 UNISIMS = unisims/*.v
 endif
 
@@ -326,6 +335,21 @@ ifeq (${GUI},1)
 XSIM_FLAGS += -gui
 endif
 
+systolic-synth:
+	echo "set N1 ${N1}" > args.tcl
+	echo "set N2 ${N2}" >> args.tcl
+	vivado -nolog -nojournal -notrace -mode batch -source systolic_vivado.tcl
+
+softmax-synth:
+	echo 'set SOFTMAX_N ${M1}' > args.tcl
+	vivado -nolog -nojournal -notrace -mode batch -source softmax_vivado.tcl
+
+ln-synth:
+	vivado -nolog -nojournal -notrace -mode batch -source layer_norm_vivado.tcl
+
+synth-sol-cleanup:
+	zsh synth_sol.sh 1
+
 vbuild:
 	verilator ${VFLAGS} \
 		--top top dims.sv ${TB}.sv ${UNISIMS} top.cpp \
@@ -344,10 +368,12 @@ mbuild:
 	vlog -O5 ${MVLOG_FLAGS} -sv ${SRC}
 
 verilator: vbuild
+	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	rm -rf ${TB_DIR}/tb_*.mem
 	./verilator/top
 
 xsim: xbuild
+	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	rm -rf ${TB_DIR}/tb_*.mem
 	xsim ${TB} ${XSIM_FLAGS} -t xsim.tcl
 	python3 ${TEST_SCRIPT} ${TEST_FLAGS}
@@ -392,6 +418,7 @@ args:
 #mv args.tcl ${OVERLAY_DIR}/args.tcl
 
 vivado: args
+	zsh synth_sol.sh 0 0 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	vivado ${VIVADO_FLAGS} -source ${VIVADO_SCRIPT}
 
 synth synth-xsim: MODE=synth
@@ -400,6 +427,7 @@ synth impl: vivado
 synth-xsim impl-xsim: xsim
 
 bitstream: ${BIT_DEPS}
+	zsh synth_sol.sh 0 0 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 	cd ${OVERLAY_DIR} && vivado ${VIVADO_FLAGS} -source build.tcl
 
 board-data:
@@ -452,7 +480,7 @@ ibert-board-weights:
 	scp weights.bin weights.json xilinx@${PYNQ_IP}:~/
 
 grade:
-	zsh grade.sh ${USE_BOARD} ${PYNQ_IP} ${USE_SYNTH}
+	zsh grade.sh ${USE_BOARD} ${PYNQ_IP}
 	cat grade.csv
 
 prep-board:
@@ -467,7 +495,7 @@ grade-board:
 ping-board:
 	ping -c 4 ${PYNQ_IP}
 
-clean:
+clean: synth-sol-cleanup
 	rm -rf *.jou *.pb *.wdb *.str
 	rm -rf *.vcd *.fst *.fst.hier args.tcl
 	rm -rf ./ibert_overlay/vivado*.jou ./ibert_overlay/vivado*.log

@@ -6,6 +6,8 @@ import dims::*;
 `ifdef VERILATOR
 module top
 `else
+`define DIR "\"tb_self/\""
+
 module mm_ln_tb
 `endif
 #(
@@ -650,7 +652,7 @@ always @(posedge clk) begin
     end else begin
         if (out_last) begin
             if (REUSE > 1) begin
-                $display("-- Finished Batch %0d out of %0d at time=%0d.\n###\n", done_cntr + 1, REUSE, ctime);
+                $display("-- Finished Layer %0d out of %0d at time=%0d.\n###\n", done_cntr + 1, REUSE, ctime);
             end
             done_cntr <= done_cntr + 1;
             if (done_cntr == REUSE-1) begin
@@ -806,7 +808,7 @@ mm_ln_test (
     `else
         initial begin
             $dumpfile("mm_ln.vcd");
-            $dumpvars();
+            $dumpvars(0,mm_ln_tb);
         end
     `endif
 `endif

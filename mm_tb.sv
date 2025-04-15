@@ -191,7 +191,7 @@ always @(posedge clk) begin
         done_cntr <= 0;
     end else begin
         if (out_valid && out_last) begin
-            $display("-- Finished Batch %0d out of %0d at time=%0d.\n###\n", done_cntr + 1, REUSE*KEEP_A, ctime);
+            $display("-- Finished Layer %0d out of %0d at time=%0d.\n###\n", done_cntr + 1, REUSE*KEEP_A, ctime);
             done_cntr <= done_cntr + 1;
             if (BLOCKED_D) begin
                 if (done_cntr == BLOCKS*REUSE*KEEP_A-1) begin

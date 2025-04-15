@@ -124,7 +124,7 @@ def main():
         os.system(f"split -l {int(M1*M3)} -d -a 3 --additional-suffix=.mem {TB_DIR}/tb_{mem}.mem {TB_DIR}/tb_{mem}_")
 
     for r in range(REUSE):
-        print(f"\nIteration: {r+1}")
+        print(f"\nLayer: {r+1}")
         args = {k: f"{v}_{str(r).zfill(3)}" for k, v in mem_files.items()}
         test(mem_dir=TB_DIR, **args, dim1=M1, dim2=M3, BLOCKS_D=BLOCKS_D)
 

@@ -968,7 +968,7 @@ always @(posedge clk) begin
     end else begin
         if (out_last) begin
             if (REUSE*HEADS > 1) begin
-                $display("attn_head: -- Finished Batch %0d out of %0d at time=%0d.\n###", done_cntr + 1, REUSE*HEADS, ctime);
+                $display("attn_head: -- Finished Head %0d out of %0d at time=%0d.\n###", done_cntr + 1, REUSE*HEADS, ctime);
             end
             done_cntr <= done_cntr + 1;
             if (done_cntr == REUSE*HEADS-1) begin

@@ -169,7 +169,7 @@ def main():
         os.system(f"split -l {int(dim1*dim2)} -d -a 3 --additional-suffix=.mem {TB_DIR}/tb_{mem}.mem {TB_DIR}/tb_{mem}_")
 
     for r in range(REUSE*HEADS):
-        print(f"\nIteration: {r+1}")
+        print(f"\nHead: {r+1}")
         args = {k: f"{v[0]}_{str(r).zfill(3)}" for k, v in mem_files.items()}
         test(mem_dir=TB_DIR, **args, dim1=M1, dim2=M3)
 

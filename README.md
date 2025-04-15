@@ -1,7 +1,7 @@
 # LAB5: Constructing IBERT Model [Design, Simulation, Synthesis, Implementation]
 ## "Battle of Scariff", Rogue One
 
-Deadline: 25td April 2025 09:00am!
+Deadline: 25th April 2025 09:00am!
 
 ## Getting started
 First, clone the git repository onto your home directory on the `eceubuntu` lab server.
@@ -54,35 +54,32 @@ An `axi_in` port corresponds to `tdata`, `tlast`, and `tvalid` acting as inputs 
 An `axi_out` port corresponds to `tdata`, `tlast`, and `tvalid` acting as outputs from the module with `tready` acting as an input.
 You will not need to declare any new AXI ports, but you may find this information useful to help wire up the lab components.
 
-#### Using Lab 4 Solution Code
+#### Using Lab 3 and Lab 4 Solution Code
 
-If you did not get the softmax or layer norm module working in Lab 4, you can use post-synthesis versions of the solution code for each module.
-You can use `softmax_func_sol.sv` and `layer_norm_func_sol.sv` for functional simulation with Verilator or `softmax_synth_sol.sv` and `layer_norm_synth_sol.sv` for synthesis, implementation, or to generate a bitstream.
+If you did not get the systolic module working in Lab 3 or the softmax or layer norm modules working in Lab 4, you can use post-synthesis versions of the solution code for each module.
+You can use `*_func_sol.sv` for functional simulation with Verilator or `*_synth_sol.sv` for synthesis, implementation, or to generate a bitstream.
 Use the following procedure to incorporate them into your design:
 
-1. Clone the unisims library. This repo contains supplementary verilog files needed to simulate with the post-synthesis module(s) in Verilator.
+1. If you use any of the solution files, you must clone the unisims library. This repo contains supplementary verilog files needed to simulate with the post-synthesis module(s) in Verilator.
 ```zsh
 git clone ist-git@git.uwaterloo.ca:ece327-w25/labs-admin/unisims.git
 cp -r $HOME/ece327-w25/labs/unisims $HOME/ece327-w25/labs/ahnaqvi-lab5/
 ```
 
-2. Replace the contents of the file(s) with the post-synthesis functional simulation version(s):
+2. The Makefile calls a script that automatically copies the code for the necessary files if you choose to use the solution code. There is no need to manually copy or comment out any code.
+
+3. When running commands with `make`, you can choose which solution modules to use with `USE_SYNTH_SYSTOLIC`, `USE_SYNTH_LN`, and `USE_SYNTH_SOFTMAX`. We also provide the flag `USE_SYNTH` which uses all available solution modules. The following example runs a verilator simulation for `mm_ln` using the solution modules for systolic and layer norm.
 ```zsh
-cp -f softmax_func_sol.sv softmax.sv
-cp -f layer_norm_func_sol.sv layer_norm.sv
+make mm_ln_tb.sv M1=32 M2=768 M3=768 BLOCKS=192 USE_SYNTH_LN=1 USE_SYNTH_SYSTOLIC=1
 ```
 
-3. Comment out the parameter mappings for the instantiation of `softmax` in `softmax_top.sv` and `layer_norm` in `layer_norm_top.sv`.
-
-4. When running simulations with Verilator, add `USE_SYNTH=1` to your `make` command.
-
-5. For synthesis, implementation, and bitstream generation, replace the contents of the file(s) with the full design post-synthesis version(s) before running:
+4. For grading, you will need to set your preferred values for each of the above flags in `synth_config.sh`. We will refer to this file when grading. For example, the following informs us to use the solution code for systolic and layer norm, but not softmax.
 ```zsh
-cp -f softmax_synth_sol.sv softmax.sv
-cp -f layer_norm_synth_sol.sv layer_norm.sv
+USE_SYNTH_SYSTOLIC=1
+USE_SYNTH_SOFTMAX=0
+USE_SYNTH_LN=1
 ```
 
-6. You can run `make grade USE_SYNTH=1` to grade your code with these solution code implementations.
 
 ### Attention Head Module
 
@@ -176,6 +173,12 @@ Description:
 * For matrix multiplication, we will use `mm.sv`, a wrapper of `systolic.sv` that contains memory banks to store input and output matrices.
 * We use three `mm` modules to calculate $Q=I \times W_Q$, $K=I \times W_K$, $V=I \times W_V$, $Q \times K^T$, and $P * V$. The first three multiplication operations share a single multiplier.
 * Make sure to correctly connect the ports `A` and `B` to match the diagram.
+* You also need to provide correct dimensions to each `mm` instance. Top module parameter values are `M1=32`, `M2=768`, `M3=64`, they are supplied for the three `mm` that compute multiplication with weights, you should find out dimensions for the other two `mm` using these `M` parameters and by looking at the attention block diagram as a reference. You can access dimension parameters, e.g., `M1`, `M2`, from `mm_dimensions` struct, e.g., `mm_dimensions.M1`. Pay close attention to how dimensions should be shuffled when you do transpose for $S=Q \times K^T$. Look at `dims.sv` for all the available dimension parameters. You may find some hints in this file.
+* Default values: M1=32, M2=768, M3=64. These are also the values shown in the diagram. It means three mm modules that compute multiplications of input matrix I (M1,M2) and weights (M2,M3) should get these dimensions. Let's look at the next mm instance. It calculates Q*K^T. What are the dimensions for this matmul? Q = I * W_Q, which means we're multiplying matrix I (M1,M2) by matrix W_Q (M2,M3) and this results in (M1,M3) output. Thus, Q has dimensions of (M1,M3), i.e., (32,64).
+* Same for K, it's (M1,M3), and note that you're doing transpose here, which means K^T has a dimension of (M3,M1). Q*K^T mm should then compute matmul of (M1,M3) by (M3,M1), resulting in (M1,M1) matrix. Do similar calculations for the last mm.
+* Note that you need to provide parameter `TRANSPOSE_B=1` to the `mm` instance that calculates $S=Q \times K^T$.
+* Another important parameter is `MEM_DEPTH_*` which needs to be supplied to every `mm` to store A, B, and D matrices. Note that not all of the `mm` should get the same memory depths. Hint: by analyzing the diagram you need to decide which `MEM_DEPTH` parameter should be supplied to the last two `mm` modules that compute `S` and `C`.
+* Information about memory depths: `MEM_DEPTH_A := M1*M2/N1`, `MEM_DEPTH_B := M2*M3/N2`, `MEM_DEPTH_D := M1*M3/N1`, `MEM_DEPTH_S := M1*M1/N1`. Each parameter indicates the depth of the memory bank required to hold matrix data of given dimensions. For each mm.sv file you have to determine three parameters for inputs A, B and output D.  For example, MEM_DEPTH_A should be passed to mm that calculate I*W_Q as MEM_DEPTH_A to hold matrix I which has a dimension of (M1,M2), i.e. .MEM_DEPTH_A(MEM_DEPTH_A), in the instance. MEM_DEPTH_S should be passed to mm that calculates Q*K^T as MEM_DEPTH_D to hold matrix S which has a dimensions of (M1,M1), and so on, i.e. .MEM_DEPTH_D(MEM_DEPTH_S), in the instance.
 
 ### MM + LayerNorm Module
 
@@ -353,8 +356,6 @@ To test the IBERT model you can run:
 ```zsh
 make ibert_axi_tb.sv BLOCKED_D=1
 ```
-
-**IMPORTANT**: To properly run the testbenches, you should add names that you used to instantiate modules in the `names.h` file. We use the macros defined in `names.h` in the testbench to produce intermediate status messages and save outputs to `.mem` files.
 
 #### Expected Simulation Output for Attention Head Module
 

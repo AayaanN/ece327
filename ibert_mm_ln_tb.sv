@@ -703,7 +703,7 @@ always @(posedge clk) begin
         done_cntr <= 0;
     end else begin
         if (out_last) begin
-            $display("mm_ln: -- Finished mm_ln Batch %0d out of %0d at time=%0d.\n###", done_cntr + 1, REUSE*SLICES, ctime);
+            $display("mm_ln: -- Finished mm_ln Layer %0d out of %0d at time=%0d.\n###", done_cntr + 1, REUSE*SLICES, ctime);
             done_cntr <= done_cntr + 1;
             if (done_cntr == REUSE*SLICES-1) begin
                 mm_ln_done <= 1;

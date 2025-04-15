@@ -2,7 +2,14 @@
 
 USE_BOARD=$1
 PYNQ_IP=$2
-USE_SYNTH=$3
+# default
+USE_SYNTH_ALL=0
+
+if grep -qEv '^\s*USE_SYNTH[A-Za-z0-9_]*=(0|1)\s*$' synth_config.sh; then
+    echo "Invalid lines in synth_config.sh, only USE_SYNTH* assignments allowed."
+    return 1
+fi
+source synth_config.sh
 
 DIR=~/ece327-w25/labs-admin/lab5-sol
 cp $DIR/Makefile .
@@ -24,19 +31,24 @@ cp $DIR/*dims.sv .
 make reallyclean
 
 extra_files=""
-if [[ $USE_SYNTH -eq 1 ]]; then
-    cp -f softmax_func_sol.sv softmax.sv
-    cp -f layer_norm_func_sol.sv layer_norm.sv
+if [[ $USE_SYNTH_ALL -eq 1 || $USE_SYNTH_SYSTOLIC -eq 1 || $USE_SYNTH_SOFTMAX -eq 1 || $USE_SYNTH_LN -eq 1 ]]; then
     extra_files="unisims/*.v lint.vlt"
 fi
 
+zsh synth_sol.sh 0 1 ${USE_SYNTH_ALL} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+
 # Lint
 echo "Lint check on attn_head.sv..."
-lint_attn_head=`eval verilator -Wall -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-IMPORTSTAR -Wno-PINCONNECTEMPTY -Wno-GENUNNAMED -Wno-DECLFILENAME -Wno-EOFNEWLINE -Wno-TIMESCALEMOD -Wno-width -Wno-unused --lint-only --no-timing -DPING_PONG -DONESYS -GN1=4 -GN2=4 -GMATRIXSIZE_W=24 -GsN1=4 -GsN2=4 -GMEM_DEPTH_Q=512 -GMEM_DEPTH_K=512 -GMEM_DEPTH_S=256 -GMEM_DEPTH_A=6144 -GMEM_DEPTH_B=1536 -GMEM_DEPTH_D=512 -DDIR="\"tb_head/\"" dims.sv attn_head.sv $extra_files 2>&1 | grep Error | wc -l`
+eval verilator -Wall -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-IMPORTSTAR -Wno-PINCONNECTEMPTY -Wno-GENUNNAMED -Wno-DECLFILENAME -Wno-EOFNEWLINE -Wno-TIMESCALEMOD -Wno-width -Wno-unused --lint-only --no-timing -DPING_PONG -DONESYS -GN1=4 -GN2=4 -GMATRIXSIZE_W=24 -GsN1=4 -GsN2=4 -GMEM_DEPTH_Q=512 -GMEM_DEPTH_K=512 -GMEM_DEPTH_S=256 -GMEM_DEPTH_A=6144 -GMEM_DEPTH_B=1536 -GMEM_DEPTH_D=512 -DDIR="\"tb_head/\"" dims.sv attn_head.sv $extra_files 2>&1 | tee grade_lint_attn.txt
+lint_attn_head=`grep "Error" grade_lint_attn.txt | wc -l`
+
 echo "Lint check on mm_ln.sv..."
-lint_mm_ln=`eval verilator -Wall -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-IMPORTSTAR -Wno-PINCONNECTEMPTY -Wno-GENUNNAMED -Wno-DECLFILENAME -Wno-EOFNEWLINE -Wno-TIMESCALEMOD -Wno-width -Wno-unused --lint-only --no-timing -DPING_PONG -DONESYS -GN1=4 -GN2=4 -GMATRIXSIZE_W=24 -GMAT_ADD_MEM_DEPTH=24576 -GMEM_DEPTH_A=6144 -GMEM_DEPTH_B=768 -GMEM_DEPTH_D=6144 -DDIR="\"tb_self/\"" dims.sv mm_ln.sv $extra_files 2>&1 | grep Error | wc -l`
+eval verilator -Wall -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-IMPORTSTAR -Wno-PINCONNECTEMPTY -Wno-GENUNNAMED -Wno-DECLFILENAME -Wno-EOFNEWLINE -Wno-TIMESCALEMOD -Wno-width -Wno-unused --lint-only --no-timing -DPING_PONG -DONESYS -GN1=4 -GN2=4 -GMATRIXSIZE_W=24 -GMAT_ADD_MEM_DEPTH=24576 -GMEM_DEPTH_A=6144 -GMEM_DEPTH_B=768 -GMEM_DEPTH_D=6144 -DDIR="\"tb_self/\"" dims.sv mm_ln.sv $extra_files 2>&1 | tee grade_lint_self_out.txt
+lint_mm_ln=`grep "Error" grade_lint_self_out.txt | wc -l`
+
 echo "Lint check on mm_gelu.sv..."
-lint_mm_gelu=`eval verilator -Wall -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-IMPORTSTAR -Wno-PINCONNECTEMPTY -Wno-GENUNNAMED -Wno-DECLFILENAME -Wno-EOFNEWLINE -Wno-TIMESCALEMOD -Wno-width -Wno-unused --lint-only --no-timing -DPING_PONG -DONESYS -GN1=4 -GN2=4 -GMATRIXSIZE_W=24 -GMEM_DEPTH_A=6144 -GMEM_DEPTH_B=6144 -GMEM_DEPTH_D=24576 -GBLOCKED_D=1 -DDIR="\"tb_inter/\"" dims.sv mm_gelu.sv $extra_files 2>&1 | grep Error | wc -l`
+eval verilator -Wall -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-IMPORTSTAR -Wno-PINCONNECTEMPTY -Wno-GENUNNAMED -Wno-DECLFILENAME -Wno-EOFNEWLINE -Wno-TIMESCALEMOD -Wno-width -Wno-unused --lint-only --no-timing -DPING_PONG -DONESYS -GN1=4 -GN2=4 -GMATRIXSIZE_W=24 -GMEM_DEPTH_A=6144 -GMEM_DEPTH_B=6144 -GMEM_DEPTH_D=24576 -GBLOCKED_D=1 -DDIR="\"tb_inter/\"" dims.sv mm_gelu.sv $extra_files 2>&1 | tee grade_lint_inter.txt
+lint_mm_gelu=`grep "Error" grade_lint_inter.txt | wc -l`
 
 # Lint Grades
 if [[ $lint_attn_head -eq 0 ]]; then lint_attn_head=2; else lint_attn_head=0; fi
@@ -45,19 +57,19 @@ if [[ $lint_mm_gelu -eq 0 ]]; then lint_mm_gelu=2; else lint_mm_gelu=0; fi
 
 # Simulation
 attn_sim=0
-make attn_head_tb.sv M1=32 M2=768 M3=64 HEADS=12 USE_SYNTH=$USE_SYNTH 2>&1 | tee grade_attn.txt
+make attn_head_tb.sv M1=32 M2=768 M3=64 HEADS=12 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_attn.txt
 attn_err=`grep "HISSSSS" grade_attn.txt | wc -l`
 attn_pass=`grep "Thank Mr. Goose" grade_attn.txt | wc -l`
 if [[ $attn_err -eq 0 && $attn_pass -eq 12 ]]; then attn_sim=10; fi
 
 self_out_sim=0
-make mm_ln_tb.sv M1=32 M2=768 M3=768 BLOCKS=192 USE_SYNTH=$USE_SYNTH 2>&1 | tee grade_self_out.txt
+make mm_ln_tb.sv M1=32 M2=768 M3=768 BLOCKS=192 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_self_out.txt
 self_out_err=`grep "HISSSSS" grade_self_out.txt | wc -l`
 self_out_pass=`grep "Thank Mr. Goose" grade_self_out.txt | wc -l`
 if [[ $self_out_err -eq 0 && $self_out_pass -eq 1 ]]; then self_out_sim=10; fi
 
 inter_sim=0
-make mm_gelu_tb.sv M1=32 M2=768 M3=3072 BLOCKS=96 BLOCKED_D=1 USE_SYNTH=$USE_SYNTH 2>&1 | tee grade_inter.txt
+make mm_gelu_tb.sv M1=32 M2=768 M3=3072 BLOCKS=96 BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_inter.txt
 inter_err=`grep "HISSSSS" grade_inter.txt | wc -l`
 inter_pass=`grep "Thank Mr. Goose" grade_inter.txt | wc -l`
 if [[ $inter_err -eq 0 && $inter_pass -eq 1 ]]; then inter_sim=10; fi
@@ -65,17 +77,13 @@ if [[ $inter_err -eq 0 && $inter_pass -eq 1 ]]; then inter_sim=10; fi
 # All-layers IBERT simulation
 ibert_sim=0
 if [[ $attn_sim -gt 0 && $self_out_sim -gt 0 && $inter_sim -gt 0 ]]; then
-    make ibert_axi_tb.sv BLOCKED_D=1 USE_SYNTH=$USE_SYNTH 2>&1 | tee grade_ibert.txt
+    make ibert_axi_tb.sv BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_ibert.txt
     ibert_err=`grep "HISSSSS" grade_ibert.txt | wc -l`
     ibert_pass=`grep "Thank Mr. Goose" grade_ibert.txt | wc -l`
     if [[ $ibert_err -eq 0 && $ibert_pass -eq 15 ]]; then ibert_sim=10; fi
 fi
 
-if [[ $USE_SYNTH -eq 1 ]]; then
-    cp -f softmax_synth_sol.sv softmax.sv
-    cp -f layer_norm_synth_sol.sv layer_norm.sv
-    sed -i -E '/^add_files/ s/\<mac\.sv\>|\<sqrt\.sv\>|\<sreg\.sv\>//g' mm_ln_vivado.tcl
-fi
+zsh synth_sol.sh 0 0 ${USE_SYNTH_ALL} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
 
 # Synthesis Timing, Resources
 mm_ln_synth_timing=0

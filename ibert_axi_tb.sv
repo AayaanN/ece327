@@ -252,7 +252,7 @@ always @(posedge clk) begin
     end else begin
         if (out_last) begin
             if (REUSE > 1) begin
-                $display("-- Finished ibert_axi Batch %0d out of %0d at time=%0d.\n###", done_cntr + 1, 2*REUSE, ctime);
+                $display("-- Finished ibert_axi Head %0d out of %0d at time=%0d.\n###", done_cntr + 1, 2*REUSE, ctime);
             end
             done_cntr <= done_cntr + 1;
             // attn_head outputs tlast for all heads once per layer and
@@ -520,7 +520,7 @@ ibert_axi
 `endif
 ibert_axi_test (
     .clk       (clk),
-    .fclk      (fclk),
+    .fclk      (clk),
     .rst_n     (~rst),
     
     .x_TDATA   (in_data),
@@ -543,7 +543,7 @@ ibert_axi_test (
     `else
         initial begin
             $dumpfile("ibert_axi.vcd");
-            $dumpvars();
+            $dumpvars(1,ibert_axi_tb);
         end
     `endif
 `endif
