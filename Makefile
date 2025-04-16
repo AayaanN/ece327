@@ -13,6 +13,7 @@ USE_SYNTH ?= 0
 USE_SYNTH_SYSTOLIC ?= 0
 USE_SYNTH_SOFTMAX ?= 0
 USE_SYNTH_LN ?= 0
+USE_SYNTH_GELU ?= 0
 UNISIMS=
 
 M1 ?= 32
@@ -126,6 +127,8 @@ UNISIMS = unisims/*.v
 else ifeq (${USE_SYNTH_SOFTMAX}, 1)
 UNISIMS = unisims/*.v
 else ifeq (${USE_SYNTH_LN}, 1)
+UNISIMS = unisims/*.v
+else ifeq (${USE_SYNTH_GELU}, 1)
 UNISIMS = unisims/*.v
 endif
 
@@ -335,6 +338,9 @@ ifeq (${GUI},1)
 XSIM_FLAGS += -gui
 endif
 
+gelu-synth:
+	vivado -nolog -nojournal -notrace -mode batch -source gelu_vivado.tcl
+
 systolic-synth:
 	echo "set N1 ${N1}" > args.tcl
 	echo "set N2 ${N2}" >> args.tcl
@@ -351,14 +357,14 @@ synth-sol-cleanup:
 	zsh synth_sol.sh 1
 
 vbuild:
-	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN} ${USE_SYNTH_GELU}
 	verilator ${VFLAGS} \
 		--top top dims.sv ${TB}.sv ${UNISIMS} top.cpp \
 		--Mdir ${shell pwd}/verilator \
 		-o top
 
 xbuild:
-	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+	zsh synth_sol.sh 0 1 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN} ${USE_SYNTH_GELU}
 	echo 'set GUI ${GUI}' > args.tcl
 	xvlog ${XVLOG_FLAGS} -sv ${SRC}
 	xelab ${XELAB_FLAGS} ${TB} -s ${TB}
@@ -418,7 +424,7 @@ args:
 #mv args.tcl ${OVERLAY_DIR}/args.tcl
 
 vivado: args
-	zsh synth_sol.sh 0 0 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+	zsh synth_sol.sh 0 0 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN} ${USE_SYNTH_GELU}
 	vivado ${VIVADO_FLAGS} -source ${VIVADO_SCRIPT}
 
 synth synth-xsim: MODE=synth
@@ -427,7 +433,7 @@ synth impl: vivado
 synth-xsim impl-xsim: xsim
 
 bitstream: ${BIT_DEPS}
-	zsh synth_sol.sh 0 0 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+	zsh synth_sol.sh 0 0 ${USE_SYNTH} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN} ${USE_SYNTH_GELU}
 	cd ${OVERLAY_DIR} && vivado ${VIVADO_FLAGS} -source build.tcl
 
 board-data:

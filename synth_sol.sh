@@ -6,6 +6,7 @@ USE_SYNTH_ALL=$3
 USE_SYNTH_SYSTOLIC=$4
 USE_SYNTH_SOFTMAX=$5
 USE_SYNTH_LN=$6
+USE_SYNTH_GELU=$7
 
 if [[ $CLEANUP -eq 0 ]]; then
     if [[ $USE_SYNTH_ALL -eq 1 || $USE_SYNTH_SYSTOLIC -eq 1 ]]; then
@@ -44,6 +45,17 @@ if [[ $CLEANUP -eq 0 ]]; then
             cp -f layer_norm_synth_sol.sv layer_norm.sv;
         fi
         cp -f layer_norm_top_synth_sol.sv layer_norm_top.sv;
+    fi
+    if [[ $USE_SYNTH_ALL -eq 1 || $USE_SYNTH_GELU -eq 1 ]]; then
+        [[ -e gelu_temp.sv ]] || cp gelu.sv gelu_temp.sv
+        [[ -e gelu_top_temp.sv ]] || cp gelu_top.sv gelu_top_temp.sv
+
+        if [[ $FUNCSIM -eq 1 ]]; then
+            cp -f gelu_func_sol.sv gelu.sv;
+        else
+            cp -f gelu_synth_sol.sv gelu.sv;
+        fi
+        cp -f gelu_top_synth_sol.sv gelu_top.sv;
     fi
 else # $CLEANUP -eq 1
     for f in *_temp.sv(N); do

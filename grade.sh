@@ -7,6 +7,7 @@ USE_SYNTH_ALL=0
 USE_SYNTH_SYSTOLIC=0
 USE_SYNTH_SOFTMAX=0
 USE_SYNTH_LN=0
+USE_SYNTH_GELU=0
 if grep -qEv '^\s*USE_SYNTH[A-Za-z0-9_]*=(0|1)\s*$' synth_config.sh; then
     echo "Invalid lines in synth_config.sh, only USE_SYNTH* assignments allowed."
     return 1
@@ -25,19 +26,19 @@ cp $DIR/*.xdc .
 cp $DIR/*.golden .
 cp $DIR/*dims.sv .
 
-#rm -Rf data
-#rm -Rf unisims
-#ln -s $DIR/../ibert/data data
-#ln -s $DIR/../unisims unisims
+rm -Rf data
+rm -Rf unisims
+ln -s $DIR/../lab5-data data
+ln -s $DIR/../unisims unisims
 
 make reallyclean
 
 extra_files=""
-if [[ $USE_SYNTH_ALL -eq 1 || $USE_SYNTH_SYSTOLIC -eq 1 || $USE_SYNTH_SOFTMAX -eq 1 || $USE_SYNTH_LN -eq 1 ]]; then
+if [[ $USE_SYNTH_ALL -eq 1 || $USE_SYNTH_SYSTOLIC -eq 1 || $USE_SYNTH_SOFTMAX -eq 1 || $USE_SYNTH_LN -eq 1 || $USE_SYNTH_GELU -eq 1 ]]; then
     extra_files="unisims/*.v lint.vlt"
 fi
 
-zsh synth_sol.sh 0 1 ${USE_SYNTH_ALL} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+zsh synth_sol.sh 0 1 ${USE_SYNTH_ALL} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN} ${USE_SYNTH_GELU}
 
 # Lint
 echo "Lint check on attn_head.sv..."
@@ -59,19 +60,19 @@ if [[ $lint_mm_gelu -eq 0 ]]; then lint_mm_gelu=2; else lint_mm_gelu=0; fi
 
 # Simulation
 attn_sim=0
-make attn_head_tb.sv M1=32 M2=768 M3=64 HEADS=12 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_attn.txt
+make attn_head_tb.sv M1=32 M2=768 M3=64 HEADS=12 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN USE_SYNTH_GELU=$USE_SYNTH_GELU 2>&1 | tee grade_attn.txt
 attn_err=`grep "HISSSSS" grade_attn.txt | wc -l`
 attn_pass=`grep "Thank Mr. Goose" grade_attn.txt | wc -l`
 if [[ $attn_err -eq 0 && $attn_pass -eq 12 ]]; then attn_sim=10; fi
 
 self_out_sim=0
-make mm_ln_tb.sv M1=32 M2=768 M3=768 BLOCKS=192 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_self_out.txt
+make mm_ln_tb.sv M1=32 M2=768 M3=768 BLOCKS=192 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN USE_SYNTH_GELU=$USE_SYNTH_GELU 2>&1 | tee grade_self_out.txt
 self_out_err=`grep "HISSSSS" grade_self_out.txt | wc -l`
 self_out_pass=`grep "Thank Mr. Goose" grade_self_out.txt | wc -l`
 if [[ $self_out_err -eq 0 && $self_out_pass -eq 1 ]]; then self_out_sim=10; fi
 
 inter_sim=0
-make mm_gelu_tb.sv M1=32 M2=768 M3=3072 BLOCKS=96 BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_inter.txt
+make mm_gelu_tb.sv M1=32 M2=768 M3=3072 BLOCKS=96 BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN USE_SYNTH_GELU=$USE_SYNTH_GELU 2>&1 | tee grade_inter.txt
 inter_err=`grep "HISSSSS" grade_inter.txt | wc -l`
 inter_pass=`grep "Thank Mr. Goose" grade_inter.txt | wc -l`
 if [[ $inter_err -eq 0 && $inter_pass -eq 1 ]]; then inter_sim=10; fi
@@ -80,13 +81,13 @@ if [[ $inter_err -eq 0 && $inter_pass -eq 1 ]]; then inter_sim=10; fi
 ibert_sim=0
 make clean
 if [[ $attn_sim -gt 0 && $self_out_sim -gt 0 && $inter_sim -gt 0 ]]; then
-    make ibert_axi_tb.sv BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN 2>&1 | tee grade_ibert.txt
+    make ibert_axi_tb.sv BLOCKED_D=1 USE_SYNTH=$USE_SYNTH_ALL USE_SYNTH_SYSTOLIC=$USE_SYNTH_SYSTOLIC USE_SYNTH_SOFTMAX=$USE_SYNTH_SOFTMAX  USE_SYNTH_LN=$USE_SYNTH_LN USE_SYNTH_GELU=$USE_SYNTH_GELU 2>&1 | tee grade_ibert.txt
     ibert_err=`grep "HISSSSS" grade_ibert.txt | wc -l`
     ibert_pass=`grep "Thank Mr. Goose" grade_ibert.txt | wc -l`
     if [[ $ibert_err -eq 0 && $ibert_pass -eq 15 ]]; then ibert_sim=10; fi
 fi
 
-zsh synth_sol.sh 0 0 ${USE_SYNTH_ALL} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN}
+zsh synth_sol.sh 0 0 ${USE_SYNTH_ALL} ${USE_SYNTH_SYSTOLIC} ${USE_SYNTH_SOFTMAX} ${USE_SYNTH_LN} ${USE_SYNTH_GELU}
 
 # Synthesis Timing, Resources
 mm_ln_synth_timing=0

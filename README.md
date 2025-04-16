@@ -73,11 +73,12 @@ cp -r $HOME/ece327-w25/labs/unisims $HOME/ece327-w25/labs/ahnaqvi-lab5/
 make mm_ln_tb.sv M1=32 M2=768 M3=768 BLOCKS=192 USE_SYNTH_LN=1 USE_SYNTH_SYSTOLIC=1
 ```
 
-4. For grading, you will need to set your preferred values for each of the above flags in `synth_config.sh`. We will refer to this file when grading. For example, the following informs us to use the solution code for systolic and layer norm, but not softmax.
+4. For grading, you will need to set your preferred values for each of the above flags in `synth_config.sh`. We will refer to this file when grading. For example, the following informs us to use the solution code for systolic and layer norm, but not softmax or gelu.
 ```zsh
 USE_SYNTH_SYSTOLIC=1
 USE_SYNTH_SOFTMAX=0
 USE_SYNTH_LN=1
+USE_SYNTH_GELU=0
 ```
 
 
