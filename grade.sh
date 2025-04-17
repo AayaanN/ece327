@@ -26,10 +26,10 @@ cp $DIR/*.xdc .
 cp $DIR/*.golden .
 cp $DIR/*dims.sv .
 
-rm -Rf data
-rm -Rf unisims
-ln -s $DIR/../lab5-data data
-ln -s $DIR/../unisims unisims
+#rm -Rf data
+#rm -Rf unisims
+#ln -s $DIR/../lab5-data data
+#ln -s $DIR/../unisims unisims
 
 make reallyclean
 
