@@ -98,11 +98,7 @@ counter_gelu (
     .slice_cntr         (qout_row_cntr)
 );
 
-gelu #(
-    .D_W   ( D_W_ACC ),
-    .SHIFT ( SHIFT   )
-)
-gelu_unit (
+gelu gelu_unit (
     .clk       ( clk            ), 
     .rst       ( rst            ),
     .enable    ( in_tready_s1   ),

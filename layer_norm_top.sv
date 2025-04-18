@@ -102,15 +102,7 @@ vec_mem_ln_bias (
     .DIM2(DIM2)
 );
 
-layer_norm #(
-    .D_W      ( D_W      ),
-    .D_W_ACC  ( D_W_ACC  ),
-    .N        ( N        ),
-    .N_INV    ( N_INV    ),
-    .FP_BITS  ( FP_BITS  ),
-    .MAX_BITS ( MAX_BITS )
-)
-layer_norm_unit (
+layer_norm layer_norm_unit (
     .clk       ( clk           ),
     .rst       ( rst           ),
     .enable    ( in_tready_s1  ),

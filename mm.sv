@@ -132,20 +132,26 @@ control_inst (
     .init        (init)
 );
 
-systolic #(
-    .D_W     (D_W),
-    .D_W_ACC (D_W_ACC),
-    .N1      (N1),
-    .N2      (N2)
-)
-systolic_inst (
-    .clk     (fclk),
-    .rst     (~start_multiply),
-    .init    (init),
-    .A       (A_bram),
-    .B       (B_bram),
-    .D       (data_D),
-    .valid_D (valid_D)
+systolic systolic_inst (
+    .clk      (fclk),
+    .rst      (~start_multiply),
+    .\init[3] (init[3]),
+    .\init[2] (init[2]),
+    .\init[1] (init[1]),
+    .\init[0] (init[0]),
+    .\A[3]    (A_bram[3]),
+    .\A[2]    (A_bram[2]),
+    .\A[1]    (A_bram[1]),
+    .\A[0]    (A_bram[0]),
+    .\B[3]    (B_bram[3]),
+    .\B[2]    (B_bram[2]),
+    .\B[1]    (B_bram[1]),
+    .\B[0]    (B_bram[0]),
+    .\D[3]    (data_D[3]),
+    .\D[2]    (data_D[2]),
+    .\D[1]    (data_D[1]),
+    .\D[0]    (data_D[0]),
+    .valid_D  (valid_D)
 );
 
 endmodule

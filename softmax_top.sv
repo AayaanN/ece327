@@ -119,15 +119,7 @@ counter_softmax (
     .slice_cntr         (qout_row_cntr)
 );
 
-softmax #(
-    .D_W      ( D_W      ),
-    .D_W_ACC  ( D_W_ACC  ),
-    .N        ( N        ),
-    .FP_BITS  ( FP_BITS  ),
-    .MAX_BITS ( MAX_BITS ),
-    .OUT_BITS ( OUT_BITS )
-)
-softmax_unit (
+softmax softmax_unit (
     .clk       ( clk                 ),
     .rst       ( rst                 ),
     .enable    ( in_tready_s1        ),

@@ -57,24 +57,24 @@ module attn_head
     input dimensions                mm_dimensions
 );
 
-axi_stream_if             W           ();
-axi_stream_if #(D_W_ACC)  QKV         ();
-axi_stream_if             bias        ();
-axi_stream_if             m           ();
-axi_stream_if             e           ();
-axi_stream_if #(D_W_ACC)  bias_QKV    ();
-axi_stream_if #(D_W_ACC)  m_QKV       ();
-axi_stream_if #(D_W)      e_QKV       ();
-axi_stream_if #(D_W)      QKV_req     ();
-axi_stream_if #(D_W)      Q_req       ();
-axi_stream_if #(D_W)      K_req       ();
-axi_stream_if #(D_W)      V_req       ();
-axi_stream_if             S           ();
-axi_stream_if #(D_W)      softmax_out ();
-axi_stream_if #(D_W_ACC)  bias_C      ();
-axi_stream_if #(D_W_ACC)  m_C         ();
-axi_stream_if #(D_W_ACC)  e_C         ();
-axi_stream_if             C           ();
+axi_stream_if             W           (); // used
+axi_stream_if #(D_W_ACC)  QKV         (); // used
+axi_stream_if             bias        (); // used
+axi_stream_if             m           (); // used
+axi_stream_if             e           (); // used
+axi_stream_if #(D_W_ACC)  bias_QKV    (); // used
+axi_stream_if #(D_W_ACC)  m_QKV       (); // used
+axi_stream_if #(D_W)      e_QKV       (); // used
+axi_stream_if #(D_W)      QKV_req     (); // used
+axi_stream_if #(D_W)      Q_req       (); // used
+axi_stream_if #(D_W)      K_req       (); // used
+axi_stream_if #(D_W)      V_req       (); // used
+axi_stream_if             S           (); // used
+axi_stream_if #(D_W)      softmax_out (); // used
+axi_stream_if #(D_W_ACC)  bias_C      (); // used
+axi_stream_if #(D_W_ACC)  m_C         (); // used
+axi_stream_if #(D_W_ACC)  e_C         (); // used
+axi_stream_if             C           (); // used
 
 assign bias_C.tdata = {D_W_ACC{1'b0}};
 assign bias_C.tlast = 1'b1;
@@ -84,26 +84,26 @@ attn_head_fsm #()
 fsm_inst (
     .clk(clk),
     .rst(rst),
-    .in_W_Q(),
-    .in_W_K(),
-    .in_W_V(),
-    .in_bias_Q(),
-    .in_bias_K(),
-    .in_bias_V(),
-    .in_m_Q(),
-    .in_m_K(),
-    .in_m_V(),
-    .in_e_Q(),
-    .in_e_K(),
-    .in_e_V(),
-    .in_QKV_req(),
-    .out_W(),
-    .out_bias(),
-    .out_m(),
-    .out_e(),
-    .out_Q_req(),
-    .out_K_req(),
-    .out_V_req()
+    .in_W_Q(in_W_Q),
+    .in_W_K(in_W_K),
+    .in_W_V(in_W_V),
+    .in_bias_Q(in_bias_Q),
+    .in_bias_K(in_bias_K),
+    .in_bias_V(in_bias_V),
+    .in_m_Q(in_m_Q),
+    .in_m_K(in_m_K),
+    .in_m_V(in_m_V),
+    .in_e_Q(in_e_Q),
+    .in_e_K(in_e_K),
+    .in_e_V(in_e_V),
+    .in_QKV_req(QKV_req),
+    .out_W(W),
+    .out_bias(bias),
+    .out_m(m),
+    .out_e(e),
+    .out_Q_req(Q_req),
+    .out_K_req(K_req),
+    .out_V_req(V_req)
 );
 
 mm_pp #(
@@ -119,13 +119,13 @@ mm_pp #(
     .TRANSPOSE_B(0)
 )
 mm_QKV (
-    .mm_clk(),
-    .mm_fclk(f),
-    .mm_rst_n(),
+    .mm_clk(clk),
+    .mm_fclk(fclk),
+    .mm_rst_n(~rst),
 
-    .in_A(),
-    .in_B(),
-    .out_D(),
+    .in_A(in_I),
+    .in_B(W),
+    .out_D(QKV),
 
     .BLOCKS(mm_dimensions.BLOCKS),
     .BLOCK_WIDTH(mm_dimensions.BLOCK_WIDTH),
@@ -145,11 +145,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_bias_QKV (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(bias),
+    .out_vec(bias_QKV),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -161,11 +161,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_m_QKV (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(m),
+    .out_vec(m_QKV),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -177,11 +177,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_e_QKV (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(e),
+    .out_vec(e_QKV),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -194,15 +194,15 @@ requant #(
     .CLIP(1)
 )
 requant_QKV (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
+    .in_A(QKV),
+    .in_bias(bias_QKV),
+    .in_m(m_QKV),
+    .in_e(e_QKV),
 
-    .out_D()
+    .out_D(QKV_req)
 );
 
 mm #(
@@ -217,13 +217,13 @@ mm #(
     .TRANSPOSE_B(1)
 )
 mm_S (
-    .mm_clk(),
-    .mm_fclk(),
-    .mm_rst_n(),
+    .mm_clk(clk),
+    .mm_fclk(fclk),
+    .mm_rst_n(~rst),
 
-    .in_A(),
-    .in_B(),
-    .out_D(),
+    .in_A(Q_req),
+    .in_B(K_req),
+    .out_D(S),
 
     .M2(64),
     .M3(32),
@@ -241,12 +241,12 @@ softmax_top #(
     .N(SOFTMAX_N)
 )
 softmax_top_unit (
-    .clk(),
-    .rst(),
-    .layer(),
+    .clk(clk),
+    .rst(rst),
+    .layer(layer),
 
-    .qin(),
-    .qout()
+    .qin(S),
+    .qout(softmax_out)
 );
 
 mm #(
@@ -261,13 +261,13 @@ mm #(
     .TRANSPOSE_B(0)
 )
 mm_C (
-    .mm_clk(),
-    .mm_fclk(),
-    .mm_rst_n(),
+    .mm_clk(clk),
+    .mm_fclk(fclk),
+    .mm_rst_n(~rst), 
 
-    .in_A(),
-    .in_B(),
-    .out_D(),
+    .in_A(softmax_out),
+    .in_B(V_req),
+    .out_D(C),
 
     .M2(32),
     .M3(64),
@@ -285,8 +285,8 @@ sca_mem_m_C (
     .clk(clk),
     .rst(rst),
 
-    .in_sca(),
-    .out_sca(),
+    .in_sca(in_m_C),
+    .out_sca(m_C),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -297,11 +297,11 @@ stream_scalar_mem #(
     .MATRIXSIZE_W(MATRIXSIZE_W)
 )
 sca_mem_e_C (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_sca(),
-    .out_sca(),
+    .in_sca(in_e_C),
+    .out_sca(e_C),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -314,15 +314,15 @@ requant #(
     .CLIP(1)
 )
 requant_C (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
+    .in_A(C),
+    .in_bias(bias_C),
+    .in_m(m_C),
+    .in_e(e_C),
 
-    .out_D()
+    .out_D(attn_head_out)
 );
 
 endmodule

@@ -79,14 +79,14 @@ mm_pp_blocked_A #(
     .TRANSPOSE_B(0)
 )
 mm_Y (
-    .mm_clk(),
-    .mm_fclk(),
-    .mm_rst_n(),
+    .mm_clk(clk),
+    .mm_fclk(fclk),
+    .mm_rst_n(~rst),
 
-    .in_A(),
-    .in_B(),
+    .in_A(in_X),
+    .in_B(in_W),
 
-    .out_D(),
+    .out_D(Y),
 
     .BLOCKS(mm_dimensions.BLOCKS),
     .BLOCK_WIDTH(mm_dimensions.BLOCK_WIDTH),
@@ -108,11 +108,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_W_bias (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(in_W_bias),
+    .out_vec(W_bias),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -124,11 +124,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_W_m (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(in_W_m),
+    .out_vec(W_m),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -140,11 +140,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_W_e (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(in_W_e),
+    .out_vec(W_e),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -157,15 +157,15 @@ requant #(
     .CLIP(0)
 )
 requant_Y (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
+    .in_A(Y),
+    .in_bias(W_bias),
+    .in_m(W_m),
+    .in_e(W_e),
 
-    .out_D()
+    .out_D(Y_req)
 );
 
 stream_matrix_mem #(
@@ -174,11 +174,11 @@ stream_matrix_mem #(
     .MEM_DEPTH(MAT_ADD_MEM_DEPTH)
 )
 mat_mem_R (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_mat(),
-    .out_mat(),
+    .in_mat(in_R),
+    .out_mat(R),
 
     .DEPTH(mm_dimensions.M1xM3)
 );
@@ -188,11 +188,11 @@ stream_scalar_mem #(
     .MATRIXSIZE_W(MATRIXSIZE_W)
 )
 sca_mem_R_m (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_sca(),
-    .out_sca(),
+    .in_sca(in_R_m),
+    .out_sca(R_m),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -203,11 +203,11 @@ stream_scalar_mem #(
     .MATRIXSIZE_W(MATRIXSIZE_W)
 )
 sca_mem_R_e (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_sca(),
-    .out_sca(),
+    .in_sca(in_R_e),
+    .out_sca(R_e),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -220,15 +220,15 @@ requant #(
     .CLIP(0)
 )
 requant_R (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
+    .in_A(R),
+    .in_bias(R_bias),
+    .in_m(R_m),
+    .in_e(R_e),
 
-    .out_D()
+    .out_D(R_req)
 );
 
 mat_add #(
@@ -236,13 +236,13 @@ mat_add #(
     .MAX_BITS(LN_BITS)
 )
 mat_add_Z (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_R(),
-    .in_Y(),
+    .in_R(R_req),
+    .in_Y(Y_req),
 
-    .out_Z()
+    .out_Z(Z)
 );
 
 layer_norm_top #(
@@ -251,12 +251,12 @@ layer_norm_top #(
     .MATRIXSIZE_W(MATRIXSIZE_W)
 )
 layer_norm_top_unit (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_ln_bias(),
-    .qin(),
-    .qout(),
+    .in_ln_bias(in_ln_bias),
+    .qin(Z),
+    .qout(ln_out),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -268,11 +268,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_out_m (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(in_out_m),
+    .out_vec(out_m),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -284,11 +284,11 @@ stream_vector_mem #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_out_e (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(in_out_e),
+    .out_vec(out_e),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -301,15 +301,15 @@ requant #(
     .CLIP(1)
 )
 requant_out (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
+    .in_A(ln_out),
+    .in_bias(out_bias),
+    .in_m(out_m),
+    .in_e(out_e),
 
-    .out_D()
+    .out_D(mm_ln_out)
 );
 
 endmodule

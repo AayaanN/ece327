@@ -69,14 +69,14 @@ mm_pp #(
     .TRANSPOSE_B(0)
 )
 mm_G (
-    .mm_clk(),
-    .mm_fclk(),
-    .mm_rst_n(),
+    .mm_clk(clk),
+    .mm_fclk(fclk),
+    .mm_rst_n(~rst),
 
-    .in_A(),
-    .in_B(),
+    .in_A(in_A),
+    .in_B(in_W),
 
-    .out_D(),
+    .out_D(G),
 
     .BLOCKS(mm_dimensions.BLOCKS),
     .BLOCK_WIDTH(mm_dimensions.BLOCK_WIDTH),
@@ -97,11 +97,11 @@ stream_vector_mem_blocked #(
     .MEM_DEPTH(REQ_MEM_DEPTH)
 )
 vec_mem_W_bias (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_vec(),
-    .out_vec(),
+    .in_vec(in_W_bias),
+    .out_vec(W_bias),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3),
@@ -116,14 +116,14 @@ requant #(
     .CLIP(0)
 )
 requant_G (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
-    .out_D()
+    .in_A(G),
+    .in_bias(W_bias),
+    .in_m(W_m),
+    .in_e(W_e),
+    .out_D(G_req)
 );
 
 gelu_top #(
@@ -133,12 +133,12 @@ gelu_top #(
     .LAYERS(LAYERS)
 )
 gelu_top_unit (
-    .clk(),
-    .rst(),
-    .layer(),
+    .clk(clk),
+    .rst(rst),
+    .layer(layer),
 
-    .qin(),
-    .qout(),
+    .qin(G_req),
+    .qout(gelu_out),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -149,11 +149,11 @@ stream_scalar_mem #(
     .MATRIXSIZE_W(MATRIXSIZE_W)
 )
 sca_mem_out_m (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_sca(),
-    .out_sca(),
+    .in_sca(in_out_m),
+    .out_sca(out_m),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -164,11 +164,11 @@ stream_scalar_mem #(
     .MATRIXSIZE_W(MATRIXSIZE_W)
 )
 sca_mem_out_e (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_sca(),
-    .out_sca(),
+    .in_sca(in_out_e),
+    .out_sca(out_e),
 
     .DIM1(mm_dimensions.M1),
     .DIM2(mm_dimensions.M3)
@@ -181,14 +181,14 @@ requant #(
     .CLIP(1)
 )
 requant_out (
-    .clk(),
-    .rst(),
+    .clk(clk),
+    .rst(rst),
 
-    .in_A(),
-    .in_bias(),
-    .in_m(),
-    .in_e(),
-    .out_D()
+    .in_A(gelu_out),
+    .in_bias(out_bias),
+    .in_m(out_m),
+    .in_e(out_e),
+    .out_D(mm_gelu_out)
 );
 
 

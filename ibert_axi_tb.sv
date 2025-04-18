@@ -172,7 +172,7 @@ always @(posedge clk) begin
     // if (ctime % (32*768*64) == 0) begin
     //     $display("...");
     // end
-    if (ctime > REP) begin
+    if (ctime > REP/5) begin
         $display("Error: Timed out!");
         $finish;
     end
