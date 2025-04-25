@@ -3,10 +3,11 @@
 // Tool Version: Vivado v.2022.1 (lin64) Build 3526262 Mon Apr 18 15:47:01 MDT 2022
 // Date        : Mon Apr 14 12:10:13 2025
 // Host        : iccad12 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
-// Command     : write_verilog -force -mode funcsim layer_norm_func_sol.sv
+// Command     : write_verilog -force -mode design layer_norm_synth_sol.sv
 // Design      : layer_norm
-// Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
-//               or synthesized. This netlist cannot be used for SDF annotated simulation.
+// Purpose     : This is a Verilog netlist of the current design or from a specific cell of the design. The output is an
+//               IEEE 1364-2001 compliant Verilog HDL file that contains netlist information obtained from the input
+//               design files.
 // Device      : xc7z020clg400-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
@@ -14,7 +15,7 @@
 (* DIVIDEND = "32'b10000000000000000000000000000000" *) (* D_W = "8" *) (* D_W_ACC = "32" *) 
 (* FP_BITS = "30" *) (* MAX_BITS = "31" *) (* N = "768" *) 
 (* N_INV = "1398101" *) (* W = "16" *) 
-(* NotValidForBitStream *)
+(* STRUCTURAL_NETLIST = "yes" *)
 module layer_norm
    (clk,
     rst,
@@ -35,6 +36,10 @@ module layer_norm
   output out_valid;
   output [31:0]qout;
 
+  wire \<const0> ;
+  wire \<const1> ;
+  wire GND_2;
+  wire VCC_2;
   wire [31:0]acc_buf_rddata;
   wire [31:0]acc_buf_rddata_r1;
   wire [31:0]acc_buf_rddata_r2;
@@ -5312,480 +5317,6 @@ module layer_norm
   wire \x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_3_n_0 ;
   wire \x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_4_n_0 ;
   wire \x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_5_n_0 ;
-  wire \NLW_acc_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_128_191_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_192_255_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_256_319_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_320_383_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_384_447_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_448_511_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_512_575_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_576_639_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_640_703_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_64_127_9_11_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_0_2_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_12_14_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_15_17_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_18_20_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_21_23_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_24_26_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_27_29_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_30_31_DOC_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_30_31_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_3_5_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_6_8_DOD_UNCONNECTED ;
-  wire \NLW_acc_sreg/mem_reg_704_767_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_128_191_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_192_255_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_256_319_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_320_383_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_384_447_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_448_511_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_512_575_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_576_639_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_640_703_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_64_127_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias1_sreg/mem_reg_704_767_9_11_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ;
-  wire \NLW_bias2_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0_CARRYCASCOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0_MULTSIGNOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0_OVERFLOW_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0_PATTERNBDETECT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0_PATTERNDETECT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0_UNDERFLOW_UNCONNECTED ;
-  wire [29:0]\NLW_qacc_sq/result0_ACOUT_UNCONNECTED ;
-  wire [17:0]\NLW_qacc_sq/result0_BCOUT_UNCONNECTED ;
-  wire [3:0]\NLW_qacc_sq/result0_CARRYOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__0_CARRYCASCOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__0_MULTSIGNOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__0_OVERFLOW_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__0_PATTERNBDETECT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__0_PATTERNDETECT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__0_UNDERFLOW_UNCONNECTED ;
-  wire [29:0]\NLW_qacc_sq/result0__0_ACOUT_UNCONNECTED ;
-  wire [17:0]\NLW_qacc_sq/result0__0_BCOUT_UNCONNECTED ;
-  wire [3:0]\NLW_qacc_sq/result0__0_CARRYOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__1_CARRYCASCOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__1_MULTSIGNOUT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__1_OVERFLOW_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__1_PATTERNBDETECT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__1_PATTERNDETECT_UNCONNECTED ;
-  wire \NLW_qacc_sq/result0__1_UNDERFLOW_UNCONNECTED ;
-  wire [29:0]\NLW_qacc_sq/result0__1_ACOUT_UNCONNECTED ;
-  wire [17:0]\NLW_qacc_sq/result0__1_BCOUT_UNCONNECTED ;
-  wire [3:0]\NLW_qacc_sq/result0__1_CARRYOUT_UNCONNECTED ;
-  wire [47:0]\NLW_qacc_sq/result0__1_PCOUT_UNCONNECTED ;
-  wire [3:3]\NLW_qacc_sq/result0_carry__2_CO_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/div_done_carry_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/div_done_carry__0_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/div_done_carry__1_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/div_done_carry__2_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/quotient_r1_carry_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/quotient_r1_carry__0_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/quotient_r1_carry__1_O_UNCONNECTED ;
-  wire [3:0]\NLW_qdiv/quotient_r1_carry__2_O_UNCONNECTED ;
-  wire [3:3]\NLW_qdiv/remainder_r1_carry__6_CO_UNCONNECTED ;
-  wire NLW_qmean_mul_r20_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r20_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r20_OVERFLOW_UNCONNECTED;
-  wire NLW_qmean_mul_r20_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r20_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r20_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qmean_mul_r20_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qmean_mul_r20_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qmean_mul_r20_CARRYOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r20__0_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r20__0_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r20__0_OVERFLOW_UNCONNECTED;
-  wire NLW_qmean_mul_r20__0_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r20__0_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r20__0_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qmean_mul_r20__0_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qmean_mul_r20__0_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qmean_mul_r20__0_CARRYOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg_OVERFLOW_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qmean_mul_r2_reg_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qmean_mul_r2_reg_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qmean_mul_r2_reg_CARRYOUT_UNCONNECTED;
-  wire [47:0]NLW_qmean_mul_r2_reg_PCOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg__0_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg__0_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg__0_OVERFLOW_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg__0_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg__0_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qmean_mul_r2_reg__0_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qmean_mul_r2_reg__0_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qmean_mul_r2_reg__0_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qmean_mul_r2_reg__0_CARRYOUT_UNCONNECTED;
-  wire [47:0]NLW_qmean_mul_r2_reg__0_PCOUT_UNCONNECTED;
-  wire [3:1]\NLW_qmean_sq_reg[31]_i_14_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qmean_sq_reg[31]_i_14_O_UNCONNECTED ;
-  wire NLW_qout_r0_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qout_r0_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qout_r0_OVERFLOW_UNCONNECTED;
-  wire NLW_qout_r0_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qout_r0_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qout_r0_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qout_r0_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qout_r0_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qout_r0_CARRYOUT_UNCONNECTED;
-  wire NLW_qout_r0__0_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qout_r0__0_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qout_r0__0_OVERFLOW_UNCONNECTED;
-  wire NLW_qout_r0__0_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qout_r0__0_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qout_r0__0_UNDERFLOW_UNCONNECTED;
-  wire [17:0]NLW_qout_r0__0_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qout_r0__0_CARRYOUT_UNCONNECTED;
-  wire [3:3]\NLW_qout_r1_reg[31]_i_1_CO_UNCONNECTED ;
-  wire [3:3]\NLW_qout_r1_reg[31]_i_3_CO_UNCONNECTED ;
-  wire NLW_qout_r_reg_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qout_r_reg_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qout_r_reg_OVERFLOW_UNCONNECTED;
-  wire NLW_qout_r_reg_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qout_r_reg_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qout_r_reg_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qout_r_reg_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qout_r_reg_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qout_r_reg_CARRYOUT_UNCONNECTED;
-  wire [47:0]NLW_qout_r_reg_PCOUT_UNCONNECTED;
-  wire \NLW_qsqrt/in_v_r_reg[15]_srl21___qsqrt_in_v_r_reg_r_14_Q31_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_carry_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_carry_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__0/i__carry_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__1/i__carry__0_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__1/i__carry__0_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__10/i__carry__4_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__11/i__carry__5_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__11/i__carry__5_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__12/i__carry__5_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__13/i__carry__6_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__13/i__carry__6_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__2/i__carry__0_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__3/i__carry__1_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__3/i__carry__1_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__4/i__carry__1_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__5/i__carry__2_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__5/i__carry__2_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__6/i__carry__2_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__7/i__carry__3_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__7/i__carry__3_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/p_1_out_inferred__8/i__carry__3_CO_UNCONNECTED ;
-  wire [3:1]\NLW_qsqrt/p_1_out_inferred__9/i__carry__4_CO_UNCONNECTED ;
-  wire [3:2]\NLW_qsqrt/p_1_out_inferred__9/i__carry__4_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__0_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__1_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__2_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__3_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__4_O_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__5_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsqrt/qout_r1_carry__6_CO_UNCONNECTED ;
-  wire [3:0]\NLW_qsqrt/qout_r1_carry__6_O_UNCONNECTED ;
-  wire [3:3]\NLW_qsub_reg[31]_i_1_CO_UNCONNECTED ;
-  wire NLW_qsum_mul_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qsum_mul_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qsum_mul_OVERFLOW_UNCONNECTED;
-  wire NLW_qsum_mul_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qsum_mul_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qsum_mul_UNDERFLOW_UNCONNECTED;
-  wire [17:0]NLW_qsum_mul_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qsum_mul_CARRYOUT_UNCONNECTED;
-  wire NLW_qsum_mul__0_CARRYCASCOUT_UNCONNECTED;
-  wire NLW_qsum_mul__0_MULTSIGNOUT_UNCONNECTED;
-  wire NLW_qsum_mul__0_OVERFLOW_UNCONNECTED;
-  wire NLW_qsum_mul__0_PATTERNBDETECT_UNCONNECTED;
-  wire NLW_qsum_mul__0_PATTERNDETECT_UNCONNECTED;
-  wire NLW_qsum_mul__0_UNDERFLOW_UNCONNECTED;
-  wire [29:0]NLW_qsum_mul__0_ACOUT_UNCONNECTED;
-  wire [17:0]NLW_qsum_mul__0_BCOUT_UNCONNECTED;
-  wire [3:0]NLW_qsum_mul__0_CARRYOUT_UNCONNECTED;
-  wire [47:0]NLW_qsum_mul__0_PCOUT_UNCONNECTED;
-  wire [3:3]NLW_qsum_mul__0_i_1_CO_UNCONNECTED;
-  wire [3:3]\NLW_qvar_reg[31]_i_1_CO_UNCONNECTED ;
-  wire [3:3]\NLW_result_reg[28]_i_1_CO_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ;
-  wire \NLW_sdiv_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ;
 
   (* SOFT_HLUTNM = "soft_lutpair228" *) 
   LUT3 #(
@@ -5795,6 +5326,14 @@ module layer_norm
         .I1(\qdiv/div_done ),
         .I2(\qdiv/FSM_sequential_state_reg_n_0 ),
         .O(\qdiv/state__0 ));
+  GND GND
+       (.G(\<const0> ));
+  GND GND_1
+       (.G(GND_2));
+  VCC VCC
+       (.P(\<const1> ));
+  VCC VCC_1
+       (.P(VCC_2));
   FDRE #(
     .INIT(1'b0)) 
     \acc_buf_rddata_r1_reg[0] 
@@ -6329,10 +5868,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     acc_buf_read_r2_reg_srl2___qsqrt_in_v_r1_reg_r
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(acc_buf_read),
@@ -6350,12 +5889,12 @@ module layer_norm
         .CE(enable),
         .D(acc_buf_read_r2_reg_srl2___qsqrt_in_v_r1_reg_r_n_0),
         .Q(acc_buf_read_r3_reg_qsqrt_in_v_r2_reg_r_n_0),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     acc_buf_read_reg
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(acc_buf_read_i_1_n_0),
         .Q(acc_buf_read),
         .R(rst));
@@ -7014,11 +6553,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7043,11 +6581,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7072,11 +6609,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7101,11 +6637,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7130,11 +6665,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7159,11 +6693,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7188,11 +6721,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7216,12 +6748,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7246,11 +6776,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7275,11 +6804,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7304,11 +6832,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_0_63_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_0_63_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_0_63_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7333,11 +6860,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7362,11 +6888,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7391,11 +6916,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7420,11 +6944,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7449,11 +6972,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7478,11 +7000,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7507,11 +7028,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7535,12 +7055,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_128_191_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7565,11 +7083,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7594,11 +7111,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7623,11 +7139,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_128_191_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_128_191_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_128_191_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_128_191_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7652,11 +7167,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7681,11 +7195,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7710,11 +7223,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7739,11 +7251,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7768,11 +7279,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7797,11 +7307,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7826,11 +7335,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7854,12 +7362,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_192_255_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7884,11 +7390,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7913,11 +7418,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7942,11 +7446,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_192_255_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_192_255_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_192_255_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_192_255_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -7971,11 +7474,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8000,11 +7502,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8029,11 +7530,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8058,11 +7558,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8087,11 +7586,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8116,11 +7614,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8145,11 +7642,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8173,12 +7669,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_256_319_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8203,11 +7697,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8232,11 +7725,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8261,11 +7753,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_256_319_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_256_319_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_256_319_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_256_319_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8290,11 +7781,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8319,11 +7809,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8348,11 +7837,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8377,11 +7865,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8406,11 +7893,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8435,11 +7921,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8464,11 +7949,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8492,12 +7976,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_320_383_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8522,11 +8004,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8551,11 +8032,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8580,11 +8060,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_320_383_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_320_383_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_320_383_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_320_383_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8609,11 +8088,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8638,11 +8116,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8667,11 +8144,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8696,11 +8172,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8725,11 +8200,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8754,11 +8228,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8783,11 +8256,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8811,12 +8283,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_384_447_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8841,11 +8311,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8870,11 +8339,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8899,11 +8367,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_384_447_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_384_447_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_384_447_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_384_447_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8928,11 +8395,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8957,11 +8423,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -8986,11 +8451,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9015,11 +8479,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9044,11 +8507,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9073,11 +8535,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9102,11 +8563,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9130,12 +8590,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_448_511_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9160,11 +8618,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9189,11 +8646,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9218,11 +8674,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_448_511_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_448_511_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_448_511_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_448_511_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9247,11 +8702,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9276,11 +8730,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9305,11 +8758,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9334,11 +8786,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9363,11 +8814,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9392,11 +8842,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9421,11 +8870,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9449,12 +8897,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_512_575_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9479,11 +8925,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9508,11 +8953,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9537,11 +8981,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_512_575_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_512_575_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_512_575_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_512_575_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9566,11 +9009,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9595,11 +9037,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9624,11 +9065,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9653,11 +9093,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9682,11 +9121,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9711,11 +9149,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9740,11 +9177,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9768,12 +9204,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_576_639_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9798,11 +9232,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9827,11 +9260,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9856,11 +9288,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_576_639_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_576_639_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_576_639_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_576_639_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9885,11 +9316,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9914,11 +9344,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9943,11 +9372,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -9972,11 +9400,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10001,11 +9428,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10030,11 +9456,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10059,11 +9484,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10087,12 +9511,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_640_703_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10117,11 +9539,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10146,11 +9567,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10175,11 +9595,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_640_703_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_640_703_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_640_703_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_640_703_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10204,11 +9623,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10233,11 +9651,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10262,11 +9679,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10291,11 +9707,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10320,11 +9735,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10349,11 +9763,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10378,11 +9791,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10406,12 +9818,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_64_127_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10436,11 +9846,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10465,11 +9874,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10494,11 +9902,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_64_127_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_64_127_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_64_127_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_64_127_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10523,11 +9930,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[0]),
         .DIB(acc_buf_wrdata[1]),
         .DIC(acc_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_0_2_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_0_2_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_0_2_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10552,11 +9958,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[12]),
         .DIB(acc_buf_wrdata[13]),
         .DIC(acc_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_12_14_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_12_14_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_12_14_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10581,11 +9986,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[15]),
         .DIB(acc_buf_wrdata[16]),
         .DIC(acc_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_15_17_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_15_17_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_15_17_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10610,11 +10014,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[18]),
         .DIB(acc_buf_wrdata[19]),
         .DIC(acc_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_18_20_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_18_20_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_18_20_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10639,11 +10042,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[21]),
         .DIB(acc_buf_wrdata[22]),
         .DIC(acc_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_21_23_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_21_23_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_21_23_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10668,11 +10070,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[24]),
         .DIB(acc_buf_wrdata[25]),
         .DIC(acc_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_24_26_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_24_26_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_24_26_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10697,11 +10098,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[27]),
         .DIB(acc_buf_wrdata[28]),
         .DIC(acc_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_27_29_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_27_29_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_27_29_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10725,12 +10125,10 @@ module layer_norm
         .ADDRD(\acc_sreg/wraddr [5:0]),
         .DIA(acc_buf_wrdata[30]),
         .DIB(acc_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_30_31_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_30_31_n_1 ),
-        .DOC(\NLW_acc_sreg/mem_reg_704_767_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10755,11 +10153,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[3]),
         .DIB(acc_buf_wrdata[4]),
         .DIC(acc_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_3_5_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_3_5_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_3_5_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10784,11 +10181,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[6]),
         .DIB(acc_buf_wrdata[7]),
         .DIC(acc_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_6_8_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_6_8_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_6_8_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -10813,11 +10209,10 @@ module layer_norm
         .DIA(acc_buf_wrdata[9]),
         .DIB(acc_buf_wrdata[10]),
         .DIC(acc_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\acc_sreg/mem_reg_704_767_9_11_n_0 ),
         .DOB(\acc_sreg/mem_reg_704_767_9_11_n_1 ),
         .DOC(\acc_sreg/mem_reg_704_767_9_11_n_2 ),
-        .DOD(\NLW_acc_sreg/mem_reg_704_767_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1_n_0));
   (* ORIG_CELL_NAME = "rdaddr_reg[0]" *) 
@@ -11162,10 +10557,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[0]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[0]),
@@ -11175,10 +10570,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[10]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[10]),
@@ -11188,10 +10583,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[11]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[11]),
@@ -11201,10 +10596,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[12]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[12]),
@@ -11214,10 +10609,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[13]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[13]),
@@ -11227,10 +10622,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[14]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[14]),
@@ -11240,10 +10635,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[15]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[15]),
@@ -11253,10 +10648,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[16]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[16]),
@@ -11266,10 +10661,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[17]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[17]),
@@ -11279,10 +10674,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[18]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[18]),
@@ -11292,10 +10687,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[19]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[19]),
@@ -11305,10 +10700,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[1]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[1]),
@@ -11318,10 +10713,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[20]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[20]),
@@ -11331,10 +10726,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[21]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[21]),
@@ -11344,10 +10739,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[22]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[22]),
@@ -11357,10 +10752,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[23]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[23]),
@@ -11370,10 +10765,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[24]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[24]),
@@ -11383,10 +10778,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[25]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[25]),
@@ -11396,10 +10791,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[26]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[26]),
@@ -11409,10 +10804,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[27]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[27]),
@@ -11422,10 +10817,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[28]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[28]),
@@ -11435,10 +10830,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[29]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[29]),
@@ -11448,10 +10843,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[2]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[2]),
@@ -11461,10 +10856,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[30]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[30]),
@@ -11474,10 +10869,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[31]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[31]),
@@ -11487,10 +10882,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[3]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[3]),
@@ -11500,10 +10895,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[4]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[4]),
@@ -11513,10 +10908,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[5]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[5]),
@@ -11526,10 +10921,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[6]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[6]),
@@ -11539,10 +10934,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[7]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[7]),
@@ -11552,10 +10947,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[8]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[8]),
@@ -11565,10 +10960,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \bias1_buf_rddata_r2_reg[9]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(bias1_buf_rddata[9]),
@@ -11580,7 +10975,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[0]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[0]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[10]_qsqrt_in_v_r2_reg_r 
@@ -11588,7 +10983,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[10]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[10]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[11]_qsqrt_in_v_r2_reg_r 
@@ -11596,7 +10991,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[11]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[11]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[12]_qsqrt_in_v_r2_reg_r 
@@ -11604,7 +10999,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[12]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[12]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[13]_qsqrt_in_v_r2_reg_r 
@@ -11612,7 +11007,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[13]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[13]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[14]_qsqrt_in_v_r2_reg_r 
@@ -11620,7 +11015,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[14]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[14]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[15]_qsqrt_in_v_r2_reg_r 
@@ -11628,7 +11023,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[15]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[15]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[16]_qsqrt_in_v_r2_reg_r 
@@ -11636,7 +11031,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[16]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[16]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[17]_qsqrt_in_v_r2_reg_r 
@@ -11644,7 +11039,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[17]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[17]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[18]_qsqrt_in_v_r2_reg_r 
@@ -11652,7 +11047,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[18]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[18]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[19]_qsqrt_in_v_r2_reg_r 
@@ -11660,7 +11055,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[19]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[19]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[1]_qsqrt_in_v_r2_reg_r 
@@ -11668,7 +11063,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[1]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[1]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[20]_qsqrt_in_v_r2_reg_r 
@@ -11676,7 +11071,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[20]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[20]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[21]_qsqrt_in_v_r2_reg_r 
@@ -11684,7 +11079,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[21]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[21]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[22]_qsqrt_in_v_r2_reg_r 
@@ -11692,7 +11087,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[22]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[22]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[23]_qsqrt_in_v_r2_reg_r 
@@ -11700,7 +11095,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[23]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[23]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[24]_qsqrt_in_v_r2_reg_r 
@@ -11708,7 +11103,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[24]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[24]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[25]_qsqrt_in_v_r2_reg_r 
@@ -11716,7 +11111,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[25]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[25]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[26]_qsqrt_in_v_r2_reg_r 
@@ -11724,7 +11119,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[26]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[26]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[27]_qsqrt_in_v_r2_reg_r 
@@ -11732,7 +11127,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[27]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[27]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[28]_qsqrt_in_v_r2_reg_r 
@@ -11740,7 +11135,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[28]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[28]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[29]_qsqrt_in_v_r2_reg_r 
@@ -11748,7 +11143,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[29]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[29]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[2]_qsqrt_in_v_r2_reg_r 
@@ -11756,7 +11151,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[2]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[2]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[30]_qsqrt_in_v_r2_reg_r 
@@ -11764,7 +11159,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[30]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[30]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[31]_qsqrt_in_v_r2_reg_r 
@@ -11772,7 +11167,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[31]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[31]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[3]_qsqrt_in_v_r2_reg_r 
@@ -11780,7 +11175,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[3]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[3]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[4]_qsqrt_in_v_r2_reg_r 
@@ -11788,7 +11183,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[4]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[4]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[5]_qsqrt_in_v_r2_reg_r 
@@ -11796,7 +11191,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[5]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[5]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[6]_qsqrt_in_v_r2_reg_r 
@@ -11804,7 +11199,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[6]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[6]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[7]_qsqrt_in_v_r2_reg_r 
@@ -11812,7 +11207,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[7]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[7]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[8]_qsqrt_in_v_r2_reg_r 
@@ -11820,7 +11215,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[8]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[8]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \bias1_buf_rddata_r3_reg[9]_qsqrt_in_v_r2_reg_r 
@@ -11828,7 +11223,7 @@ module layer_norm
         .CE(enable),
         .D(\bias1_buf_rddata_r2_reg[9]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\bias1_buf_rddata_r3_reg[9]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* SOFT_HLUTNM = "soft_lutpair303" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -12587,11 +11982,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12616,11 +12010,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12645,11 +12038,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12674,11 +12066,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12703,11 +12094,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12732,11 +12122,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12761,11 +12150,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12789,12 +12177,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12819,11 +12205,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12848,11 +12233,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12877,11 +12261,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_0_63_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_0_63_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_0_63_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12906,11 +12289,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12935,11 +12317,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12964,11 +12345,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -12993,11 +12373,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13022,11 +12401,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13051,11 +12429,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13080,11 +12457,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13108,12 +12484,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_128_191_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13138,11 +12512,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13167,11 +12540,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13196,11 +12568,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_128_191_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_128_191_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_128_191_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_128_191_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_128_191_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13225,11 +12596,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13254,11 +12624,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13283,11 +12652,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13312,11 +12680,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13341,11 +12708,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13370,11 +12736,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13399,11 +12764,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13427,12 +12791,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_192_255_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13457,11 +12819,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13486,11 +12847,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13515,11 +12875,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_192_255_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_192_255_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_192_255_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_192_255_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_192_255_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13544,11 +12903,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13573,11 +12931,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13602,11 +12959,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13631,11 +12987,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13660,11 +13015,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13689,11 +13043,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13718,11 +13071,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13746,12 +13098,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_256_319_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13776,11 +13126,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13805,11 +13154,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13834,11 +13182,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_256_319_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_256_319_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_256_319_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_256_319_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_256_319_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13863,11 +13210,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13892,11 +13238,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13921,11 +13266,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13950,11 +13294,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -13979,11 +13322,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14008,11 +13350,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14037,11 +13378,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14065,12 +13405,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_320_383_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14095,11 +13433,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14124,11 +13461,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14153,11 +13489,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_320_383_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_320_383_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_320_383_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_320_383_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_320_383_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14182,11 +13517,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14211,11 +13545,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14240,11 +13573,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14269,11 +13601,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14298,11 +13629,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14327,11 +13657,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14356,11 +13685,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14384,12 +13712,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_384_447_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14414,11 +13740,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14443,11 +13768,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14472,11 +13796,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_384_447_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_384_447_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_384_447_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_384_447_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_384_447_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14501,11 +13824,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14530,11 +13852,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14559,11 +13880,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14588,11 +13908,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14617,11 +13936,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14646,11 +13964,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14675,11 +13992,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14703,12 +14019,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_448_511_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14733,11 +14047,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14762,11 +14075,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14791,11 +14103,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_448_511_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_448_511_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_448_511_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_448_511_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_448_511_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14820,11 +14131,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14849,11 +14159,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14878,11 +14187,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14907,11 +14215,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14936,11 +14243,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14965,11 +14271,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -14994,11 +14299,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15022,12 +14326,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_512_575_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15052,11 +14354,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15081,11 +14382,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15110,11 +14410,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_512_575_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_512_575_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_512_575_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_512_575_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_512_575_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15139,11 +14438,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15168,11 +14466,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15197,11 +14494,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15226,11 +14522,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15255,11 +14550,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15284,11 +14578,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15313,11 +14606,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15341,12 +14633,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_576_639_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15371,11 +14661,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15400,11 +14689,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15429,11 +14717,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_576_639_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_576_639_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_576_639_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_576_639_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_576_639_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15458,11 +14745,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15487,11 +14773,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15516,11 +14801,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15545,11 +14829,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15574,11 +14857,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15603,11 +14885,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15632,11 +14913,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15660,12 +14940,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_640_703_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15690,11 +14968,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15719,11 +14996,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15748,11 +15024,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_640_703_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_640_703_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_640_703_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_640_703_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_640_703_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15777,11 +15052,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15806,11 +15080,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15835,11 +15108,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15864,11 +15136,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15893,11 +15164,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15922,11 +15192,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15951,11 +15220,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -15979,12 +15247,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_64_127_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16009,11 +15275,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16038,11 +15303,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16067,11 +15331,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_64_127_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_64_127_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_64_127_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_64_127_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_64_127_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16096,11 +15359,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[0]),
         .DIB(bias1_buf_wrdata[1]),
         .DIC(bias1_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_0_2_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_0_2_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_0_2_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16125,11 +15387,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[12]),
         .DIB(bias1_buf_wrdata[13]),
         .DIC(bias1_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_12_14_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_12_14_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_12_14_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16154,11 +15415,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[15]),
         .DIB(bias1_buf_wrdata[16]),
         .DIC(bias1_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_15_17_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_15_17_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_15_17_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16183,11 +15443,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[18]),
         .DIB(bias1_buf_wrdata[19]),
         .DIC(bias1_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_18_20_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_18_20_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_18_20_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16212,11 +15471,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[21]),
         .DIB(bias1_buf_wrdata[22]),
         .DIC(bias1_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_21_23_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_21_23_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_21_23_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16241,11 +15499,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[24]),
         .DIB(bias1_buf_wrdata[25]),
         .DIC(bias1_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_24_26_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_24_26_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_24_26_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16270,11 +15527,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[27]),
         .DIB(bias1_buf_wrdata[28]),
         .DIC(bias1_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_27_29_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_27_29_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_27_29_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16298,12 +15554,10 @@ module layer_norm
         .ADDRD(\bias1_sreg/wraddr [5:0]),
         .DIA(bias1_buf_wrdata[30]),
         .DIB(bias1_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_30_31_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_30_31_n_1 ),
-        .DOC(\NLW_bias1_sreg/mem_reg_704_767_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16328,11 +15582,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[3]),
         .DIB(bias1_buf_wrdata[4]),
         .DIC(bias1_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_3_5_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_3_5_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_3_5_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16357,11 +15610,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[6]),
         .DIB(bias1_buf_wrdata[7]),
         .DIC(bias1_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_6_8_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_6_8_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_6_8_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -16386,11 +15638,10 @@ module layer_norm
         .DIA(bias1_buf_wrdata[9]),
         .DIB(bias1_buf_wrdata[10]),
         .DIC(bias1_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias1_sreg/mem_reg_704_767_9_11_n_0 ),
         .DOB(\bias1_sreg/mem_reg_704_767_9_11_n_1 ),
         .DOC(\bias1_sreg/mem_reg_704_767_9_11_n_2 ),
-        .DOD(\NLW_bias1_sreg/mem_reg_704_767_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_704_767_0_2_i_1__0_n_0));
   (* ORIG_CELL_NAME = "rdaddr_reg[0]" *) 
@@ -17520,11 +16771,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[0]),
         .DIB(bias2_buf_wrdata[1]),
         .DIC(bias2_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_0_2_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_0_2_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_0_2_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17549,11 +16799,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[12]),
         .DIB(bias2_buf_wrdata[13]),
         .DIC(bias2_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_12_14_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_12_14_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_12_14_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17578,11 +16827,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[15]),
         .DIB(bias2_buf_wrdata[16]),
         .DIC(bias2_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_15_17_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_15_17_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_15_17_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17607,11 +16855,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[18]),
         .DIB(bias2_buf_wrdata[19]),
         .DIC(bias2_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_18_20_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_18_20_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_18_20_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17636,11 +16883,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[21]),
         .DIB(bias2_buf_wrdata[22]),
         .DIC(bias2_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_21_23_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_21_23_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_21_23_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17665,11 +16911,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[24]),
         .DIB(bias2_buf_wrdata[25]),
         .DIC(bias2_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_24_26_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_24_26_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_24_26_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17694,11 +16939,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[27]),
         .DIB(bias2_buf_wrdata[28]),
         .DIC(bias2_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_27_29_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_27_29_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_27_29_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17722,12 +16966,10 @@ module layer_norm
         .ADDRD(\bias2_sreg/wraddr ),
         .DIA(bias2_buf_wrdata[30]),
         .DIB(bias2_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_30_31_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_30_31_n_1 ),
-        .DOC(\NLW_bias2_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17752,11 +16994,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[3]),
         .DIB(bias2_buf_wrdata[4]),
         .DIC(bias2_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_3_5_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_3_5_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_3_5_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17781,11 +17022,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[6]),
         .DIB(bias2_buf_wrdata[7]),
         .DIC(bias2_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_6_8_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_6_8_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_6_8_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -17810,11 +17050,10 @@ module layer_norm
         .DIA(bias2_buf_wrdata[9]),
         .DIB(bias2_buf_wrdata[10]),
         .DIC(bias2_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(\bias2_sreg/mem_reg_0_63_9_11_n_0 ),
         .DOB(\bias2_sreg/mem_reg_0_63_9_11_n_1 ),
         .DOC(\bias2_sreg/mem_reg_0_63_9_11_n_2 ),
-        .DOD(\NLW_bias2_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* SOFT_HLUTNM = "soft_lutpair250" *) 
@@ -23283,55 +22522,46 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     \qacc_sq/result0 
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(\NLW_qacc_sq/result0_ACOUT_UNCONNECTED [29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .B({qin_r[31],qin_r[31],qin_r[31],qin_r[31],result0_i_1_n_0,result0_i_2_n_0,result0_i_3_n_0,result0_i_4_n_0,result0_i_5_n_0,result0_i_6_n_0,result0_i_7_n_0,result0_i_8_n_0,result0_i_9_n_0,result0_i_10_n_0,result0_i_11_n_0,result0_i_12_n_0,result0_i_13_n_0,result0_i_14_n_0}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(\NLW_qacc_sq/result0_BCOUT_UNCONNECTED [17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(\NLW_qacc_sq/result0_CARRYCASCOUT_UNCONNECTED ),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(\NLW_qacc_sq/result0_CARRYOUT_UNCONNECTED [3:0]),
-        .CEA1(1'b0),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
-        .CEB1(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
+        .CEB1(\<const0> ),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(\NLW_qacc_sq/result0_MULTSIGNOUT_UNCONNECTED ),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(\NLW_qacc_sq/result0_OVERFLOW_UNCONNECTED ),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({\qacc_sq/result0_n_58 ,\qacc_sq/result0_n_59 ,\qacc_sq/result0_n_60 ,\qacc_sq/result0_n_61 ,\qacc_sq/result0_n_62 ,\qacc_sq/result0_n_63 ,\qacc_sq/result0_n_64 ,\qacc_sq/result0_n_65 ,\qacc_sq/result0_n_66 ,\qacc_sq/result0_n_67 ,\qacc_sq/result0_n_68 ,\qacc_sq/result0_n_69 ,\qacc_sq/result0_n_70 ,\qacc_sq/result0_n_71 ,\qacc_sq/result0_n_72 ,\qacc_sq/result0_n_73 ,\qacc_sq/result0_n_74 ,\qacc_sq/result0_n_75 ,\qacc_sq/result0_n_76 ,\qacc_sq/result0_n_77 ,\qacc_sq/result0_n_78 ,\qacc_sq/result0_n_79 ,\qacc_sq/result0_n_80 ,\qacc_sq/result0_n_81 ,\qacc_sq/result0_n_82 ,\qacc_sq/result0_n_83 ,\qacc_sq/result0_n_84 ,\qacc_sq/result0_n_85 ,\qacc_sq/result0_n_86 ,\qacc_sq/result0_n_87 ,\qacc_sq/result0_n_88 ,\qacc_sq/result0_n_89 ,\qacc_sq/result0_n_90 ,\qacc_sq/result0_n_91 ,\qacc_sq/result0_n_92 ,\qacc_sq/result0_n_93 ,\qacc_sq/result0_n_94 ,\qacc_sq/result0_n_95 ,\qacc_sq/result0_n_96 ,\qacc_sq/result0_n_97 ,\qacc_sq/result0_n_98 ,\qacc_sq/result0_n_99 ,\qacc_sq/result0_n_100 ,\qacc_sq/result0_n_101 ,\qacc_sq/result0_n_102 ,\qacc_sq/result0_n_103 ,\qacc_sq/result0_n_104 ,\qacc_sq/result0_n_105 }),
-        .PATTERNBDETECT(\NLW_qacc_sq/result0_PATTERNBDETECT_UNCONNECTED ),
-        .PATTERNDETECT(\NLW_qacc_sq/result0_PATTERNDETECT_UNCONNECTED ),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({\qacc_sq/result0_n_106 ,\qacc_sq/result0_n_107 ,\qacc_sq/result0_n_108 ,\qacc_sq/result0_n_109 ,\qacc_sq/result0_n_110 ,\qacc_sq/result0_n_111 ,\qacc_sq/result0_n_112 ,\qacc_sq/result0_n_113 ,\qacc_sq/result0_n_114 ,\qacc_sq/result0_n_115 ,\qacc_sq/result0_n_116 ,\qacc_sq/result0_n_117 ,\qacc_sq/result0_n_118 ,\qacc_sq/result0_n_119 ,\qacc_sq/result0_n_120 ,\qacc_sq/result0_n_121 ,\qacc_sq/result0_n_122 ,\qacc_sq/result0_n_123 ,\qacc_sq/result0_n_124 ,\qacc_sq/result0_n_125 ,\qacc_sq/result0_n_126 ,\qacc_sq/result0_n_127 ,\qacc_sq/result0_n_128 ,\qacc_sq/result0_n_129 ,\qacc_sq/result0_n_130 ,\qacc_sq/result0_n_131 ,\qacc_sq/result0_n_132 ,\qacc_sq/result0_n_133 ,\qacc_sq/result0_n_134 ,\qacc_sq/result0_n_135 ,\qacc_sq/result0_n_136 ,\qacc_sq/result0_n_137 ,\qacc_sq/result0_n_138 ,\qacc_sq/result0_n_139 ,\qacc_sq/result0_n_140 ,\qacc_sq/result0_n_141 ,\qacc_sq/result0_n_142 ,\qacc_sq/result0_n_143 ,\qacc_sq/result0_n_144 ,\qacc_sq/result0_n_145 ,\qacc_sq/result0_n_146 ,\qacc_sq/result0_n_147 ,\qacc_sq/result0_n_148 ,\qacc_sq/result0_n_149 ,\qacc_sq/result0_n_150 ,\qacc_sq/result0_n_151 ,\qacc_sq/result0_n_152 ,\qacc_sq/result0_n_153 }),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(\NLW_qacc_sq/result0_UNDERFLOW_UNCONNECTED ));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-10 {cell *THIS*} {string 18x18 4}}" *) 
   DSP48E1 #(
     .ACASCREG(1),
@@ -23360,55 +22590,46 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     \qacc_sq/result0__0 
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(\NLW_qacc_sq/result0__0_ACOUT_UNCONNECTED [29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({1'b0,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(\NLW_qacc_sq/result0__0_BCOUT_UNCONNECTED [17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(\NLW_qacc_sq/result0__0_CARRYCASCOUT_UNCONNECTED ),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(\NLW_qacc_sq/result0__0_CARRYOUT_UNCONNECTED [3:0]),
-        .CEA1(1'b0),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .B({\<const0> ,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
-        .CEB1(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
+        .CEB1(\<const0> ),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(\NLW_qacc_sq/result0__0_MULTSIGNOUT_UNCONNECTED ),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(\NLW_qacc_sq/result0__0_OVERFLOW_UNCONNECTED ),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({\qacc_sq/result0__0_n_58 ,\qacc_sq/result0__0_n_59 ,\qacc_sq/result0__0_n_60 ,\qacc_sq/result0__0_n_61 ,\qacc_sq/result0__0_n_62 ,\qacc_sq/result0__0_n_63 ,\qacc_sq/result0__0_n_64 ,\qacc_sq/result0__0_n_65 ,\qacc_sq/result0__0_n_66 ,\qacc_sq/result0__0_n_67 ,\qacc_sq/result0__0_n_68 ,\qacc_sq/result0__0_n_69 ,\qacc_sq/result0__0_n_70 ,\qacc_sq/result0__0_n_71 ,\qacc_sq/result0__0_n_72 ,\qacc_sq/result0__0_n_73 ,\qacc_sq/result0__0_n_74 ,\qacc_sq/result0__0_n_75 ,\qacc_sq/result0__0_n_76 ,\qacc_sq/result0__0_n_77 ,\qacc_sq/result0__0_n_78 ,\qacc_sq/result0__0_n_79 ,\qacc_sq/result0__0_n_80 ,\qacc_sq/result0__0_n_81 ,\qacc_sq/result0__0_n_82 ,\qacc_sq/result0__0_n_83 ,\qacc_sq/result0__0_n_84 ,\qacc_sq/result0__0_n_85 ,\qacc_sq/result0__0_n_86 ,\qacc_sq/result0__0_n_87 ,\qacc_sq/result0__0_n_88 ,\qacc_sq/result0__0_n_89 ,\qacc_sq/result0__0_n_90 ,\qacc_sq/result0__0_n_91 ,\qacc_sq/result0__0_n_92 ,\qacc_sq/result0__0_n_93 ,\qacc_sq/result0__0_n_94 ,\qacc_sq/result0__0_n_95 ,\qacc_sq/result0__0_n_96 ,\qacc_sq/result0__0_n_97 ,\qacc_sq/result0__0_n_98 ,\qacc_sq/result0__0_n_99 ,\qacc_sq/result0__0_n_100 ,\qacc_sq/result0__0_n_101 ,\qacc_sq/result0__0_n_102 ,\qacc_sq/result0__0_n_103 ,\qacc_sq/result0__0_n_104 ,\qacc_sq/result0__0_n_105 }),
-        .PATTERNBDETECT(\NLW_qacc_sq/result0__0_PATTERNBDETECT_UNCONNECTED ),
-        .PATTERNDETECT(\NLW_qacc_sq/result0__0_PATTERNDETECT_UNCONNECTED ),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({\qacc_sq/result0__0_n_106 ,\qacc_sq/result0__0_n_107 ,\qacc_sq/result0__0_n_108 ,\qacc_sq/result0__0_n_109 ,\qacc_sq/result0__0_n_110 ,\qacc_sq/result0__0_n_111 ,\qacc_sq/result0__0_n_112 ,\qacc_sq/result0__0_n_113 ,\qacc_sq/result0__0_n_114 ,\qacc_sq/result0__0_n_115 ,\qacc_sq/result0__0_n_116 ,\qacc_sq/result0__0_n_117 ,\qacc_sq/result0__0_n_118 ,\qacc_sq/result0__0_n_119 ,\qacc_sq/result0__0_n_120 ,\qacc_sq/result0__0_n_121 ,\qacc_sq/result0__0_n_122 ,\qacc_sq/result0__0_n_123 ,\qacc_sq/result0__0_n_124 ,\qacc_sq/result0__0_n_125 ,\qacc_sq/result0__0_n_126 ,\qacc_sq/result0__0_n_127 ,\qacc_sq/result0__0_n_128 ,\qacc_sq/result0__0_n_129 ,\qacc_sq/result0__0_n_130 ,\qacc_sq/result0__0_n_131 ,\qacc_sq/result0__0_n_132 ,\qacc_sq/result0__0_n_133 ,\qacc_sq/result0__0_n_134 ,\qacc_sq/result0__0_n_135 ,\qacc_sq/result0__0_n_136 ,\qacc_sq/result0__0_n_137 ,\qacc_sq/result0__0_n_138 ,\qacc_sq/result0__0_n_139 ,\qacc_sq/result0__0_n_140 ,\qacc_sq/result0__0_n_141 ,\qacc_sq/result0__0_n_142 ,\qacc_sq/result0__0_n_143 ,\qacc_sq/result0__0_n_144 ,\qacc_sq/result0__0_n_145 ,\qacc_sq/result0__0_n_146 ,\qacc_sq/result0__0_n_147 ,\qacc_sq/result0__0_n_148 ,\qacc_sq/result0__0_n_149 ,\qacc_sq/result0__0_n_150 ,\qacc_sq/result0__0_n_151 ,\qacc_sq/result0__0_n_152 ,\qacc_sq/result0__0_n_153 }),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(\NLW_qacc_sq/result0__0_UNDERFLOW_UNCONNECTED ));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-10 {cell *THIS*} {string 18x15 4}}" *) 
   DSP48E1 #(
     .ACASCREG(1),
@@ -23437,68 +22658,58 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     \qacc_sq/result0__1 
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(\NLW_qacc_sq/result0__1_ACOUT_UNCONNECTED [29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,result0_i_15_n_0,result0_i_16_n_0,result0_i_17_n_0,result0_i_18_n_0,result0_i_19_n_0,result0_i_20_n_0,result0_i_21_n_0,result0_i_22_n_0,result0_i_23_n_0,result0_i_24_n_0,result0_i_25_n_0,result0_i_26_n_0,result0_i_27_n_0,result0_i_28_n_0,result0_i_29_n_0,result0_i_30_n_0,result0_i_31_n_0}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .B({qin_r[31],qin_r[31],qin_r[31],qin_r[31],result0_i_1_n_0,result0_i_2_n_0,result0_i_3_n_0,result0_i_4_n_0,result0_i_5_n_0,result0_i_6_n_0,result0_i_7_n_0,result0_i_8_n_0,result0_i_9_n_0,result0_i_10_n_0,result0_i_11_n_0,result0_i_12_n_0,result0_i_13_n_0,result0_i_14_n_0}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(\NLW_qacc_sq/result0__1_BCOUT_UNCONNECTED [17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(\NLW_qacc_sq/result0__1_CARRYCASCOUT_UNCONNECTED ),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(\NLW_qacc_sq/result0__1_CARRYOUT_UNCONNECTED [3:0]),
-        .CEA1(1'b0),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
-        .CEB1(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
+        .CEB1(\<const0> ),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(\NLW_qacc_sq/result0__1_MULTSIGNOUT_UNCONNECTED ),
-        .OPMODE({1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(\NLW_qacc_sq/result0__1_OVERFLOW_UNCONNECTED ),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({\qacc_sq/result0__1_n_58 ,\qacc_sq/result0__1_n_59 ,\qacc_sq/result0__1_n_60 ,\qacc_sq/result0__1_n_61 ,\qacc_sq/result0__1_n_62 ,\qacc_sq/result0__1_n_63 ,\qacc_sq/result0__1_n_64 ,\qacc_sq/result0__1_n_65 ,\qacc_sq/result0__1_n_66 ,\qacc_sq/result0__1_n_67 ,\qacc_sq/result0__1_n_68 ,\qacc_sq/result0__1_n_69 ,\qacc_sq/result0__1_n_70 ,\qacc_sq/result0__1_n_71 ,\qacc_sq/result0__1_n_72 ,\qacc_sq/result0__1_n_73 ,\qacc_sq/result0__1_n_74 ,\qacc_sq/result0__1_n_75 ,\qacc_sq/result0__1_n_76 ,\qacc_sq/result0__1_n_77 ,\qacc_sq/result0__1_n_78 ,\qacc_sq/result0__1_n_79 ,\qacc_sq/result0__1_n_80 ,\qacc_sq/result0__1_n_81 ,\qacc_sq/result0__1_n_82 ,\qacc_sq/result0__1_n_83 ,\qacc_sq/result0__1_n_84 ,\qacc_sq/result0__1_n_85 ,\qacc_sq/result0__1_n_86 ,\qacc_sq/result0__1_n_87 ,\qacc_sq/result0__1_n_88 ,\qacc_sq/result0__1_n_89 ,\qacc_sq/result0__1_n_90 ,\qacc_sq/result0__1_n_91 ,\qacc_sq/result0__1_n_92 ,\qacc_sq/result0__1_n_93 ,\qacc_sq/result0__1_n_94 ,\qacc_sq/result0__1_n_95 ,\qacc_sq/result0__1_n_96 ,\qacc_sq/result0__1_n_97 ,\qacc_sq/result0__1_n_98 ,\qacc_sq/result0__1_n_99 ,\qacc_sq/result0__1_n_100 ,\qacc_sq/result0__1_n_101 ,\qacc_sq/result0__1_n_102 ,\qacc_sq/result0__1_n_103 ,\qacc_sq/result0__1_n_104 ,\qacc_sq/result0__1_n_105 }),
-        .PATTERNBDETECT(\NLW_qacc_sq/result0__1_PATTERNBDETECT_UNCONNECTED ),
-        .PATTERNDETECT(\NLW_qacc_sq/result0__1_PATTERNDETECT_UNCONNECTED ),
         .PCIN({\qacc_sq/result0__0_n_106 ,\qacc_sq/result0__0_n_107 ,\qacc_sq/result0__0_n_108 ,\qacc_sq/result0__0_n_109 ,\qacc_sq/result0__0_n_110 ,\qacc_sq/result0__0_n_111 ,\qacc_sq/result0__0_n_112 ,\qacc_sq/result0__0_n_113 ,\qacc_sq/result0__0_n_114 ,\qacc_sq/result0__0_n_115 ,\qacc_sq/result0__0_n_116 ,\qacc_sq/result0__0_n_117 ,\qacc_sq/result0__0_n_118 ,\qacc_sq/result0__0_n_119 ,\qacc_sq/result0__0_n_120 ,\qacc_sq/result0__0_n_121 ,\qacc_sq/result0__0_n_122 ,\qacc_sq/result0__0_n_123 ,\qacc_sq/result0__0_n_124 ,\qacc_sq/result0__0_n_125 ,\qacc_sq/result0__0_n_126 ,\qacc_sq/result0__0_n_127 ,\qacc_sq/result0__0_n_128 ,\qacc_sq/result0__0_n_129 ,\qacc_sq/result0__0_n_130 ,\qacc_sq/result0__0_n_131 ,\qacc_sq/result0__0_n_132 ,\qacc_sq/result0__0_n_133 ,\qacc_sq/result0__0_n_134 ,\qacc_sq/result0__0_n_135 ,\qacc_sq/result0__0_n_136 ,\qacc_sq/result0__0_n_137 ,\qacc_sq/result0__0_n_138 ,\qacc_sq/result0__0_n_139 ,\qacc_sq/result0__0_n_140 ,\qacc_sq/result0__0_n_141 ,\qacc_sq/result0__0_n_142 ,\qacc_sq/result0__0_n_143 ,\qacc_sq/result0__0_n_144 ,\qacc_sq/result0__0_n_145 ,\qacc_sq/result0__0_n_146 ,\qacc_sq/result0__0_n_147 ,\qacc_sq/result0__0_n_148 ,\qacc_sq/result0__0_n_149 ,\qacc_sq/result0__0_n_150 ,\qacc_sq/result0__0_n_151 ,\qacc_sq/result0__0_n_152 ,\qacc_sq/result0__0_n_153 }),
-        .PCOUT(\NLW_qacc_sq/result0__1_PCOUT_UNCONNECTED [47:0]),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(\NLW_qacc_sq/result0__1_UNDERFLOW_UNCONNECTED ));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qacc_sq/result0_carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qacc_sq/result0_carry_n_0 ,\qacc_sq/result0_carry_n_1 ,\qacc_sq/result0_carry_n_2 ,\qacc_sq/result0_carry_n_3 }),
-        .CYINIT(1'b0),
-        .DI({\qacc_sq/result0__1_n_103 ,\qacc_sq/result0__1_n_104 ,\qacc_sq/result0__1_n_105 ,1'b0}),
+        .CYINIT(\<const0> ),
+        .DI({\qacc_sq/result0__1_n_103 ,\qacc_sq/result0__1_n_104 ,\qacc_sq/result0__1_n_105 ,\<const0> }),
         .O({\qacc_sq/result0_carry_n_4 ,\qacc_sq/result0_carry_n_5 ,\qacc_sq/result0_carry_n_6 ,\qacc_sq/result0_carry_n_7 }),
         .S({result0_carry_i_1_n_0,result0_carry_i_2_n_0,result0_carry_i_3_n_0,\qacc_sq/result0__0_n_89 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qacc_sq/result0_carry__0 
        (.CI(\qacc_sq/result0_carry_n_0 ),
         .CO({\qacc_sq/result0_carry__0_n_0 ,\qacc_sq/result0_carry__0_n_1 ,\qacc_sq/result0_carry__0_n_2 ,\qacc_sq/result0_carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0__1_n_99 ,\qacc_sq/result0__1_n_100 ,\qacc_sq/result0__1_n_101 ,\qacc_sq/result0__1_n_102 }),
         .O({\qacc_sq/result0_carry__0_n_4 ,\qacc_sq/result0_carry__0_n_5 ,\qacc_sq/result0_carry__0_n_6 ,\qacc_sq/result0_carry__0_n_7 }),
         .S({result0_carry__0_i_1_n_0,result0_carry__0_i_2_n_0,result0_carry__0_i_3_n_0,result0_carry__0_i_4_n_0}));
@@ -23506,16 +22717,16 @@ module layer_norm
   CARRY4 \qacc_sq/result0_carry__1 
        (.CI(\qacc_sq/result0_carry__0_n_0 ),
         .CO({\qacc_sq/result0_carry__1_n_0 ,\qacc_sq/result0_carry__1_n_1 ,\qacc_sq/result0_carry__1_n_2 ,\qacc_sq/result0_carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0__1_n_95 ,\qacc_sq/result0__1_n_96 ,\qacc_sq/result0__1_n_97 ,\qacc_sq/result0__1_n_98 }),
         .O({\qacc_sq/result0_carry__1_n_4 ,\qacc_sq/result0_carry__1_n_5 ,\qacc_sq/result0_carry__1_n_6 ,\qacc_sq/result0_carry__1_n_7 }),
         .S({result0_carry__1_i_1_n_0,result0_carry__1_i_2_n_0,result0_carry__1_i_3_n_0,result0_carry__1_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qacc_sq/result0_carry__2 
        (.CI(\qacc_sq/result0_carry__1_n_0 ),
-        .CO({\NLW_qacc_sq/result0_carry__2_CO_UNCONNECTED [3],\qacc_sq/result0_carry__2_n_1 ,\qacc_sq/result0_carry__2_n_2 ,\qacc_sq/result0_carry__2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qacc_sq/result0__1_n_92 ,\qacc_sq/result0__1_n_93 ,\qacc_sq/result0__1_n_94 }),
+        .CO({\qacc_sq/result0_carry__2_n_1 ,\qacc_sq/result0_carry__2_n_2 ,\qacc_sq/result0_carry__2_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qacc_sq/result0__1_n_92 ,\qacc_sq/result0__1_n_93 ,\qacc_sq/result0__1_n_94 }),
         .O({\qacc_sq/result0_carry__2_n_4 ,\qacc_sq/result0_carry__2_n_5 ,\qacc_sq/result0_carry__2_n_6 ,\qacc_sq/result0_carry__2_n_7 }),
         .S({result0_carry__2_i_1_n_0,result0_carry__2_i_2_n_0,result0_carry__2_i_3_n_0,result0_carry__2_i_4_n_0}));
   FDRE #(
@@ -24810,38 +24021,34 @@ module layer_norm
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \qdiv/div_done_carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qdiv/div_done_carry_n_0 ,\qdiv/div_done_carry_n_1 ,\qdiv/div_done_carry_n_2 ,\qdiv/div_done_carry_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({div_done_carry_i_1_n_0,div_done_carry_i_2_n_0,div_done_carry_i_3_n_0,div_done_carry_i_4_n_0}),
-        .O(\NLW_qdiv/div_done_carry_O_UNCONNECTED [3:0]),
         .S({div_done_carry_i_5_n_0,div_done_carry_i_6_n_0,div_done_carry_i_7_n_0,div_done_carry_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \qdiv/div_done_carry__0 
        (.CI(\qdiv/div_done_carry_n_0 ),
         .CO({\qdiv/div_done_carry__0_n_0 ,\qdiv/div_done_carry__0_n_1 ,\qdiv/div_done_carry__0_n_2 ,\qdiv/div_done_carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({div_done_carry__0_i_1_n_0,div_done_carry__0_i_2_n_0,div_done_carry__0_i_3_n_0,div_done_carry__0_i_4_n_0}),
-        .O(\NLW_qdiv/div_done_carry__0_O_UNCONNECTED [3:0]),
         .S({div_done_carry__0_i_5_n_0,div_done_carry__0_i_6_n_0,div_done_carry__0_i_7_n_0,div_done_carry__0_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \qdiv/div_done_carry__1 
        (.CI(\qdiv/div_done_carry__0_n_0 ),
         .CO({\qdiv/div_done_carry__1_n_0 ,\qdiv/div_done_carry__1_n_1 ,\qdiv/div_done_carry__1_n_2 ,\qdiv/div_done_carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({div_done_carry__1_i_1_n_0,div_done_carry__1_i_2_n_0,div_done_carry__1_i_3_n_0,div_done_carry__1_i_4_n_0}),
-        .O(\NLW_qdiv/div_done_carry__1_O_UNCONNECTED [3:0]),
         .S({div_done_carry__1_i_5_n_0,div_done_carry__1_i_6_n_0,div_done_carry__1_i_7_n_0,div_done_carry__1_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \qdiv/div_done_carry__2 
        (.CI(\qdiv/div_done_carry__1_n_0 ),
         .CO({\qdiv/div_done ,\qdiv/div_done_carry__2_n_1 ,\qdiv/div_done_carry__2_n_2 ,\qdiv/div_done_carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({div_done_carry__2_i_1_n_0,div_done_carry__2_i_2_n_0,div_done_carry__2_i_3_n_0,div_done_carry__2_i_4_n_0}),
-        .O(\NLW_qdiv/div_done_carry__2_O_UNCONNECTED [3:0]),
         .S({div_done_carry__2_i_5_n_0,div_done_carry__2_i_6_n_0,div_done_carry__2_i_7_n_0,div_done_carry__2_i_8_n_0}));
   FDRE #(
     .INIT(1'b0)) 
@@ -25109,41 +24316,37 @@ module layer_norm
         .R(rst));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \qdiv/quotient_r1_carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qdiv/quotient_r1_carry_n_0 ,\qdiv/quotient_r1_carry_n_1 ,\qdiv/quotient_r1_carry_n_2 ,\qdiv/quotient_r1_carry_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({quotient_r1_carry_i_1_n_0,quotient_r1_carry_i_2_n_0,quotient_r1_carry_i_3_n_0,quotient_r1_carry_i_4_n_0}),
-        .O(\NLW_qdiv/quotient_r1_carry_O_UNCONNECTED [3:0]),
         .S({quotient_r1_carry_i_5_n_0,quotient_r1_carry_i_6_n_0,quotient_r1_carry_i_7_n_0,quotient_r1_carry_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \qdiv/quotient_r1_carry__0 
        (.CI(\qdiv/quotient_r1_carry_n_0 ),
         .CO({\qdiv/quotient_r1_carry__0_n_0 ,\qdiv/quotient_r1_carry__0_n_1 ,\qdiv/quotient_r1_carry__0_n_2 ,\qdiv/quotient_r1_carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({quotient_r1_carry__0_i_1_n_0,quotient_r1_carry__0_i_2_n_0,quotient_r1_carry__0_i_3_n_0,quotient_r1_carry__0_i_4_n_0}),
-        .O(\NLW_qdiv/quotient_r1_carry__0_O_UNCONNECTED [3:0]),
         .S({quotient_r1_carry__0_i_5_n_0,quotient_r1_carry__0_i_6_n_0,quotient_r1_carry__0_i_7_n_0,quotient_r1_carry__0_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \qdiv/quotient_r1_carry__1 
        (.CI(\qdiv/quotient_r1_carry__0_n_0 ),
         .CO({\qdiv/quotient_r1_carry__1_n_0 ,\qdiv/quotient_r1_carry__1_n_1 ,\qdiv/quotient_r1_carry__1_n_2 ,\qdiv/quotient_r1_carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({quotient_r1_carry__1_i_1_n_0,quotient_r1_carry__1_i_2_n_0,quotient_r1_carry__1_i_3_n_0,quotient_r1_carry__1_i_4_n_0}),
-        .O(\NLW_qdiv/quotient_r1_carry__1_O_UNCONNECTED [3:0]),
         .S({quotient_r1_carry__1_i_5_n_0,quotient_r1_carry__1_i_6_n_0,quotient_r1_carry__1_i_7_n_0,quotient_r1_carry__1_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \qdiv/quotient_r1_carry__2 
        (.CI(\qdiv/quotient_r1_carry__1_n_0 ),
         .CO({\qdiv/quotient_r1_carry__2_n_0 ,\qdiv/quotient_r1_carry__2_n_1 ,\qdiv/quotient_r1_carry__2_n_2 ,\qdiv/quotient_r1_carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({quotient_r1_carry__2_i_1_n_0,quotient_r1_carry__2_i_2_n_0,quotient_r1_carry__2_i_3_n_0,quotient_r1_carry__2_i_4_n_0}),
-        .O(\NLW_qdiv/quotient_r1_carry__2_O_UNCONNECTED [3:0]),
         .S({quotient_r1_carry__2_i_5_n_0,quotient_r1_carry__2_i_6_n_0,quotient_r1_carry__2_i_7_n_0,quotient_r1_carry__2_i_8_n_0}));
   FDRE #(
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[0] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[0]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [0]),
         .R(rst));
@@ -25151,7 +24354,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[10] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[10]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [10]),
         .R(rst));
@@ -25159,7 +24362,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[11] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[11]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [11]),
         .R(rst));
@@ -25167,7 +24370,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[12] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[12]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [12]),
         .R(rst));
@@ -25175,7 +24378,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[13] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[13]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [13]),
         .R(rst));
@@ -25183,7 +24386,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[14] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[14]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [14]),
         .R(rst));
@@ -25191,7 +24394,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[15] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[15]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [15]),
         .R(rst));
@@ -25199,7 +24402,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[16] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[16]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [16]),
         .R(rst));
@@ -25207,7 +24410,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[17] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[17]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [17]),
         .R(rst));
@@ -25215,7 +24418,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[18] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[18]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [18]),
         .R(rst));
@@ -25223,7 +24426,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[19] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[19]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [19]),
         .R(rst));
@@ -25231,7 +24434,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[1] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[1]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [1]),
         .R(rst));
@@ -25239,7 +24442,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[20] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[20]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [20]),
         .R(rst));
@@ -25247,7 +24450,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[21] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[21]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [21]),
         .R(rst));
@@ -25255,7 +24458,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[22] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[22]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [22]),
         .R(rst));
@@ -25263,7 +24466,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[23] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[23]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [23]),
         .R(rst));
@@ -25271,7 +24474,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[24] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[24]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [24]),
         .R(rst));
@@ -25279,7 +24482,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[25] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[25]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [25]),
         .R(rst));
@@ -25287,7 +24490,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[26] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[26]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [26]),
         .R(rst));
@@ -25295,7 +24498,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[27] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[27]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [27]),
         .R(rst));
@@ -25303,7 +24506,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[28] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[28]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [28]),
         .R(rst));
@@ -25311,7 +24514,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[29] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[29]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [29]),
         .R(rst));
@@ -25319,7 +24522,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[2] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[2]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [2]),
         .R(rst));
@@ -25327,7 +24530,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[30] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[30]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [30]),
         .R(rst));
@@ -25335,7 +24538,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[31] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[31]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [31]),
         .R(rst));
@@ -25343,7 +24546,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[3] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[3]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [3]),
         .R(rst));
@@ -25351,7 +24554,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[4] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[4]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [4]),
         .R(rst));
@@ -25359,7 +24562,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[5] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[5]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [5]),
         .R(rst));
@@ -25367,7 +24570,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[6] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[6]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [6]),
         .R(rst));
@@ -25375,7 +24578,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[7] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[7]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [7]),
         .R(rst));
@@ -25383,7 +24586,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[8] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[8]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [8]),
         .R(rst));
@@ -25391,7 +24594,7 @@ module layer_norm
     .INIT(1'b0)) 
     \qdiv/quotient_r_reg[9] 
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(\quotient_r[9]_i_1_n_0 ),
         .Q(\qdiv/quotient_r [9]),
         .R(rst));
@@ -25654,9 +24857,9 @@ module layer_norm
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \qdiv/remainder_r1_carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qdiv/remainder_r1_carry_n_0 ,\qdiv/remainder_r1_carry_n_1 ,\qdiv/remainder_r1_carry_n_2 ,\qdiv/remainder_r1_carry_n_3 }),
-        .CYINIT(1'b1),
+        .CYINIT(\<const1> ),
         .DI({\qdiv/remainder_r_reg_n_0_[3] ,\qdiv/remainder_r_reg_n_0_[2] ,\qdiv/remainder_r_reg_n_0_[1] ,\qdiv/remainder_r_reg_n_0_[0] }),
         .O(\qdiv/in9 [3:0]),
         .S({remainder_r1_carry_i_1_n_0,remainder_r1_carry_i_2_n_0,remainder_r1_carry_i_3_n_0,remainder_r1_carry_i_4_n_0}));
@@ -25665,7 +24868,7 @@ module layer_norm
   CARRY4 \qdiv/remainder_r1_carry__0 
        (.CI(\qdiv/remainder_r1_carry_n_0 ),
         .CO({\qdiv/remainder_r1_carry__0_n_0 ,\qdiv/remainder_r1_carry__0_n_1 ,\qdiv/remainder_r1_carry__0_n_2 ,\qdiv/remainder_r1_carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qdiv/remainder_r_reg_n_0_[7] ,\qdiv/remainder_r_reg_n_0_[6] ,\qdiv/remainder_r_reg_n_0_[5] ,\qdiv/remainder_r_reg_n_0_[4] }),
         .O(\qdiv/in9 [7:4]),
         .S({remainder_r1_carry__0_i_1_n_0,remainder_r1_carry__0_i_2_n_0,remainder_r1_carry__0_i_3_n_0,remainder_r1_carry__0_i_4_n_0}));
@@ -25674,7 +24877,7 @@ module layer_norm
   CARRY4 \qdiv/remainder_r1_carry__1 
        (.CI(\qdiv/remainder_r1_carry__0_n_0 ),
         .CO({\qdiv/remainder_r1_carry__1_n_0 ,\qdiv/remainder_r1_carry__1_n_1 ,\qdiv/remainder_r1_carry__1_n_2 ,\qdiv/remainder_r1_carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qdiv/remainder_r_reg_n_0_[11] ,\qdiv/remainder_r_reg_n_0_[10] ,\qdiv/remainder_r_reg_n_0_[9] ,\qdiv/remainder_r_reg_n_0_[8] }),
         .O(\qdiv/in9 [11:8]),
         .S({remainder_r1_carry__1_i_1_n_0,remainder_r1_carry__1_i_2_n_0,remainder_r1_carry__1_i_3_n_0,remainder_r1_carry__1_i_4_n_0}));
@@ -25683,7 +24886,7 @@ module layer_norm
   CARRY4 \qdiv/remainder_r1_carry__2 
        (.CI(\qdiv/remainder_r1_carry__1_n_0 ),
         .CO({\qdiv/remainder_r1_carry__2_n_0 ,\qdiv/remainder_r1_carry__2_n_1 ,\qdiv/remainder_r1_carry__2_n_2 ,\qdiv/remainder_r1_carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qdiv/remainder_r_reg_n_0_[15] ,\qdiv/remainder_r_reg_n_0_[14] ,\qdiv/remainder_r_reg_n_0_[13] ,\qdiv/remainder_r_reg_n_0_[12] }),
         .O(\qdiv/in9 [15:12]),
         .S({remainder_r1_carry__2_i_1_n_0,remainder_r1_carry__2_i_2_n_0,remainder_r1_carry__2_i_3_n_0,remainder_r1_carry__2_i_4_n_0}));
@@ -25692,7 +24895,7 @@ module layer_norm
   CARRY4 \qdiv/remainder_r1_carry__3 
        (.CI(\qdiv/remainder_r1_carry__2_n_0 ),
         .CO({\qdiv/remainder_r1_carry__3_n_0 ,\qdiv/remainder_r1_carry__3_n_1 ,\qdiv/remainder_r1_carry__3_n_2 ,\qdiv/remainder_r1_carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qdiv/remainder_r_reg_n_0_[19] ,\qdiv/remainder_r_reg_n_0_[18] ,\qdiv/remainder_r_reg_n_0_[17] ,\qdiv/remainder_r_reg_n_0_[16] }),
         .O(\qdiv/in9 [19:16]),
         .S({remainder_r1_carry__3_i_1_n_0,remainder_r1_carry__3_i_2_n_0,remainder_r1_carry__3_i_3_n_0,remainder_r1_carry__3_i_4_n_0}));
@@ -25701,7 +24904,7 @@ module layer_norm
   CARRY4 \qdiv/remainder_r1_carry__4 
        (.CI(\qdiv/remainder_r1_carry__3_n_0 ),
         .CO({\qdiv/remainder_r1_carry__4_n_0 ,\qdiv/remainder_r1_carry__4_n_1 ,\qdiv/remainder_r1_carry__4_n_2 ,\qdiv/remainder_r1_carry__4_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qdiv/remainder_r_reg_n_0_[23] ,\qdiv/remainder_r_reg_n_0_[22] ,\qdiv/remainder_r_reg_n_0_[21] ,\qdiv/remainder_r_reg_n_0_[20] }),
         .O(\qdiv/in9 [23:20]),
         .S({remainder_r1_carry__4_i_1_n_0,remainder_r1_carry__4_i_2_n_0,remainder_r1_carry__4_i_3_n_0,remainder_r1_carry__4_i_4_n_0}));
@@ -25710,7 +24913,7 @@ module layer_norm
   CARRY4 \qdiv/remainder_r1_carry__5 
        (.CI(\qdiv/remainder_r1_carry__4_n_0 ),
         .CO({\qdiv/remainder_r1_carry__5_n_0 ,\qdiv/remainder_r1_carry__5_n_1 ,\qdiv/remainder_r1_carry__5_n_2 ,\qdiv/remainder_r1_carry__5_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qdiv/remainder_r_reg_n_0_[27] ,\qdiv/remainder_r_reg_n_0_[26] ,\qdiv/remainder_r_reg_n_0_[25] ,\qdiv/remainder_r_reg_n_0_[24] }),
         .O(\qdiv/in9 [27:24]),
         .S({remainder_r1_carry__5_i_1_n_0,remainder_r1_carry__5_i_2_n_0,remainder_r1_carry__5_i_3_n_0,remainder_r1_carry__5_i_4_n_0}));
@@ -25718,9 +24921,9 @@ module layer_norm
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \qdiv/remainder_r1_carry__6 
        (.CI(\qdiv/remainder_r1_carry__5_n_0 ),
-        .CO({\NLW_qdiv/remainder_r1_carry__6_CO_UNCONNECTED [3],\qdiv/remainder_r1_carry__6_n_1 ,\qdiv/remainder_r1_carry__6_n_2 ,\qdiv/remainder_r1_carry__6_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qdiv/remainder_r_reg_n_0_[30] ,\qdiv/remainder_r_reg_n_0_[29] ,\qdiv/remainder_r_reg_n_0_[28] }),
+        .CO({\qdiv/remainder_r1_carry__6_n_1 ,\qdiv/remainder_r1_carry__6_n_2 ,\qdiv/remainder_r1_carry__6_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qdiv/remainder_r_reg_n_0_[30] ,\qdiv/remainder_r_reg_n_0_[29] ,\qdiv/remainder_r_reg_n_0_[28] }),
         .O(\qdiv/in9 [31:28]),
         .S({remainder_r1_carry__6_i_1_n_0,remainder_r1_carry__6_i_2_n_0,remainder_r1_carry__6_i_3_n_0,remainder_r1_carry__6_i_4_n_0}));
   FDRE #(
@@ -26824,55 +26027,46 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qmean_mul_r20
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,qacc_out[16:0]}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(NLW_qmean_mul_r20_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,qacc_out[16:0]}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .B({p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,qsum_mul__0_n_70,qsum_mul__0_n_71,qsum_mul__0_n_72,qsum_mul__0_n_73,qsum_mul__0_n_74,qsum_mul__0_n_75}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qmean_mul_r20_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qmean_mul_r20_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qmean_mul_r20_CARRYOUT_UNCONNECTED[3:0]),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
         .CEA1(qacc_sq_out_r),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
-        .CEB1(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
+        .CEB1(\<const0> ),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qmean_mul_r20_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qmean_mul_r20_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qmean_mul_r20_n_58,qmean_mul_r20_n_59,qmean_mul_r20_n_60,qmean_mul_r20_n_61,qmean_mul_r20_n_62,qmean_mul_r20_n_63,qmean_mul_r20_n_64,qmean_mul_r20_n_65,qmean_mul_r20_n_66,qmean_mul_r20_n_67,qmean_mul_r20_n_68,qmean_mul_r20_n_69,qmean_mul_r20_n_70,qmean_mul_r20_n_71,qmean_mul_r20_n_72,qmean_mul_r20_n_73,qmean_mul_r20_n_74,qmean_mul_r20_n_75,qmean_mul_r20_n_76,qmean_mul_r20_n_77,qmean_mul_r20_n_78,qmean_mul_r20_n_79,qmean_mul_r20_n_80,qmean_mul_r20_n_81,qmean_mul_r20_n_82,qmean_mul_r20_n_83,qmean_mul_r20_n_84,qmean_mul_r20_n_85,qmean_mul_r20_n_86,qmean_mul_r20_n_87,qmean_mul_r20_n_88,qmean_mul_r20_n_89,qmean_mul_r20_n_90,qmean_mul_r20_n_91,qmean_mul_r20_n_92,qmean_mul_r20_n_93,qmean_mul_r20_n_94,qmean_mul_r20_n_95,qmean_mul_r20_n_96,qmean_mul_r20_n_97,qmean_mul_r20_n_98,qmean_mul_r20_n_99,qmean_mul_r20_n_100,qmean_mul_r20_n_101,qmean_mul_r20_n_102,qmean_mul_r20_n_103,qmean_mul_r20_n_104,qmean_mul_r20_n_105}),
-        .PATTERNBDETECT(NLW_qmean_mul_r20_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qmean_mul_r20_PATTERNDETECT_UNCONNECTED),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({qmean_mul_r20_n_106,qmean_mul_r20_n_107,qmean_mul_r20_n_108,qmean_mul_r20_n_109,qmean_mul_r20_n_110,qmean_mul_r20_n_111,qmean_mul_r20_n_112,qmean_mul_r20_n_113,qmean_mul_r20_n_114,qmean_mul_r20_n_115,qmean_mul_r20_n_116,qmean_mul_r20_n_117,qmean_mul_r20_n_118,qmean_mul_r20_n_119,qmean_mul_r20_n_120,qmean_mul_r20_n_121,qmean_mul_r20_n_122,qmean_mul_r20_n_123,qmean_mul_r20_n_124,qmean_mul_r20_n_125,qmean_mul_r20_n_126,qmean_mul_r20_n_127,qmean_mul_r20_n_128,qmean_mul_r20_n_129,qmean_mul_r20_n_130,qmean_mul_r20_n_131,qmean_mul_r20_n_132,qmean_mul_r20_n_133,qmean_mul_r20_n_134,qmean_mul_r20_n_135,qmean_mul_r20_n_136,qmean_mul_r20_n_137,qmean_mul_r20_n_138,qmean_mul_r20_n_139,qmean_mul_r20_n_140,qmean_mul_r20_n_141,qmean_mul_r20_n_142,qmean_mul_r20_n_143,qmean_mul_r20_n_144,qmean_mul_r20_n_145,qmean_mul_r20_n_146,qmean_mul_r20_n_147,qmean_mul_r20_n_148,qmean_mul_r20_n_149,qmean_mul_r20_n_150,qmean_mul_r20_n_151,qmean_mul_r20_n_152,qmean_mul_r20_n_153}),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(NLW_qmean_mul_r20_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-10 {cell *THIS*} {string 18x18 4}}" *) 
   DSP48E1 #(
     .ACASCREG(1),
@@ -26901,55 +26095,46 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qmean_mul_r20__0
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,qsum_mul__0_n_76,qsum_mul__0_n_77,qsum_mul__0_n_78,qsum_mul__0_n_79,qsum_mul__0_n_80,qsum_mul__0_n_81,qsum_mul__0_n_82,qsum_mul__0_n_83,qsum_mul__0_n_84,qsum_mul__0_n_85,qsum_mul__0_n_86,qsum_mul__0_n_87,qsum_mul__0_n_88,qsum_mul__0_n_89,qsum_mul__0_n_90,qsum_mul__0_n_91,qsum_mul__0_n_92}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(NLW_qmean_mul_r20__0_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({1'b0,qacc_out[16:0]}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qmean_mul_r20__0_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qmean_mul_r20__0_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qmean_mul_r20__0_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,qsum_mul__0_n_76,qsum_mul__0_n_77,qsum_mul__0_n_78,qsum_mul__0_n_79,qsum_mul__0_n_80,qsum_mul__0_n_81,qsum_mul__0_n_82,qsum_mul__0_n_83,qsum_mul__0_n_84,qsum_mul__0_n_85,qsum_mul__0_n_86,qsum_mul__0_n_87,qsum_mul__0_n_88,qsum_mul__0_n_89,qsum_mul__0_n_90,qsum_mul__0_n_91,qsum_mul__0_n_92}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .B({\<const0> ,qacc_out[16:0]}),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(qacc_sq_out_r),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qmean_mul_r20__0_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qmean_mul_r20__0_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qmean_mul_r20__0_n_58,qmean_mul_r20__0_n_59,qmean_mul_r20__0_n_60,qmean_mul_r20__0_n_61,qmean_mul_r20__0_n_62,qmean_mul_r20__0_n_63,qmean_mul_r20__0_n_64,qmean_mul_r20__0_n_65,qmean_mul_r20__0_n_66,qmean_mul_r20__0_n_67,qmean_mul_r20__0_n_68,qmean_mul_r20__0_n_69,qmean_mul_r20__0_n_70,qmean_mul_r20__0_n_71,qmean_mul_r20__0_n_72,qmean_mul_r20__0_n_73,qmean_mul_r20__0_n_74,qmean_mul_r20__0_n_75,qmean_mul_r20__0_n_76,qmean_mul_r20__0_n_77,qmean_mul_r20__0_n_78,qmean_mul_r20__0_n_79,qmean_mul_r20__0_n_80,qmean_mul_r20__0_n_81,qmean_mul_r20__0_n_82,qmean_mul_r20__0_n_83,qmean_mul_r20__0_n_84,qmean_mul_r20__0_n_85,qmean_mul_r20__0_n_86,qmean_mul_r20__0_n_87,qmean_mul_r20__0_n_88,qmean_mul_r20__0_n_89,qmean_mul_r20__0_n_90,qmean_mul_r20__0_n_91,qmean_mul_r20__0_n_92,qmean_mul_r20__0_n_93,qmean_mul_r20__0_n_94,qmean_mul_r20__0_n_95,qmean_mul_r20__0_n_96,qmean_mul_r20__0_n_97,qmean_mul_r20__0_n_98,qmean_mul_r20__0_n_99,qmean_mul_r20__0_n_100,qmean_mul_r20__0_n_101,qmean_mul_r20__0_n_102,qmean_mul_r20__0_n_103,qmean_mul_r20__0_n_104,qmean_mul_r20__0_n_105}),
-        .PATTERNBDETECT(NLW_qmean_mul_r20__0_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qmean_mul_r20__0_PATTERNDETECT_UNCONNECTED),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({qmean_mul_r20__0_n_106,qmean_mul_r20__0_n_107,qmean_mul_r20__0_n_108,qmean_mul_r20__0_n_109,qmean_mul_r20__0_n_110,qmean_mul_r20__0_n_111,qmean_mul_r20__0_n_112,qmean_mul_r20__0_n_113,qmean_mul_r20__0_n_114,qmean_mul_r20__0_n_115,qmean_mul_r20__0_n_116,qmean_mul_r20__0_n_117,qmean_mul_r20__0_n_118,qmean_mul_r20__0_n_119,qmean_mul_r20__0_n_120,qmean_mul_r20__0_n_121,qmean_mul_r20__0_n_122,qmean_mul_r20__0_n_123,qmean_mul_r20__0_n_124,qmean_mul_r20__0_n_125,qmean_mul_r20__0_n_126,qmean_mul_r20__0_n_127,qmean_mul_r20__0_n_128,qmean_mul_r20__0_n_129,qmean_mul_r20__0_n_130,qmean_mul_r20__0_n_131,qmean_mul_r20__0_n_132,qmean_mul_r20__0_n_133,qmean_mul_r20__0_n_134,qmean_mul_r20__0_n_135,qmean_mul_r20__0_n_136,qmean_mul_r20__0_n_137,qmean_mul_r20__0_n_138,qmean_mul_r20__0_n_139,qmean_mul_r20__0_n_140,qmean_mul_r20__0_n_141,qmean_mul_r20__0_n_142,qmean_mul_r20__0_n_143,qmean_mul_r20__0_n_144,qmean_mul_r20__0_n_145,qmean_mul_r20__0_n_146,qmean_mul_r20__0_n_147,qmean_mul_r20__0_n_148,qmean_mul_r20__0_n_149,qmean_mul_r20__0_n_150,qmean_mul_r20__0_n_151,qmean_mul_r20__0_n_152,qmean_mul_r20__0_n_153}),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(NLW_qmean_mul_r20__0_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-10 {cell *THIS*} {string 15x15 4}}" *) 
   DSP48E1 #(
     .ACASCREG(1),
@@ -26979,54 +26164,44 @@ module layer_norm
     .USE_SIMD("ONE48")) 
     qmean_mul_r2_reg
        (.A({p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,p_0_in0,qsum_mul__0_n_70,qsum_mul__0_n_71,qsum_mul__0_n_72,qsum_mul__0_n_73,qsum_mul__0_n_74,qsum_mul__0_n_75}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(NLW_qmean_mul_r2_reg_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .B({qacc_out[31],qacc_out[31],qacc_out[31],qacc_out[31:17]}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qmean_mul_r2_reg_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qmean_mul_r2_reg_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qmean_mul_r2_reg_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(qacc_sq_out_r),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
         .CEP(enable),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qmean_mul_r2_reg_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qmean_mul_r2_reg_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qmean_mul_r2_reg_n_58,qmean_mul_r2_reg_n_59,qmean_mul_r2_reg_n_60,qmean_mul_r2_reg_n_61,qmean_mul_r2_reg_n_62,qmean_mul_r2_reg_n_63,qmean_mul_r2_reg_n_64,qmean_mul_r2_reg_n_65,qmean_mul_r2_reg_n_66,qmean_mul_r2_reg_n_67,qmean_mul_r2_reg_n_68,qmean_mul_r2_reg_n_69,qmean_mul_r2_reg_n_70,qmean_mul_r2_reg_n_71,qmean_mul_r2_reg_n_72,qmean_mul_r2_reg_n_73,qmean_mul_r2_reg_n_74,qmean_mul_r2_reg_n_75,qmean_mul_r2_reg_n_76,qmean_mul_r2_reg_n_77,qmean_mul_r2_reg_n_78,qmean_mul_r2_reg_n_79,qmean_mul_r2_reg_n_80,qmean_mul_r2_reg_n_81,qmean_mul_r2_reg_n_82,qmean_mul_r2_reg_n_83,qmean_mul_r2_reg_n_84,qmean_mul_r2_reg_n_85,qmean_mul_r2_reg_n_86,qmean_mul_r2_reg_n_87,qmean_mul_r2_reg_n_88,qmean_mul_r2_reg_n_89,qmean_mul_r2_reg_n_90,qmean_mul_r2_reg_n_91,qmean_mul_r2_reg_n_92,qmean_mul_r2_reg_n_93,qmean_mul_r2_reg_n_94,qmean_mul_r2_reg_n_95,qmean_mul_r2_reg_n_96,qmean_mul_r2_reg_n_97,qmean_mul_r2_reg_n_98,qmean_mul_r2_reg_n_99,qmean_mul_r2_reg_n_100,qmean_mul_r2_reg_n_101,qmean_mul_r2_reg_n_102,qmean_mul_r2_reg_n_103,qmean_mul_r2_reg_n_104,qmean_mul_r2_reg_n_105}),
-        .PATTERNBDETECT(NLW_qmean_mul_r2_reg_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qmean_mul_r2_reg_PATTERNDETECT_UNCONNECTED),
         .PCIN({qmean_mul_r20_n_106,qmean_mul_r20_n_107,qmean_mul_r20_n_108,qmean_mul_r20_n_109,qmean_mul_r20_n_110,qmean_mul_r20_n_111,qmean_mul_r20_n_112,qmean_mul_r20_n_113,qmean_mul_r20_n_114,qmean_mul_r20_n_115,qmean_mul_r20_n_116,qmean_mul_r20_n_117,qmean_mul_r20_n_118,qmean_mul_r20_n_119,qmean_mul_r20_n_120,qmean_mul_r20_n_121,qmean_mul_r20_n_122,qmean_mul_r20_n_123,qmean_mul_r20_n_124,qmean_mul_r20_n_125,qmean_mul_r20_n_126,qmean_mul_r20_n_127,qmean_mul_r20_n_128,qmean_mul_r20_n_129,qmean_mul_r20_n_130,qmean_mul_r20_n_131,qmean_mul_r20_n_132,qmean_mul_r20_n_133,qmean_mul_r20_n_134,qmean_mul_r20_n_135,qmean_mul_r20_n_136,qmean_mul_r20_n_137,qmean_mul_r20_n_138,qmean_mul_r20_n_139,qmean_mul_r20_n_140,qmean_mul_r20_n_141,qmean_mul_r20_n_142,qmean_mul_r20_n_143,qmean_mul_r20_n_144,qmean_mul_r20_n_145,qmean_mul_r20_n_146,qmean_mul_r20_n_147,qmean_mul_r20_n_148,qmean_mul_r20_n_149,qmean_mul_r20_n_150,qmean_mul_r20_n_151,qmean_mul_r20_n_152,qmean_mul_r20_n_153}),
-        .PCOUT(NLW_qmean_mul_r2_reg_PCOUT_UNCONNECTED[47:0]),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(rst),
-        .UNDERFLOW(NLW_qmean_mul_r2_reg_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(rst));
   FDRE #(
     .INIT(1'b0)) 
     \qmean_mul_r2_reg[0] 
@@ -27327,55 +26502,45 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qmean_mul_r2_reg__0
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,qsum_mul__0_n_76,qsum_mul__0_n_77,qsum_mul__0_n_78,qsum_mul__0_n_79,qsum_mul__0_n_80,qsum_mul__0_n_81,qsum_mul__0_n_82,qsum_mul__0_n_83,qsum_mul__0_n_84,qsum_mul__0_n_85,qsum_mul__0_n_86,qsum_mul__0_n_87,qsum_mul__0_n_88,qsum_mul__0_n_89,qsum_mul__0_n_90,qsum_mul__0_n_91,qsum_mul__0_n_92}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(NLW_qmean_mul_r2_reg__0_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,qsum_mul__0_n_76,qsum_mul__0_n_77,qsum_mul__0_n_78,qsum_mul__0_n_79,qsum_mul__0_n_80,qsum_mul__0_n_81,qsum_mul__0_n_82,qsum_mul__0_n_83,qsum_mul__0_n_84,qsum_mul__0_n_85,qsum_mul__0_n_86,qsum_mul__0_n_87,qsum_mul__0_n_88,qsum_mul__0_n_89,qsum_mul__0_n_90,qsum_mul__0_n_91,qsum_mul__0_n_92}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .B({qacc_out[31],qacc_out[31],qacc_out[31],qacc_out[31:17]}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qmean_mul_r2_reg__0_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qmean_mul_r2_reg__0_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qmean_mul_r2_reg__0_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(qacc_sq_out_r),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
         .CEP(enable),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qmean_mul_r2_reg__0_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qmean_mul_r2_reg__0_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qmean_mul_r2_reg__0_n_58,qmean_mul_r2_reg__0_n_59,qmean_mul_r2_reg__0_n_60,qmean_mul_r2_reg__0_n_61,qmean_mul_r2_reg__0_n_62,qmean_mul_r2_reg__0_n_63,qmean_mul_r2_reg__0_n_64,qmean_mul_r2_reg__0_n_65,qmean_mul_r2_reg__0_n_66,qmean_mul_r2_reg__0_n_67,qmean_mul_r2_reg__0_n_68,qmean_mul_r2_reg__0_n_69,qmean_mul_r2_reg__0_n_70,qmean_mul_r2_reg__0_n_71,qmean_mul_r2_reg__0_n_72,qmean_mul_r2_reg__0_n_73,qmean_mul_r2_reg__0_n_74,qmean_mul_r2_reg__0_n_75,qmean_mul_r2_reg__0_n_76,qmean_mul_r2_reg__0_n_77,qmean_mul_r2_reg__0_n_78,qmean_mul_r2_reg__0_n_79,qmean_mul_r2_reg__0_n_80,qmean_mul_r2_reg__0_n_81,qmean_mul_r2_reg__0_n_82,qmean_mul_r2_reg__0_n_83,qmean_mul_r2_reg__0_n_84,qmean_mul_r2_reg__0_n_85,qmean_mul_r2_reg__0_n_86,qmean_mul_r2_reg__0_n_87,qmean_mul_r2_reg__0_n_88,qmean_mul_r2_reg__0_n_89,qmean_mul_r2_reg__0_n_90,qmean_mul_r2_reg__0_n_91,qmean_mul_r2_reg__0_n_92,qmean_mul_r2_reg__0_n_93,qmean_mul_r2_reg__0_n_94,qmean_mul_r2_reg__0_n_95,qmean_mul_r2_reg__0_n_96,qmean_mul_r2_reg__0_n_97,qmean_mul_r2_reg__0_n_98,qmean_mul_r2_reg__0_n_99,qmean_mul_r2_reg__0_n_100,qmean_mul_r2_reg__0_n_101,qmean_mul_r2_reg__0_n_102,qmean_mul_r2_reg__0_n_103,qmean_mul_r2_reg__0_n_104,qmean_mul_r2_reg__0_n_105}),
-        .PATTERNBDETECT(NLW_qmean_mul_r2_reg__0_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qmean_mul_r2_reg__0_PATTERNDETECT_UNCONNECTED),
         .PCIN({qmean_mul_r20__0_n_106,qmean_mul_r20__0_n_107,qmean_mul_r20__0_n_108,qmean_mul_r20__0_n_109,qmean_mul_r20__0_n_110,qmean_mul_r20__0_n_111,qmean_mul_r20__0_n_112,qmean_mul_r20__0_n_113,qmean_mul_r20__0_n_114,qmean_mul_r20__0_n_115,qmean_mul_r20__0_n_116,qmean_mul_r20__0_n_117,qmean_mul_r20__0_n_118,qmean_mul_r20__0_n_119,qmean_mul_r20__0_n_120,qmean_mul_r20__0_n_121,qmean_mul_r20__0_n_122,qmean_mul_r20__0_n_123,qmean_mul_r20__0_n_124,qmean_mul_r20__0_n_125,qmean_mul_r20__0_n_126,qmean_mul_r20__0_n_127,qmean_mul_r20__0_n_128,qmean_mul_r20__0_n_129,qmean_mul_r20__0_n_130,qmean_mul_r20__0_n_131,qmean_mul_r20__0_n_132,qmean_mul_r20__0_n_133,qmean_mul_r20__0_n_134,qmean_mul_r20__0_n_135,qmean_mul_r20__0_n_136,qmean_mul_r20__0_n_137,qmean_mul_r20__0_n_138,qmean_mul_r20__0_n_139,qmean_mul_r20__0_n_140,qmean_mul_r20__0_n_141,qmean_mul_r20__0_n_142,qmean_mul_r20__0_n_143,qmean_mul_r20__0_n_144,qmean_mul_r20__0_n_145,qmean_mul_r20__0_n_146,qmean_mul_r20__0_n_147,qmean_mul_r20__0_n_148,qmean_mul_r20__0_n_149,qmean_mul_r20__0_n_150,qmean_mul_r20__0_n_151,qmean_mul_r20__0_n_152,qmean_mul_r20__0_n_153}),
-        .PCOUT(NLW_qmean_mul_r2_reg__0_PCOUT_UNCONNECTED[47:0]),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(rst),
-        .UNDERFLOW(NLW_qmean_mul_r2_reg__0_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(rst));
   FDRE #(
     .INIT(1'b0)) 
     \qmean_r2_reg[0] 
@@ -28819,10 +27984,10 @@ module layer_norm
         .Q(qmean_sq[19]),
         .R(rst));
   CARRY4 \qmean_sq_reg[19]_i_3 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qmean_sq_reg[19]_i_3_n_0 ,\qmean_sq_reg[19]_i_3_n_1 ,\qmean_sq_reg[19]_i_3_n_2 ,\qmean_sq_reg[19]_i_3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({qmean_mul_r2_reg__0_n_103,qmean_mul_r2_reg__0_n_104,qmean_mul_r2_reg__0_n_105,1'b0}),
+        .CYINIT(\<const0> ),
+        .DI({qmean_mul_r2_reg__0_n_103,qmean_mul_r2_reg__0_n_104,qmean_mul_r2_reg__0_n_105,\<const0> }),
         .O(qmean_mul_r2_reg__1[19:16]),
         .S({\qmean_sq[19]_i_4_n_0 ,\qmean_sq[19]_i_5_n_0 ,\qmean_sq[19]_i_6_n_0 ,\qmean_mul_r2_reg[16]__0_n_0 }));
   FDRE #(
@@ -28868,7 +28033,7 @@ module layer_norm
   CARRY4 \qmean_sq_reg[23]_i_3 
        (.CI(\qmean_sq_reg[19]_i_3_n_0 ),
         .CO({\qmean_sq_reg[23]_i_3_n_0 ,\qmean_sq_reg[23]_i_3_n_1 ,\qmean_sq_reg[23]_i_3_n_2 ,\qmean_sq_reg[23]_i_3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_99,qmean_mul_r2_reg__0_n_100,qmean_mul_r2_reg__0_n_101,qmean_mul_r2_reg__0_n_102}),
         .O(qmean_mul_r2_reg__1[23:20]),
         .S({\qmean_sq[23]_i_4_n_0 ,\qmean_sq[23]_i_5_n_0 ,\qmean_sq[23]_i_6_n_0 ,\qmean_sq[23]_i_7_n_0 }));
@@ -28907,7 +28072,7 @@ module layer_norm
   CARRY4 \qmean_sq_reg[27]_i_3 
        (.CI(\qmean_sq_reg[23]_i_3_n_0 ),
         .CO({\qmean_sq_reg[27]_i_3_n_0 ,\qmean_sq_reg[27]_i_3_n_1 ,\qmean_sq_reg[27]_i_3_n_2 ,\qmean_sq_reg[27]_i_3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_95,qmean_mul_r2_reg__0_n_96,qmean_mul_r2_reg__0_n_97,qmean_mul_r2_reg__0_n_98}),
         .O(qmean_mul_r2_reg__1[27:24]),
         .S({\qmean_sq[27]_i_4_n_0 ,\qmean_sq[27]_i_5_n_0 ,\qmean_sq[27]_i_6_n_0 ,\qmean_sq[27]_i_7_n_0 }));
@@ -28954,63 +28119,63 @@ module layer_norm
   CARRY4 \qmean_sq_reg[31]_i_10 
        (.CI(\qmean_sq_reg[27]_i_3_n_0 ),
         .CO({\qmean_sq_reg[31]_i_10_n_0 ,\qmean_sq_reg[31]_i_10_n_1 ,\qmean_sq_reg[31]_i_10_n_2 ,\qmean_sq_reg[31]_i_10_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_91,qmean_mul_r2_reg__0_n_92,qmean_mul_r2_reg__0_n_93,qmean_mul_r2_reg__0_n_94}),
         .O(qmean_mul_r2_reg__1[31:28]),
         .S({\qmean_sq[31]_i_31_n_0 ,\qmean_sq[31]_i_32_n_0 ,\qmean_sq[31]_i_33_n_0 ,\qmean_sq[31]_i_34_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_11 
        (.CI(\qmean_sq_reg[31]_i_8_n_0 ),
         .CO({\qmean_sq_reg[31]_i_11_n_0 ,\qmean_sq_reg[31]_i_11_n_1 ,\qmean_sq_reg[31]_i_11_n_2 ,\qmean_sq_reg[31]_i_11_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_75,qmean_mul_r2_reg__0_n_76,qmean_mul_r2_reg__0_n_77,qmean_mul_r2_reg__0_n_78}),
         .O(qmean_mul_r2_reg__1[47:44]),
         .S({\qmean_sq[31]_i_35_n_0 ,\qmean_sq[31]_i_36_n_0 ,\qmean_sq[31]_i_37_n_0 ,\qmean_sq[31]_i_38_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_12 
        (.CI(\qmean_sq_reg[31]_i_6_n_0 ),
         .CO({\qmean_sq_reg[31]_i_12_n_0 ,\qmean_sq_reg[31]_i_12_n_1 ,\qmean_sq_reg[31]_i_12_n_2 ,\qmean_sq_reg[31]_i_12_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_83,qmean_mul_r2_reg__0_n_84,qmean_mul_r2_reg__0_n_85,qmean_mul_r2_reg__0_n_86}),
         .O(qmean_mul_r2_reg__1[39:36]),
         .S({\qmean_sq[31]_i_39_n_0 ,\qmean_sq[31]_i_40_n_0 ,\qmean_sq[31]_i_41_n_0 ,\qmean_sq[31]_i_42_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_13 
        (.CI(\qmean_sq_reg[31]_i_7_n_0 ),
         .CO({\qmean_sq_reg[31]_i_13_n_0 ,\qmean_sq_reg[31]_i_13_n_1 ,\qmean_sq_reg[31]_i_13_n_2 ,\qmean_sq_reg[31]_i_13_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_67,qmean_mul_r2_reg__0_n_68,qmean_mul_r2_reg__0_n_69,qmean_mul_r2_reg__0_n_70}),
         .O(qmean_mul_r2_reg__1[55:52]),
         .S({\qmean_sq[31]_i_43_n_0 ,\qmean_sq[31]_i_44_n_0 ,\qmean_sq[31]_i_45_n_0 ,\qmean_sq[31]_i_46_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_14 
        (.CI(\qmean_sq_reg[31]_i_9_n_0 ),
-        .CO({\NLW_qmean_sq_reg[31]_i_14_CO_UNCONNECTED [3:1],\qmean_sq_reg[31]_i_14_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,qmean_mul_r2_reg__0_n_62}),
-        .O({\NLW_qmean_sq_reg[31]_i_14_O_UNCONNECTED [3:2],qmean_mul_r2_reg__1[61:60]}),
-        .S({1'b0,1'b0,\qmean_sq[31]_i_47_n_0 ,\qmean_sq[31]_i_48_n_0 }));
+        .CO(\qmean_sq_reg[31]_i_14_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,qmean_mul_r2_reg__0_n_62}),
+        .O(qmean_mul_r2_reg__1[61:60]),
+        .S({\<const0> ,\<const0> ,\qmean_sq[31]_i_47_n_0 ,\qmean_sq[31]_i_48_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_6 
        (.CI(\qmean_sq_reg[31]_i_10_n_0 ),
         .CO({\qmean_sq_reg[31]_i_6_n_0 ,\qmean_sq_reg[31]_i_6_n_1 ,\qmean_sq_reg[31]_i_6_n_2 ,\qmean_sq_reg[31]_i_6_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_87,qmean_mul_r2_reg__0_n_88,qmean_mul_r2_reg__0_n_89,qmean_mul_r2_reg__0_n_90}),
         .O(qmean_mul_r2_reg__1[35:32]),
         .S({\qmean_sq[31]_i_15_n_0 ,\qmean_sq[31]_i_16_n_0 ,\qmean_sq[31]_i_17_n_0 ,\qmean_sq[31]_i_18_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_7 
        (.CI(\qmean_sq_reg[31]_i_11_n_0 ),
         .CO({\qmean_sq_reg[31]_i_7_n_0 ,\qmean_sq_reg[31]_i_7_n_1 ,\qmean_sq_reg[31]_i_7_n_2 ,\qmean_sq_reg[31]_i_7_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_71,qmean_mul_r2_reg__0_n_72,qmean_mul_r2_reg__0_n_73,qmean_mul_r2_reg__0_n_74}),
         .O(qmean_mul_r2_reg__1[51:48]),
         .S({\qmean_sq[31]_i_19_n_0 ,\qmean_sq[31]_i_20_n_0 ,\qmean_sq[31]_i_21_n_0 ,\qmean_sq[31]_i_22_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_8 
        (.CI(\qmean_sq_reg[31]_i_12_n_0 ),
         .CO({\qmean_sq_reg[31]_i_8_n_0 ,\qmean_sq_reg[31]_i_8_n_1 ,\qmean_sq_reg[31]_i_8_n_2 ,\qmean_sq_reg[31]_i_8_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_79,qmean_mul_r2_reg__0_n_80,qmean_mul_r2_reg__0_n_81,qmean_mul_r2_reg__0_n_82}),
         .O(qmean_mul_r2_reg__1[43:40]),
         .S({\qmean_sq[31]_i_23_n_0 ,\qmean_sq[31]_i_24_n_0 ,\qmean_sq[31]_i_25_n_0 ,\qmean_sq[31]_i_26_n_0 }));
   CARRY4 \qmean_sq_reg[31]_i_9 
        (.CI(\qmean_sq_reg[31]_i_13_n_0 ),
         .CO({\qmean_sq_reg[31]_i_9_n_0 ,\qmean_sq_reg[31]_i_9_n_1 ,\qmean_sq_reg[31]_i_9_n_2 ,\qmean_sq_reg[31]_i_9_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qmean_mul_r2_reg__0_n_63,qmean_mul_r2_reg__0_n_64,qmean_mul_r2_reg__0_n_65,qmean_mul_r2_reg__0_n_66}),
         .O(qmean_mul_r2_reg__1[59:56]),
         .S({\qmean_sq[31]_i_27_n_0 ,\qmean_sq[31]_i_28_n_0 ,\qmean_sq[31]_i_29_n_0 ,\qmean_sq[31]_i_30_n_0 }));
@@ -29296,55 +28461,46 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qout_r0
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\qdiv_out_r_reg_n_0_[16] ,\qdiv_out_r_reg_n_0_[15] ,\qdiv_out_r_reg_n_0_[14] ,\qdiv_out_r_reg_n_0_[13] ,\qdiv_out_r_reg_n_0_[12] ,\qdiv_out_r_reg_n_0_[11] ,\qdiv_out_r_reg_n_0_[10] ,\qdiv_out_r_reg_n_0_[9] ,\qdiv_out_r_reg_n_0_[8] ,\qdiv_out_r_reg_n_0_[7] ,\qdiv_out_r_reg_n_0_[6] ,\qdiv_out_r_reg_n_0_[5] ,\qdiv_out_r_reg_n_0_[4] ,\qdiv_out_r_reg_n_0_[3] ,\qdiv_out_r_reg_n_0_[2] ,\qdiv_out_r_reg_n_0_[1] ,\qdiv_out_r_reg_n_0_[0] }),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .ACOUT(NLW_qout_r0_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({1'b0,1'b0,1'b0,rddata[31:17]}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qout_r0_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qout_r0_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qout_r0_CARRYOUT_UNCONNECTED[3:0]),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\qdiv_out_r_reg_n_0_[16] ,\qdiv_out_r_reg_n_0_[15] ,\qdiv_out_r_reg_n_0_[14] ,\qdiv_out_r_reg_n_0_[13] ,\qdiv_out_r_reg_n_0_[12] ,\qdiv_out_r_reg_n_0_[11] ,\qdiv_out_r_reg_n_0_[10] ,\qdiv_out_r_reg_n_0_[9] ,\qdiv_out_r_reg_n_0_[8] ,\qdiv_out_r_reg_n_0_[7] ,\qdiv_out_r_reg_n_0_[6] ,\qdiv_out_r_reg_n_0_[5] ,\qdiv_out_r_reg_n_0_[4] ,\qdiv_out_r_reg_n_0_[3] ,\qdiv_out_r_reg_n_0_[2] ,\qdiv_out_r_reg_n_0_[1] ,\qdiv_out_r_reg_n_0_[0] }),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .B({\<const0> ,\<const0> ,\<const0> ,rddata[31:17]}),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
         .CEA1(qdiv_out_r1),
         .CEA2(enable),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
-        .CEB1(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
+        .CEB1(\<const0> ),
         .CEB2(shift_en0),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
         .CEP(enable),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qout_r0_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qout_r0_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qout_r0_n_58,qout_r0_n_59,qout_r0_n_60,qout_r0_n_61,qout_r0_n_62,qout_r0_n_63,qout_r0_n_64,qout_r0_n_65,qout_r0_n_66,qout_r0_n_67,qout_r0_n_68,qout_r0_n_69,qout_r0_n_70,qout_r0_n_71,qout_r0_n_72,qout_r0_n_73,qout_r0_n_74,qout_r0_n_75,qout_r0_n_76,qout_r0_n_77,qout_r0_n_78,qout_r0_n_79,qout_r0_n_80,qout_r0_n_81,qout_r0_n_82,qout_r0_n_83,qout_r0_n_84,qout_r0_n_85,qout_r0_n_86,qout_r0_n_87,qout_r0_n_88,qout_r0_n_89,qout_r0_n_90,qout_r0_n_91,qout_r0_n_92,qout_r0_n_93,qout_r0_n_94,qout_r0_n_95,qout_r0_n_96,qout_r0_n_97,qout_r0_n_98,qout_r0_n_99,qout_r0_n_100,qout_r0_n_101,qout_r0_n_102,qout_r0_n_103,qout_r0_n_104,qout_r0_n_105}),
-        .PATTERNBDETECT(NLW_qout_r0_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qout_r0_PATTERNDETECT_UNCONNECTED),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({qout_r0_n_106,qout_r0_n_107,qout_r0_n_108,qout_r0_n_109,qout_r0_n_110,qout_r0_n_111,qout_r0_n_112,qout_r0_n_113,qout_r0_n_114,qout_r0_n_115,qout_r0_n_116,qout_r0_n_117,qout_r0_n_118,qout_r0_n_119,qout_r0_n_120,qout_r0_n_121,qout_r0_n_122,qout_r0_n_123,qout_r0_n_124,qout_r0_n_125,qout_r0_n_126,qout_r0_n_127,qout_r0_n_128,qout_r0_n_129,qout_r0_n_130,qout_r0_n_131,qout_r0_n_132,qout_r0_n_133,qout_r0_n_134,qout_r0_n_135,qout_r0_n_136,qout_r0_n_137,qout_r0_n_138,qout_r0_n_139,qout_r0_n_140,qout_r0_n_141,qout_r0_n_142,qout_r0_n_143,qout_r0_n_144,qout_r0_n_145,qout_r0_n_146,qout_r0_n_147,qout_r0_n_148,qout_r0_n_149,qout_r0_n_150,qout_r0_n_151,qout_r0_n_152,qout_r0_n_153}),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(rst),
-        .UNDERFLOW(NLW_qout_r0_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(rst));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-10 {cell *THIS*} {string 18x18 4}}" *) 
   DSP48E1 #(
     .ACASCREG(1),
@@ -29373,55 +28529,47 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qout_r0__0
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,rddata[16:0]}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,rddata[16:0]}),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .ACOUT({qout_r0__0_n_24,qout_r0__0_n_25,qout_r0__0_n_26,qout_r0__0_n_27,qout_r0__0_n_28,qout_r0__0_n_29,qout_r0__0_n_30,qout_r0__0_n_31,qout_r0__0_n_32,qout_r0__0_n_33,qout_r0__0_n_34,qout_r0__0_n_35,qout_r0__0_n_36,qout_r0__0_n_37,qout_r0__0_n_38,qout_r0__0_n_39,qout_r0__0_n_40,qout_r0__0_n_41,qout_r0__0_n_42,qout_r0__0_n_43,qout_r0__0_n_44,qout_r0__0_n_45,qout_r0__0_n_46,qout_r0__0_n_47,qout_r0__0_n_48,qout_r0__0_n_49,qout_r0__0_n_50,qout_r0__0_n_51,qout_r0__0_n_52,qout_r0__0_n_53}),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({1'b0,\qdiv_out_r_reg_n_0_[16] ,\qdiv_out_r_reg_n_0_[15] ,\qdiv_out_r_reg_n_0_[14] ,\qdiv_out_r_reg_n_0_[13] ,\qdiv_out_r_reg_n_0_[12] ,\qdiv_out_r_reg_n_0_[11] ,\qdiv_out_r_reg_n_0_[10] ,\qdiv_out_r_reg_n_0_[9] ,\qdiv_out_r_reg_n_0_[8] ,\qdiv_out_r_reg_n_0_[7] ,\qdiv_out_r_reg_n_0_[6] ,\qdiv_out_r_reg_n_0_[5] ,\qdiv_out_r_reg_n_0_[4] ,\qdiv_out_r_reg_n_0_[3] ,\qdiv_out_r_reg_n_0_[2] ,\qdiv_out_r_reg_n_0_[1] ,\qdiv_out_r_reg_n_0_[0] }),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qout_r0__0_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qout_r0__0_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qout_r0__0_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .B({\<const0> ,\qdiv_out_r_reg_n_0_[16] ,\qdiv_out_r_reg_n_0_[15] ,\qdiv_out_r_reg_n_0_[14] ,\qdiv_out_r_reg_n_0_[13] ,\qdiv_out_r_reg_n_0_[12] ,\qdiv_out_r_reg_n_0_[11] ,\qdiv_out_r_reg_n_0_[10] ,\qdiv_out_r_reg_n_0_[9] ,\qdiv_out_r_reg_n_0_[8] ,\qdiv_out_r_reg_n_0_[7] ,\qdiv_out_r_reg_n_0_[6] ,\qdiv_out_r_reg_n_0_[5] ,\qdiv_out_r_reg_n_0_[4] ,\qdiv_out_r_reg_n_0_[3] ,\qdiv_out_r_reg_n_0_[2] ,\qdiv_out_r_reg_n_0_[1] ,\qdiv_out_r_reg_n_0_[0] }),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
         .CEA2(shift_en0),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(qdiv_out_r1),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qout_r0__0_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qout_r0__0_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qout_r0__0_n_58,qout_r0__0_n_59,qout_r0__0_n_60,qout_r0__0_n_61,qout_r0__0_n_62,qout_r0__0_n_63,qout_r0__0_n_64,qout_r0__0_n_65,qout_r0__0_n_66,qout_r0__0_n_67,qout_r0__0_n_68,qout_r0__0_n_69,qout_r0__0_n_70,qout_r0__0_n_71,qout_r0__0_n_72,qout_r0__0_n_73,qout_r0__0_n_74,qout_r0__0_n_75,qout_r0__0_n_76,qout_r0__0_n_77,qout_r0__0_n_78,qout_r0__0_n_79,qout_r0__0_n_80,qout_r0__0_n_81,qout_r0__0_n_82,qout_r0__0_n_83,qout_r0__0_n_84,qout_r0__0_n_85,qout_r0__0_n_86,qout_r0__0_n_87,qout_r0__0_n_88,qout_r0__0_n_89,qout_r0__0_n_90,qout_r0__0_n_91,qout_r0__0_n_92,qout_r0__0_n_93,qout_r0__0_n_94,qout_r0__0_n_95,qout_r0__0_n_96,qout_r0__0_n_97,qout_r0__0_n_98,qout_r0__0_n_99,qout_r0__0_n_100,qout_r0__0_n_101,qout_r0__0_n_102,qout_r0__0_n_103,qout_r0__0_n_104,qout_r0__0_n_105}),
-        .PATTERNBDETECT(NLW_qout_r0__0_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qout_r0__0_PATTERNDETECT_UNCONNECTED),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({qout_r0__0_n_106,qout_r0__0_n_107,qout_r0__0_n_108,qout_r0__0_n_109,qout_r0__0_n_110,qout_r0__0_n_111,qout_r0__0_n_112,qout_r0__0_n_113,qout_r0__0_n_114,qout_r0__0_n_115,qout_r0__0_n_116,qout_r0__0_n_117,qout_r0__0_n_118,qout_r0__0_n_119,qout_r0__0_n_120,qout_r0__0_n_121,qout_r0__0_n_122,qout_r0__0_n_123,qout_r0__0_n_124,qout_r0__0_n_125,qout_r0__0_n_126,qout_r0__0_n_127,qout_r0__0_n_128,qout_r0__0_n_129,qout_r0__0_n_130,qout_r0__0_n_131,qout_r0__0_n_132,qout_r0__0_n_133,qout_r0__0_n_134,qout_r0__0_n_135,qout_r0__0_n_136,qout_r0__0_n_137,qout_r0__0_n_138,qout_r0__0_n_139,qout_r0__0_n_140,qout_r0__0_n_141,qout_r0__0_n_142,qout_r0__0_n_143,qout_r0__0_n_144,qout_r0__0_n_145,qout_r0__0_n_146,qout_r0__0_n_147,qout_r0__0_n_148,qout_r0__0_n_149,qout_r0__0_n_150,qout_r0__0_n_151,qout_r0__0_n_152,qout_r0__0_n_153}),
         .RSTA(rst),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(NLW_qout_r0__0_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   LUT2 #(
     .INIT(4'h8)) 
     qout_r0_i_1
@@ -29913,7 +29061,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[11]_i_1 
        (.CI(\qout_r1_reg[7]_i_1_n_0 ),
         .CO({\qout_r1_reg[11]_i_1_n_0 ,\qout_r1_reg[11]_i_1_n_1 ,\qout_r1_reg[11]_i_1_n_2 ,\qout_r1_reg[11]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qout_r_reg[12]__0_n_0 ,\qout_r_reg[11]__0_n_0 ,\qout_r_reg[10]__0_n_0 ,\qout_r_reg[9]__0_n_0 }),
         .O(p_0_in[11:8]),
         .S({\qout_r1[11]_i_2_n_0 ,\qout_r1[11]_i_3_n_0 ,\qout_r1[11]_i_4_n_0 ,\qout_r1[11]_i_5_n_0 }));
@@ -29953,7 +29101,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[15]_i_1 
        (.CI(\qout_r1_reg[11]_i_1_n_0 ),
         .CO({\qout_r1_reg[15]_i_1_n_0 ,\qout_r1_reg[15]_i_1_n_1 ,\qout_r1_reg[15]_i_1_n_2 ,\qout_r1_reg[15]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qout_r_reg__1[16],\qout_r_reg[15]__0_n_0 ,\qout_r_reg[14]__0_n_0 ,\qout_r_reg[13]__0_n_0 }),
         .O(p_0_in[15:12]),
         .S({\qout_r1[15]_i_2_n_0 ,\qout_r1[15]_i_3_n_0 ,\qout_r1[15]_i_4_n_0 ,\qout_r1[15]_i_5_n_0 }));
@@ -29993,16 +29141,16 @@ module layer_norm
   CARRY4 \qout_r1_reg[19]_i_1 
        (.CI(\qout_r1_reg[15]_i_1_n_0 ),
         .CO({\qout_r1_reg[19]_i_1_n_0 ,\qout_r1_reg[19]_i_1_n_1 ,\qout_r1_reg[19]_i_1_n_2 ,\qout_r1_reg[19]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qout_r_reg__1[20:17]),
         .O(p_0_in[19:16]),
         .S({\qout_r1[19]_i_3_n_0 ,\qout_r1[19]_i_4_n_0 ,\qout_r1[19]_i_5_n_0 ,\qout_r1[19]_i_6_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qout_r1_reg[19]_i_2 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qout_r1_reg[19]_i_2_n_0 ,\qout_r1_reg[19]_i_2_n_1 ,\qout_r1_reg[19]_i_2_n_2 ,\qout_r1_reg[19]_i_2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({qout_r_reg_n_103,qout_r_reg_n_104,qout_r_reg_n_105,1'b0}),
+        .CYINIT(\<const0> ),
+        .DI({qout_r_reg_n_103,qout_r_reg_n_104,qout_r_reg_n_105,\<const0> }),
         .O(qout_r_reg__1[19:16]),
         .S({\qout_r1[19]_i_7_n_0 ,\qout_r1[19]_i_8_n_0 ,\qout_r1[19]_i_9_n_0 ,\qout_r_reg[16]__0_n_0 }));
   FDRE #(
@@ -30049,7 +29197,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[23]_i_1 
        (.CI(\qout_r1_reg[19]_i_1_n_0 ),
         .CO({\qout_r1_reg[23]_i_1_n_0 ,\qout_r1_reg[23]_i_1_n_1 ,\qout_r1_reg[23]_i_1_n_2 ,\qout_r1_reg[23]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qout_r_reg__1[24:21]),
         .O(p_0_in[23:20]),
         .S({\qout_r1[23]_i_3_n_0 ,\qout_r1[23]_i_4_n_0 ,\qout_r1[23]_i_5_n_0 ,\qout_r1[23]_i_6_n_0 }));
@@ -30057,7 +29205,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[23]_i_2 
        (.CI(\qout_r1_reg[19]_i_2_n_0 ),
         .CO({\qout_r1_reg[23]_i_2_n_0 ,\qout_r1_reg[23]_i_2_n_1 ,\qout_r1_reg[23]_i_2_n_2 ,\qout_r1_reg[23]_i_2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qout_r_reg_n_99,qout_r_reg_n_100,qout_r_reg_n_101,qout_r_reg_n_102}),
         .O(qout_r_reg__1[23:20]),
         .S({\qout_r1[23]_i_7_n_0 ,\qout_r1[23]_i_8_n_0 ,\qout_r1[23]_i_9_n_0 ,\qout_r1[23]_i_10_n_0 }));
@@ -30097,7 +29245,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[27]_i_1 
        (.CI(\qout_r1_reg[23]_i_1_n_0 ),
         .CO({\qout_r1_reg[27]_i_1_n_0 ,\qout_r1_reg[27]_i_1_n_1 ,\qout_r1_reg[27]_i_1_n_2 ,\qout_r1_reg[27]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qout_r_reg__1[28:25]),
         .O(p_0_in[27:24]),
         .S({\qout_r1[27]_i_3_n_0 ,\qout_r1[27]_i_4_n_0 ,\qout_r1[27]_i_5_n_0 ,\qout_r1[27]_i_6_n_0 }));
@@ -30105,7 +29253,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[27]_i_2 
        (.CI(\qout_r1_reg[23]_i_2_n_0 ),
         .CO({\qout_r1_reg[27]_i_2_n_0 ,\qout_r1_reg[27]_i_2_n_1 ,\qout_r1_reg[27]_i_2_n_2 ,\qout_r1_reg[27]_i_2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({qout_r_reg_n_95,qout_r_reg_n_96,qout_r_reg_n_97,qout_r_reg_n_98}),
         .O(qout_r_reg__1[27:24]),
         .S({\qout_r1[27]_i_7_n_0 ,\qout_r1[27]_i_8_n_0 ,\qout_r1[27]_i_9_n_0 ,\qout_r1[27]_i_10_n_0 }));
@@ -30152,17 +29300,17 @@ module layer_norm
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qout_r1_reg[31]_i_1 
        (.CI(\qout_r1_reg[27]_i_1_n_0 ),
-        .CO({\NLW_qout_r1_reg[31]_i_1_CO_UNCONNECTED [3],\qout_r1_reg[31]_i_1_n_1 ,\qout_r1_reg[31]_i_1_n_2 ,\qout_r1_reg[31]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qout_r1[31]_i_2_n_0 ,qout_r_reg__1[30:29]}),
+        .CO({\qout_r1_reg[31]_i_1_n_1 ,\qout_r1_reg[31]_i_1_n_2 ,\qout_r1_reg[31]_i_1_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qout_r1[31]_i_2_n_0 ,qout_r_reg__1[30:29]}),
         .O(p_0_in[31:28]),
         .S({\qout_r1[31]_i_4_n_0 ,\qout_r1[31]_i_5_n_0 ,\qout_r1[31]_i_6_n_0 ,\qout_r1[31]_i_7_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qout_r1_reg[31]_i_3 
        (.CI(\qout_r1_reg[27]_i_2_n_0 ),
-        .CO({\NLW_qout_r1_reg[31]_i_3_CO_UNCONNECTED [3],\qout_r1_reg[31]_i_3_n_1 ,\qout_r1_reg[31]_i_3_n_2 ,\qout_r1_reg[31]_i_3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,qout_r_reg_n_92,qout_r_reg_n_93,qout_r_reg_n_94}),
+        .CO({\qout_r1_reg[31]_i_3_n_1 ,\qout_r1_reg[31]_i_3_n_2 ,\qout_r1_reg[31]_i_3_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,qout_r_reg_n_92,qout_r_reg_n_93,qout_r_reg_n_94}),
         .O(qout_r_reg__1[31:28]),
         .S({\qout_r1[31]_i_8_n_0 ,\qout_r1[31]_i_9_n_0 ,\qout_r1[31]_i_10_n_0 ,\qout_r1[31]_i_11_n_0 }));
   FDRE #(
@@ -30175,9 +29323,9 @@ module layer_norm
         .R(rst));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qout_r1_reg[3]_i_1 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qout_r1_reg[3]_i_1_n_0 ,\qout_r1_reg[3]_i_1_n_1 ,\qout_r1_reg[3]_i_1_n_2 ,\qout_r1_reg[3]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qout_r_reg[4]__0_n_0 ,\qout_r_reg[3]__0_n_0 ,\qout_r_reg[2]__0_n_0 ,\qout_r_reg[1]__0_n_0 }),
         .O(p_0_in[3:0]),
         .S({\qout_r1[3]_i_2_n_0 ,\qout_r1[3]_i_3_n_0 ,\qout_r1[3]_i_4_n_0 ,\qout_r1[3]_i_5_n_0 }));
@@ -30217,7 +29365,7 @@ module layer_norm
   CARRY4 \qout_r1_reg[7]_i_1 
        (.CI(\qout_r1_reg[3]_i_1_n_0 ),
         .CO({\qout_r1_reg[7]_i_1_n_0 ,\qout_r1_reg[7]_i_1_n_1 ,\qout_r1_reg[7]_i_1_n_2 ,\qout_r1_reg[7]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qout_r_reg[8]__0_n_0 ,\qout_r_reg[7]__0_n_0 ,\qout_r_reg[6]__0_n_0 ,\qout_r_reg[5]__0_n_0 }),
         .O(p_0_in[7:4]),
         .S({\qout_r1[7]_i_2_n_0 ,\qout_r1[7]_i_3_n_0 ,\qout_r1[7]_i_4_n_0 ,\qout_r1[7]_i_5_n_0 }));
@@ -30265,55 +29413,45 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qout_r_reg
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .ACIN({qout_r0__0_n_24,qout_r0__0_n_25,qout_r0__0_n_26,qout_r0__0_n_27,qout_r0__0_n_28,qout_r0__0_n_29,qout_r0__0_n_30,qout_r0__0_n_31,qout_r0__0_n_32,qout_r0__0_n_33,qout_r0__0_n_34,qout_r0__0_n_35,qout_r0__0_n_36,qout_r0__0_n_37,qout_r0__0_n_38,qout_r0__0_n_39,qout_r0__0_n_40,qout_r0__0_n_41,qout_r0__0_n_42,qout_r0__0_n_43,qout_r0__0_n_44,qout_r0__0_n_45,qout_r0__0_n_46,qout_r0__0_n_47,qout_r0__0_n_48,qout_r0__0_n_49,qout_r0__0_n_50,qout_r0__0_n_51,qout_r0__0_n_52,qout_r0__0_n_53}),
-        .ACOUT(NLW_qout_r_reg_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({1'b0,1'b0,1'b0,\qdiv_out_r_reg_n_0_[31] ,\qdiv_out_r_reg_n_0_[30] ,\qdiv_out_r_reg_n_0_[29] ,\qdiv_out_r_reg_n_0_[28] ,\qdiv_out_r_reg_n_0_[27] ,\qdiv_out_r_reg_n_0_[26] ,\qdiv_out_r_reg_n_0_[25] ,\qdiv_out_r_reg_n_0_[24] ,\qdiv_out_r_reg_n_0_[23] ,\qdiv_out_r_reg_n_0_[22] ,\qdiv_out_r_reg_n_0_[21] ,\qdiv_out_r_reg_n_0_[20] ,\qdiv_out_r_reg_n_0_[19] ,\qdiv_out_r_reg_n_0_[18] ,\qdiv_out_r_reg_n_0_[17] }),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qout_r_reg_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qout_r_reg_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qout_r_reg_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
-        .CEA2(1'b0),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .B({\<const0> ,\<const0> ,\<const0> ,\qdiv_out_r_reg_n_0_[31] ,\qdiv_out_r_reg_n_0_[30] ,\qdiv_out_r_reg_n_0_[29] ,\qdiv_out_r_reg_n_0_[28] ,\qdiv_out_r_reg_n_0_[27] ,\qdiv_out_r_reg_n_0_[26] ,\qdiv_out_r_reg_n_0_[25] ,\qdiv_out_r_reg_n_0_[24] ,\qdiv_out_r_reg_n_0_[23] ,\qdiv_out_r_reg_n_0_[22] ,\qdiv_out_r_reg_n_0_[21] ,\qdiv_out_r_reg_n_0_[20] ,\qdiv_out_r_reg_n_0_[19] ,\qdiv_out_r_reg_n_0_[18] ,\qdiv_out_r_reg_n_0_[17] }),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
+        .CEA2(\<const0> ),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(qdiv_out_r1),
         .CEB2(enable),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
         .CEP(enable),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qout_r_reg_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qout_r_reg_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qout_r_reg_n_58,qout_r_reg_n_59,qout_r_reg_n_60,qout_r_reg_n_61,qout_r_reg_n_62,qout_r_reg_n_63,qout_r_reg_n_64,qout_r_reg_n_65,qout_r_reg_n_66,qout_r_reg_n_67,qout_r_reg_n_68,qout_r_reg_n_69,qout_r_reg_n_70,qout_r_reg_n_71,qout_r_reg_n_72,qout_r_reg_n_73,qout_r_reg_n_74,qout_r_reg_n_75,qout_r_reg_n_76,qout_r_reg_n_77,qout_r_reg_n_78,qout_r_reg_n_79,qout_r_reg_n_80,qout_r_reg_n_81,qout_r_reg_n_82,qout_r_reg_n_83,qout_r_reg_n_84,qout_r_reg_n_85,qout_r_reg_n_86,qout_r_reg_n_87,qout_r_reg_n_88,qout_r_reg_n_89,qout_r_reg_n_90,qout_r_reg_n_91,qout_r_reg_n_92,qout_r_reg_n_93,qout_r_reg_n_94,qout_r_reg_n_95,qout_r_reg_n_96,qout_r_reg_n_97,qout_r_reg_n_98,qout_r_reg_n_99,qout_r_reg_n_100,qout_r_reg_n_101,qout_r_reg_n_102,qout_r_reg_n_103,qout_r_reg_n_104,qout_r_reg_n_105}),
-        .PATTERNBDETECT(NLW_qout_r_reg_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qout_r_reg_PATTERNDETECT_UNCONNECTED),
         .PCIN({qout_r0__0_n_106,qout_r0__0_n_107,qout_r0__0_n_108,qout_r0__0_n_109,qout_r0__0_n_110,qout_r0__0_n_111,qout_r0__0_n_112,qout_r0__0_n_113,qout_r0__0_n_114,qout_r0__0_n_115,qout_r0__0_n_116,qout_r0__0_n_117,qout_r0__0_n_118,qout_r0__0_n_119,qout_r0__0_n_120,qout_r0__0_n_121,qout_r0__0_n_122,qout_r0__0_n_123,qout_r0__0_n_124,qout_r0__0_n_125,qout_r0__0_n_126,qout_r0__0_n_127,qout_r0__0_n_128,qout_r0__0_n_129,qout_r0__0_n_130,qout_r0__0_n_131,qout_r0__0_n_132,qout_r0__0_n_133,qout_r0__0_n_134,qout_r0__0_n_135,qout_r0__0_n_136,qout_r0__0_n_137,qout_r0__0_n_138,qout_r0__0_n_139,qout_r0__0_n_140,qout_r0__0_n_141,qout_r0__0_n_142,qout_r0__0_n_143,qout_r0__0_n_144,qout_r0__0_n_145,qout_r0__0_n_146,qout_r0__0_n_147,qout_r0__0_n_148,qout_r0__0_n_149,qout_r0__0_n_150,qout_r0__0_n_151,qout_r0__0_n_152,qout_r0__0_n_153}),
-        .PCOUT(NLW_qout_r_reg_PCOUT_UNCONNECTED[47:0]),
-        .RSTA(1'b0),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTA(\<const0> ),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(rst),
-        .UNDERFLOW(NLW_qout_r_reg_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(rst));
   FDRE #(
     .INIT(1'b0)) 
     \qout_r_reg[10]__0 
@@ -34439,12 +33577,11 @@ module layer_norm
   SRLC32E #(
     .INIT(32'h00000000)) 
     \qsqrt/in_v_r_reg[15]_srl21___qsqrt_in_v_r_reg_r_14 
-       (.A({1'b1,1'b0,1'b1,1'b0,1'b0}),
+       (.A({\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const0> }),
         .CE(enable),
         .CLK(clk),
         .D(qacc_out_v_reg_n_0),
-        .Q(\qsqrt/in_v_r_reg[15]_srl21___qsqrt_in_v_r_reg_r_14_n_0 ),
-        .Q31(\NLW_qsqrt/in_v_r_reg[15]_srl21___qsqrt_in_v_r_reg_r_14_Q31_UNCONNECTED ));
+        .Q(\qsqrt/in_v_r_reg[15]_srl21___qsqrt_in_v_r_reg_r_14_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/in_v_r_reg_r 
@@ -34586,7 +33723,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/in_v_r_reg[15]_srl21___qsqrt_in_v_r_reg_r_14_n_0 ),
         .Q(\qsqrt/out_v_r_reg_qsqrt_out_v_r_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/out_v_r_reg_r 
@@ -34596,21 +33733,21 @@ module layer_norm
         .Q(\qsqrt/out_v_r_reg_r_n_0 ),
         .R(rst));
   CARRY4 \qsqrt/p_1_out_carry 
-       (.CI(1'b0),
-        .CO({\NLW_qsqrt/p_1_out_carry_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_carry_n_3 }),
+       (.CI(\<const0> ),
+        .CO(\qsqrt/p_1_out_carry_n_3 ),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[0][0] ),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[0][1] }),
-        .O({\NLW_qsqrt/p_1_out_carry_O_UNCONNECTED [3:2],\qsqrt/p_0_in ,\qsqrt/p_1_out_carry_n_7 }),
-        .S({1'b0,1'b0,1'b1,p_1_out_carry_i_1_n_0}));
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[0][1] }),
+        .O({\qsqrt/p_0_in ,\qsqrt/p_1_out_carry_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,p_1_out_carry_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__0/i__carry 
-       (.CI(1'b0),
-        .CO({\NLW_qsqrt/p_1_out_inferred__0/i__carry_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__0/i__carry_n_1 ,\qsqrt/p_1_out_inferred__0/i__carry_n_2 ,\qsqrt/p_1_out_inferred__0/i__carry_n_3 }),
+       (.CI(\<const0> ),
+        .CO({\qsqrt/p_1_out_inferred__0/i__carry_n_1 ,\qsqrt/p_1_out_inferred__0/i__carry_n_2 ,\qsqrt/p_1_out_inferred__0/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[1][0] ),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[1][3] ,\qsqrt/acc_r_reg_n_0_[1][2] ,\qsqrt/acc_r_reg_n_0_[1][1] }),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[1][3] ,\qsqrt/acc_r_reg_n_0_[1][2] ,\qsqrt/acc_r_reg_n_0_[1][1] }),
         .O({\qsqrt/p_1_out_inferred__0/i__carry_n_4 ,\qsqrt/p_1_out_inferred__0/i__carry_n_5 ,\qsqrt/p_1_out_inferred__0/i__carry_n_6 ,\qsqrt/p_1_out_inferred__0/i__carry_n_7 }),
-        .S({1'b1,i__carry_i_1_n_0,i__carry_i_2_n_0,i__carry_i_3_n_0}));
+        .S({\<const1> ,i__carry_i_1_n_0,i__carry_i_2_n_0,i__carry_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__1/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__1/i__carry_n_0 ,\qsqrt/p_1_out_inferred__1/i__carry_n_1 ,\qsqrt/p_1_out_inferred__1/i__carry_n_2 ,\qsqrt/p_1_out_inferred__1/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[2][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[2][4] ,\qsqrt/acc_r_reg_n_0_[2][3] ,\qsqrt/acc_r_reg_n_0_[2][2] ,\qsqrt/acc_r_reg_n_0_[2][1] }),
@@ -34618,13 +33755,13 @@ module layer_norm
         .S({i__carry_i_1__0_n_0,i__carry_i_2__0_n_0,i__carry_i_3__0_n_0,i__carry_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__1/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__1/i__carry_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__1/i__carry__0_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__1/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[2][5] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__1/i__carry__0_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__1/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__1/i__carry__0_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__0_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__1/i__carry__0_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[2][5] }),
+        .O({\qsqrt/p_1_out_inferred__1/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__1/i__carry__0_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__0_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__10/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__10/i__carry_n_0 ,\qsqrt/p_1_out_inferred__10/i__carry_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[11][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[11][4] ,\qsqrt/acc_r_reg_n_0_[11][3] ,\qsqrt/acc_r_reg_n_0_[11][2] ,\qsqrt/acc_r_reg_n_0_[11][1] }),
@@ -34633,40 +33770,40 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__10/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__10/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__10/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__10/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[11][8] ,\qsqrt/acc_r_reg_n_0_[11][7] ,\qsqrt/acc_r_reg_n_0_[11][6] ,\qsqrt/acc_r_reg_n_0_[11][5] }),
         .O({\qsqrt/p_1_out_inferred__10/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__10/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__10/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__10/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__8_n_0,i__carry__0_i_2__7_n_0,i__carry__0_i_3__7_n_0,i__carry__0_i_4__6_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__10/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__10/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__10/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__10/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[11][12] ,\qsqrt/acc_r_reg_n_0_[11][11] ,\qsqrt/acc_r_reg_n_0_[11][10] ,\qsqrt/acc_r_reg_n_0_[11][9] }),
         .O({\qsqrt/p_1_out_inferred__10/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__10/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__10/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__10/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__6_n_0,i__carry__1_i_2__5_n_0,i__carry__1_i_3__5_n_0,i__carry__1_i_4__4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__10/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__10/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__10/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__10/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[11][16] ,\qsqrt/acc_r_reg_n_0_[11][15] ,\qsqrt/acc_r_reg_n_0_[11][14] ,\qsqrt/acc_r_reg_n_0_[11][13] }),
         .O({\qsqrt/p_1_out_inferred__10/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__10/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__10/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__10/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__4_n_0,i__carry__2_i_2__3_n_0,i__carry__2_i_3__3_n_0,i__carry__2_i_4__2_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__10/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__10/i__carry__2_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__10/i__carry__3_n_0 ,\qsqrt/p_1_out_inferred__10/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[11][20] ,\qsqrt/acc_r_reg_n_0_[11][19] ,\qsqrt/acc_r_reg_n_0_[11][18] ,\qsqrt/acc_r_reg_n_0_[11][17] }),
         .O({\qsqrt/p_1_out_inferred__10/i__carry__3_n_4 ,\qsqrt/p_1_out_inferred__10/i__carry__3_n_5 ,\qsqrt/p_1_out_inferred__10/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__10/i__carry__3_n_7 }),
         .S({i__carry__3_i_1__2_n_0,i__carry__3_i_2__1_n_0,i__carry__3_i_3__1_n_0,i__carry__3_i_4__0_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__10/i__carry__4 
        (.CI(\qsqrt/p_1_out_inferred__10/i__carry__3_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__10/i__carry__4_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__10/i__carry__4_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[11][23] ,\qsqrt/acc_r_reg_n_0_[11][22] ,\qsqrt/acc_r_reg_n_0_[11][21] }),
+        .CO({\qsqrt/p_1_out_inferred__10/i__carry__4_n_1 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_2 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[11][23] ,\qsqrt/acc_r_reg_n_0_[11][22] ,\qsqrt/acc_r_reg_n_0_[11][21] }),
         .O({\qsqrt/p_1_out_inferred__10/i__carry__4_n_4 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_5 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_6 ,\qsqrt/p_1_out_inferred__10/i__carry__4_n_7 }),
-        .S({1'b1,i__carry__4_i_1__0_n_0,i__carry__4_i_2_n_0,i__carry__4_i_3_n_0}));
+        .S({\<const1> ,i__carry__4_i_1__0_n_0,i__carry__4_i_2_n_0,i__carry__4_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__11/i__carry_n_0 ,\qsqrt/p_1_out_inferred__11/i__carry_n_1 ,\qsqrt/p_1_out_inferred__11/i__carry_n_2 ,\qsqrt/p_1_out_inferred__11/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[12][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[12][4] ,\qsqrt/acc_r_reg_n_0_[12][3] ,\qsqrt/acc_r_reg_n_0_[12][2] ,\qsqrt/acc_r_reg_n_0_[12][1] }),
@@ -34675,47 +33812,47 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__11/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__11/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__11/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__11/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__11/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[12][8] ,\qsqrt/acc_r_reg_n_0_[12][7] ,\qsqrt/acc_r_reg_n_0_[12][6] ,\qsqrt/acc_r_reg_n_0_[12][5] }),
         .O({\qsqrt/p_1_out_inferred__11/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__11/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__11/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__9_n_0,i__carry__0_i_2__8_n_0,i__carry__0_i_3__8_n_0,i__carry__0_i_4__7_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__11/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__11/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__11/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__11/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__11/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[12][12] ,\qsqrt/acc_r_reg_n_0_[12][11] ,\qsqrt/acc_r_reg_n_0_[12][10] ,\qsqrt/acc_r_reg_n_0_[12][9] }),
         .O({\qsqrt/p_1_out_inferred__11/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__11/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__11/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__7_n_0,i__carry__1_i_2__6_n_0,i__carry__1_i_3__6_n_0,i__carry__1_i_4__5_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__11/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__11/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__11/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__11/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__11/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[12][16] ,\qsqrt/acc_r_reg_n_0_[12][15] ,\qsqrt/acc_r_reg_n_0_[12][14] ,\qsqrt/acc_r_reg_n_0_[12][13] }),
         .O({\qsqrt/p_1_out_inferred__11/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__11/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__11/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__5_n_0,i__carry__2_i_2__4_n_0,i__carry__2_i_3__4_n_0,i__carry__2_i_4__3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__11/i__carry__2_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__11/i__carry__3_n_0 ,\qsqrt/p_1_out_inferred__11/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__11/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__11/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[12][20] ,\qsqrt/acc_r_reg_n_0_[12][19] ,\qsqrt/acc_r_reg_n_0_[12][18] ,\qsqrt/acc_r_reg_n_0_[12][17] }),
         .O({\qsqrt/p_1_out_inferred__11/i__carry__3_n_4 ,\qsqrt/p_1_out_inferred__11/i__carry__3_n_5 ,\qsqrt/p_1_out_inferred__11/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__3_n_7 }),
         .S({i__carry__3_i_1__3_n_0,i__carry__3_i_2__2_n_0,i__carry__3_i_3__2_n_0,i__carry__3_i_4__1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry__4 
        (.CI(\qsqrt/p_1_out_inferred__11/i__carry__3_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__11/i__carry__4_n_0 ,\qsqrt/p_1_out_inferred__11/i__carry__4_n_1 ,\qsqrt/p_1_out_inferred__11/i__carry__4_n_2 ,\qsqrt/p_1_out_inferred__11/i__carry__4_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[12][24] ,\qsqrt/acc_r_reg_n_0_[12][23] ,\qsqrt/acc_r_reg_n_0_[12][22] ,\qsqrt/acc_r_reg_n_0_[12][21] }),
         .O({\qsqrt/p_1_out_inferred__11/i__carry__4_n_4 ,\qsqrt/p_1_out_inferred__11/i__carry__4_n_5 ,\qsqrt/p_1_out_inferred__11/i__carry__4_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__4_n_7 }),
         .S({i__carry__4_i_1__1_n_0,i__carry__4_i_2__0_n_0,i__carry__4_i_3__0_n_0,i__carry__4_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__11/i__carry__5 
        (.CI(\qsqrt/p_1_out_inferred__11/i__carry__4_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__11/i__carry__5_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__11/i__carry__5_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[12][25] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__11/i__carry__5_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__11/i__carry__5_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__5_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__5_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__11/i__carry__5_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[12][25] }),
+        .O({\qsqrt/p_1_out_inferred__11/i__carry__5_n_6 ,\qsqrt/p_1_out_inferred__11/i__carry__5_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__5_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__12/i__carry_n_0 ,\qsqrt/p_1_out_inferred__12/i__carry_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[13][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[13][4] ,\qsqrt/acc_r_reg_n_0_[13][3] ,\qsqrt/acc_r_reg_n_0_[13][2] ,\qsqrt/acc_r_reg_n_0_[13][1] }),
@@ -34724,47 +33861,47 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__12/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__12/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__12/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[13][8] ,\qsqrt/acc_r_reg_n_0_[13][7] ,\qsqrt/acc_r_reg_n_0_[13][6] ,\qsqrt/acc_r_reg_n_0_[13][5] }),
         .O({\qsqrt/p_1_out_inferred__12/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__12/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__12/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__12/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__10_n_0,i__carry__0_i_2__9_n_0,i__carry__0_i_3__9_n_0,i__carry__0_i_4__8_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__12/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__12/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__12/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[13][12] ,\qsqrt/acc_r_reg_n_0_[13][11] ,\qsqrt/acc_r_reg_n_0_[13][10] ,\qsqrt/acc_r_reg_n_0_[13][9] }),
         .O({\qsqrt/p_1_out_inferred__12/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__12/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__12/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__12/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__8_n_0,i__carry__1_i_2__7_n_0,i__carry__1_i_3__7_n_0,i__carry__1_i_4__6_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__12/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__12/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__12/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[13][16] ,\qsqrt/acc_r_reg_n_0_[13][15] ,\qsqrt/acc_r_reg_n_0_[13][14] ,\qsqrt/acc_r_reg_n_0_[13][13] }),
         .O({\qsqrt/p_1_out_inferred__12/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__12/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__12/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__12/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__6_n_0,i__carry__2_i_2__5_n_0,i__carry__2_i_3__5_n_0,i__carry__2_i_4__4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__12/i__carry__2_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__12/i__carry__3_n_0 ,\qsqrt/p_1_out_inferred__12/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[13][20] ,\qsqrt/acc_r_reg_n_0_[13][19] ,\qsqrt/acc_r_reg_n_0_[13][18] ,\qsqrt/acc_r_reg_n_0_[13][17] }),
         .O({\qsqrt/p_1_out_inferred__12/i__carry__3_n_4 ,\qsqrt/p_1_out_inferred__12/i__carry__3_n_5 ,\qsqrt/p_1_out_inferred__12/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__12/i__carry__3_n_7 }),
         .S({i__carry__3_i_1__4_n_0,i__carry__3_i_2__3_n_0,i__carry__3_i_3__3_n_0,i__carry__3_i_4__2_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry__4 
        (.CI(\qsqrt/p_1_out_inferred__12/i__carry__3_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__12/i__carry__4_n_0 ,\qsqrt/p_1_out_inferred__12/i__carry__4_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__4_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__4_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[13][24] ,\qsqrt/acc_r_reg_n_0_[13][23] ,\qsqrt/acc_r_reg_n_0_[13][22] ,\qsqrt/acc_r_reg_n_0_[13][21] }),
         .O({\qsqrt/p_1_out_inferred__12/i__carry__4_n_4 ,\qsqrt/p_1_out_inferred__12/i__carry__4_n_5 ,\qsqrt/p_1_out_inferred__12/i__carry__4_n_6 ,\qsqrt/p_1_out_inferred__12/i__carry__4_n_7 }),
         .S({i__carry__4_i_1__2_n_0,i__carry__4_i_2__1_n_0,i__carry__4_i_3__1_n_0,i__carry__4_i_4__0_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__12/i__carry__5 
        (.CI(\qsqrt/p_1_out_inferred__12/i__carry__4_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__12/i__carry__5_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__12/i__carry__5_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[13][27] ,\qsqrt/acc_r_reg_n_0_[13][26] ,\qsqrt/acc_r_reg_n_0_[13][25] }),
+        .CO({\qsqrt/p_1_out_inferred__12/i__carry__5_n_1 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_2 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[13][27] ,\qsqrt/acc_r_reg_n_0_[13][26] ,\qsqrt/acc_r_reg_n_0_[13][25] }),
         .O({\qsqrt/p_1_out_inferred__12/i__carry__5_n_4 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_5 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_6 ,\qsqrt/p_1_out_inferred__12/i__carry__5_n_7 }),
-        .S({1'b1,i__carry__5_i_1__0_n_0,i__carry__5_i_2_n_0,i__carry__5_i_3_n_0}));
+        .S({\<const1> ,i__carry__5_i_1__0_n_0,i__carry__5_i_2_n_0,i__carry__5_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[14][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][4] ,\qsqrt/acc_r_reg_n_0_[14][3] ,\qsqrt/acc_r_reg_n_0_[14][2] ,\qsqrt/acc_r_reg_n_0_[14][1] }),
@@ -34773,54 +33910,54 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][8] ,\qsqrt/acc_r_reg_n_0_[14][7] ,\qsqrt/acc_r_reg_n_0_[14][6] ,\qsqrt/acc_r_reg_n_0_[14][5] }),
         .O({\qsqrt/p_1_out_inferred__13/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__13/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__13/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__11_n_0,i__carry__0_i_2__10_n_0,i__carry__0_i_3__10_n_0,i__carry__0_i_4__9_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][12] ,\qsqrt/acc_r_reg_n_0_[14][11] ,\qsqrt/acc_r_reg_n_0_[14][10] ,\qsqrt/acc_r_reg_n_0_[14][9] }),
         .O({\qsqrt/p_1_out_inferred__13/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__13/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__13/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__9_n_0,i__carry__1_i_2__8_n_0,i__carry__1_i_3__8_n_0,i__carry__1_i_4__7_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][16] ,\qsqrt/acc_r_reg_n_0_[14][15] ,\qsqrt/acc_r_reg_n_0_[14][14] ,\qsqrt/acc_r_reg_n_0_[14][13] }),
         .O({\qsqrt/p_1_out_inferred__13/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__13/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__13/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__7_n_0,i__carry__2_i_2__6_n_0,i__carry__2_i_3__6_n_0,i__carry__2_i_4__5_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry__2_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry__3_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][20] ,\qsqrt/acc_r_reg_n_0_[14][19] ,\qsqrt/acc_r_reg_n_0_[14][18] ,\qsqrt/acc_r_reg_n_0_[14][17] }),
         .O({\qsqrt/p_1_out_inferred__13/i__carry__3_n_4 ,\qsqrt/p_1_out_inferred__13/i__carry__3_n_5 ,\qsqrt/p_1_out_inferred__13/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__3_n_7 }),
         .S({i__carry__3_i_1__5_n_0,i__carry__3_i_2__4_n_0,i__carry__3_i_3__4_n_0,i__carry__3_i_4__3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__4 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry__3_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry__4_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry__4_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry__4_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry__4_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][24] ,\qsqrt/acc_r_reg_n_0_[14][23] ,\qsqrt/acc_r_reg_n_0_[14][22] ,\qsqrt/acc_r_reg_n_0_[14][21] }),
         .O({\qsqrt/p_1_out_inferred__13/i__carry__4_n_4 ,\qsqrt/p_1_out_inferred__13/i__carry__4_n_5 ,\qsqrt/p_1_out_inferred__13/i__carry__4_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__4_n_7 }),
         .S({i__carry__4_i_1__3_n_0,i__carry__4_i_2__2_n_0,i__carry__4_i_3__2_n_0,i__carry__4_i_4__1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__5 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry__4_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__13/i__carry__5_n_0 ,\qsqrt/p_1_out_inferred__13/i__carry__5_n_1 ,\qsqrt/p_1_out_inferred__13/i__carry__5_n_2 ,\qsqrt/p_1_out_inferred__13/i__carry__5_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[14][28] ,\qsqrt/acc_r_reg_n_0_[14][27] ,\qsqrt/acc_r_reg_n_0_[14][26] ,\qsqrt/acc_r_reg_n_0_[14][25] }),
         .O({\qsqrt/p_1_out_inferred__13/i__carry__5_n_4 ,\qsqrt/p_1_out_inferred__13/i__carry__5_n_5 ,\qsqrt/p_1_out_inferred__13/i__carry__5_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__5_n_7 }),
         .S({i__carry__5_i_1__1_n_0,i__carry__5_i_2__0_n_0,i__carry__5_i_3__0_n_0,i__carry__5_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__13/i__carry__6 
        (.CI(\qsqrt/p_1_out_inferred__13/i__carry__5_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__13/i__carry__6_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__13/i__carry__6_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[14][29] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__13/i__carry__6_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__13/i__carry__6_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__6_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__6_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__13/i__carry__6_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[14][29] }),
+        .O({\qsqrt/p_1_out_inferred__13/i__carry__6_n_6 ,\qsqrt/p_1_out_inferred__13/i__carry__6_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__6_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__2/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__2/i__carry_n_0 ,\qsqrt/p_1_out_inferred__2/i__carry_n_1 ,\qsqrt/p_1_out_inferred__2/i__carry_n_2 ,\qsqrt/p_1_out_inferred__2/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[3][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[3][4] ,\qsqrt/acc_r_reg_n_0_[3][3] ,\qsqrt/acc_r_reg_n_0_[3][2] ,\qsqrt/acc_r_reg_n_0_[3][1] }),
@@ -34828,13 +33965,13 @@ module layer_norm
         .S({i__carry_i_1__1_n_0,i__carry_i_2__1_n_0,i__carry_i_3__1_n_0,i__carry_i_4__0_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__2/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__2/i__carry_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__2/i__carry__0_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__2/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[3][7] ,\qsqrt/acc_r_reg_n_0_[3][6] ,\qsqrt/acc_r_reg_n_0_[3][5] }),
+        .CO({\qsqrt/p_1_out_inferred__2/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[3][7] ,\qsqrt/acc_r_reg_n_0_[3][6] ,\qsqrt/acc_r_reg_n_0_[3][5] }),
         .O({\qsqrt/p_1_out_inferred__2/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__2/i__carry__0_n_7 }),
-        .S({1'b1,i__carry__0_i_1__0_n_0,i__carry__0_i_2_n_0,i__carry__0_i_3_n_0}));
+        .S({\<const1> ,i__carry__0_i_1__0_n_0,i__carry__0_i_2_n_0,i__carry__0_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__3/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__3/i__carry_n_0 ,\qsqrt/p_1_out_inferred__3/i__carry_n_1 ,\qsqrt/p_1_out_inferred__3/i__carry_n_2 ,\qsqrt/p_1_out_inferred__3/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[4][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[4][4] ,\qsqrt/acc_r_reg_n_0_[4][3] ,\qsqrt/acc_r_reg_n_0_[4][2] ,\qsqrt/acc_r_reg_n_0_[4][1] }),
@@ -34843,19 +33980,19 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__3/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__3/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__3/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__3/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__3/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__3/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[4][8] ,\qsqrt/acc_r_reg_n_0_[4][7] ,\qsqrt/acc_r_reg_n_0_[4][6] ,\qsqrt/acc_r_reg_n_0_[4][5] }),
         .O({\qsqrt/p_1_out_inferred__3/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__3/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__3/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__3/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__1_n_0,i__carry__0_i_2__0_n_0,i__carry__0_i_3__0_n_0,i__carry__0_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__3/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__3/i__carry__0_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__3/i__carry__1_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__3/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[4][9] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__3/i__carry__1_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__3/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__3/i__carry__1_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__1_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__3/i__carry__1_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[4][9] }),
+        .O({\qsqrt/p_1_out_inferred__3/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__3/i__carry__1_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__1_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__4/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__4/i__carry_n_0 ,\qsqrt/p_1_out_inferred__4/i__carry_n_1 ,\qsqrt/p_1_out_inferred__4/i__carry_n_2 ,\qsqrt/p_1_out_inferred__4/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[5][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[5][4] ,\qsqrt/acc_r_reg_n_0_[5][3] ,\qsqrt/acc_r_reg_n_0_[5][2] ,\qsqrt/acc_r_reg_n_0_[5][1] }),
@@ -34864,19 +34001,19 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__4/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__4/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__4/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__4/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__4/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__4/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[5][8] ,\qsqrt/acc_r_reg_n_0_[5][7] ,\qsqrt/acc_r_reg_n_0_[5][6] ,\qsqrt/acc_r_reg_n_0_[5][5] }),
         .O({\qsqrt/p_1_out_inferred__4/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__4/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__4/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__4/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__2_n_0,i__carry__0_i_2__1_n_0,i__carry__0_i_3__1_n_0,i__carry__0_i_4__0_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__4/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__4/i__carry__0_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__4/i__carry__1_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__4/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[5][11] ,\qsqrt/acc_r_reg_n_0_[5][10] ,\qsqrt/acc_r_reg_n_0_[5][9] }),
+        .CO({\qsqrt/p_1_out_inferred__4/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[5][11] ,\qsqrt/acc_r_reg_n_0_[5][10] ,\qsqrt/acc_r_reg_n_0_[5][9] }),
         .O({\qsqrt/p_1_out_inferred__4/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__4/i__carry__1_n_7 }),
-        .S({1'b1,i__carry__1_i_1__0_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0}));
+        .S({\<const1> ,i__carry__1_i_1__0_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__5/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__5/i__carry_n_0 ,\qsqrt/p_1_out_inferred__5/i__carry_n_1 ,\qsqrt/p_1_out_inferred__5/i__carry_n_2 ,\qsqrt/p_1_out_inferred__5/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[6][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[6][4] ,\qsqrt/acc_r_reg_n_0_[6][3] ,\qsqrt/acc_r_reg_n_0_[6][2] ,\qsqrt/acc_r_reg_n_0_[6][1] }),
@@ -34885,26 +34022,26 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__5/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__5/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__5/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__5/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__5/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__5/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[6][8] ,\qsqrt/acc_r_reg_n_0_[6][7] ,\qsqrt/acc_r_reg_n_0_[6][6] ,\qsqrt/acc_r_reg_n_0_[6][5] }),
         .O({\qsqrt/p_1_out_inferred__5/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__5/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__5/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__5/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__3_n_0,i__carry__0_i_2__2_n_0,i__carry__0_i_3__2_n_0,i__carry__0_i_4__1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__5/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__5/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__5/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__5/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__5/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__5/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[6][12] ,\qsqrt/acc_r_reg_n_0_[6][11] ,\qsqrt/acc_r_reg_n_0_[6][10] ,\qsqrt/acc_r_reg_n_0_[6][9] }),
         .O({\qsqrt/p_1_out_inferred__5/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__5/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__5/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__5/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__1_n_0,i__carry__1_i_2__0_n_0,i__carry__1_i_3__0_n_0,i__carry__1_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__5/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__5/i__carry__1_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__5/i__carry__2_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__5/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[6][13] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__5/i__carry__2_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__5/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__5/i__carry__2_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__2_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__5/i__carry__2_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[6][13] }),
+        .O({\qsqrt/p_1_out_inferred__5/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__5/i__carry__2_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__2_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__6/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__6/i__carry_n_0 ,\qsqrt/p_1_out_inferred__6/i__carry_n_1 ,\qsqrt/p_1_out_inferred__6/i__carry_n_2 ,\qsqrt/p_1_out_inferred__6/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[7][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[7][4] ,\qsqrt/acc_r_reg_n_0_[7][3] ,\qsqrt/acc_r_reg_n_0_[7][2] ,\qsqrt/acc_r_reg_n_0_[7][1] }),
@@ -34913,26 +34050,26 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__6/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__6/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__6/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__6/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__6/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__6/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[7][8] ,\qsqrt/acc_r_reg_n_0_[7][7] ,\qsqrt/acc_r_reg_n_0_[7][6] ,\qsqrt/acc_r_reg_n_0_[7][5] }),
         .O({\qsqrt/p_1_out_inferred__6/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__6/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__6/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__6/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__4_n_0,i__carry__0_i_2__3_n_0,i__carry__0_i_3__3_n_0,i__carry__0_i_4__2_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__6/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__6/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__6/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__6/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__6/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__6/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[7][12] ,\qsqrt/acc_r_reg_n_0_[7][11] ,\qsqrt/acc_r_reg_n_0_[7][10] ,\qsqrt/acc_r_reg_n_0_[7][9] }),
         .O({\qsqrt/p_1_out_inferred__6/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__6/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__6/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__6/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__2_n_0,i__carry__1_i_2__1_n_0,i__carry__1_i_3__1_n_0,i__carry__1_i_4__0_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__6/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__6/i__carry__1_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__6/i__carry__2_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__6/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[7][15] ,\qsqrt/acc_r_reg_n_0_[7][14] ,\qsqrt/acc_r_reg_n_0_[7][13] }),
+        .CO({\qsqrt/p_1_out_inferred__6/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[7][15] ,\qsqrt/acc_r_reg_n_0_[7][14] ,\qsqrt/acc_r_reg_n_0_[7][13] }),
         .O({\qsqrt/p_1_out_inferred__6/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__6/i__carry__2_n_7 }),
-        .S({1'b1,i__carry__2_i_1__0_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3_n_0}));
+        .S({\<const1> ,i__carry__2_i_1__0_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__7/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__7/i__carry_n_0 ,\qsqrt/p_1_out_inferred__7/i__carry_n_1 ,\qsqrt/p_1_out_inferred__7/i__carry_n_2 ,\qsqrt/p_1_out_inferred__7/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[8][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[8][4] ,\qsqrt/acc_r_reg_n_0_[8][3] ,\qsqrt/acc_r_reg_n_0_[8][2] ,\qsqrt/acc_r_reg_n_0_[8][1] }),
@@ -34941,33 +34078,33 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__7/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__7/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__7/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__7/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__7/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__7/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[8][8] ,\qsqrt/acc_r_reg_n_0_[8][7] ,\qsqrt/acc_r_reg_n_0_[8][6] ,\qsqrt/acc_r_reg_n_0_[8][5] }),
         .O({\qsqrt/p_1_out_inferred__7/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__7/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__7/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__7/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__5_n_0,i__carry__0_i_2__4_n_0,i__carry__0_i_3__4_n_0,i__carry__0_i_4__3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__7/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__7/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__7/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__7/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__7/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__7/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[8][12] ,\qsqrt/acc_r_reg_n_0_[8][11] ,\qsqrt/acc_r_reg_n_0_[8][10] ,\qsqrt/acc_r_reg_n_0_[8][9] }),
         .O({\qsqrt/p_1_out_inferred__7/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__7/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__7/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__7/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__3_n_0,i__carry__1_i_2__2_n_0,i__carry__1_i_3__2_n_0,i__carry__1_i_4__1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__7/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__7/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__7/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__7/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__7/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__7/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[8][16] ,\qsqrt/acc_r_reg_n_0_[8][15] ,\qsqrt/acc_r_reg_n_0_[8][14] ,\qsqrt/acc_r_reg_n_0_[8][13] }),
         .O({\qsqrt/p_1_out_inferred__7/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__7/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__7/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__7/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__1_n_0,i__carry__2_i_2__0_n_0,i__carry__2_i_3__0_n_0,i__carry__2_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__7/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__7/i__carry__2_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__7/i__carry__3_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__7/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[8][17] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__7/i__carry__3_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__7/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__7/i__carry__3_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__3_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__7/i__carry__3_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[8][17] }),
+        .O({\qsqrt/p_1_out_inferred__7/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__7/i__carry__3_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__3_i_1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__8/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__8/i__carry_n_0 ,\qsqrt/p_1_out_inferred__8/i__carry_n_1 ,\qsqrt/p_1_out_inferred__8/i__carry_n_2 ,\qsqrt/p_1_out_inferred__8/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[9][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[9][4] ,\qsqrt/acc_r_reg_n_0_[9][3] ,\qsqrt/acc_r_reg_n_0_[9][2] ,\qsqrt/acc_r_reg_n_0_[9][1] }),
@@ -34976,33 +34113,33 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__8/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__8/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__8/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__8/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__8/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__8/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[9][8] ,\qsqrt/acc_r_reg_n_0_[9][7] ,\qsqrt/acc_r_reg_n_0_[9][6] ,\qsqrt/acc_r_reg_n_0_[9][5] }),
         .O({\qsqrt/p_1_out_inferred__8/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__8/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__8/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__8/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__6_n_0,i__carry__0_i_2__5_n_0,i__carry__0_i_3__5_n_0,i__carry__0_i_4__4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__8/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__8/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__8/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__8/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__8/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__8/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[9][12] ,\qsqrt/acc_r_reg_n_0_[9][11] ,\qsqrt/acc_r_reg_n_0_[9][10] ,\qsqrt/acc_r_reg_n_0_[9][9] }),
         .O({\qsqrt/p_1_out_inferred__8/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__8/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__8/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__8/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__4_n_0,i__carry__1_i_2__3_n_0,i__carry__1_i_3__3_n_0,i__carry__1_i_4__2_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__8/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__8/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__8/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__8/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__8/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__8/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[9][16] ,\qsqrt/acc_r_reg_n_0_[9][15] ,\qsqrt/acc_r_reg_n_0_[9][14] ,\qsqrt/acc_r_reg_n_0_[9][13] }),
         .O({\qsqrt/p_1_out_inferred__8/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__8/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__8/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__8/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__2_n_0,i__carry__2_i_2__1_n_0,i__carry__2_i_3__1_n_0,i__carry__2_i_4__0_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__8/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__8/i__carry__2_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__8/i__carry__3_CO_UNCONNECTED [3],\qsqrt/p_1_out_inferred__8/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg_n_0_[9][19] ,\qsqrt/acc_r_reg_n_0_[9][18] ,\qsqrt/acc_r_reg_n_0_[9][17] }),
+        .CO({\qsqrt/p_1_out_inferred__8/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg_n_0_[9][19] ,\qsqrt/acc_r_reg_n_0_[9][18] ,\qsqrt/acc_r_reg_n_0_[9][17] }),
         .O({\qsqrt/p_1_out_inferred__8/i__carry__3_n_4 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_5 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__8/i__carry__3_n_7 }),
-        .S({1'b1,i__carry__3_i_1__0_n_0,i__carry__3_i_2_n_0,i__carry__3_i_3_n_0}));
+        .S({\<const1> ,i__carry__3_i_1__0_n_0,i__carry__3_i_2_n_0,i__carry__3_i_3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__9/i__carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/p_1_out_inferred__9/i__carry_n_0 ,\qsqrt/p_1_out_inferred__9/i__carry_n_1 ,\qsqrt/p_1_out_inferred__9/i__carry_n_2 ,\qsqrt/p_1_out_inferred__9/i__carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg_n_0_[10][0] ),
         .DI({\qsqrt/acc_r_reg_n_0_[10][4] ,\qsqrt/acc_r_reg_n_0_[10][3] ,\qsqrt/acc_r_reg_n_0_[10][2] ,\qsqrt/acc_r_reg_n_0_[10][1] }),
@@ -35011,94 +34148,86 @@ module layer_norm
   CARRY4 \qsqrt/p_1_out_inferred__9/i__carry__0 
        (.CI(\qsqrt/p_1_out_inferred__9/i__carry_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__9/i__carry__0_n_0 ,\qsqrt/p_1_out_inferred__9/i__carry__0_n_1 ,\qsqrt/p_1_out_inferred__9/i__carry__0_n_2 ,\qsqrt/p_1_out_inferred__9/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[10][8] ,\qsqrt/acc_r_reg_n_0_[10][7] ,\qsqrt/acc_r_reg_n_0_[10][6] ,\qsqrt/acc_r_reg_n_0_[10][5] }),
         .O({\qsqrt/p_1_out_inferred__9/i__carry__0_n_4 ,\qsqrt/p_1_out_inferred__9/i__carry__0_n_5 ,\qsqrt/p_1_out_inferred__9/i__carry__0_n_6 ,\qsqrt/p_1_out_inferred__9/i__carry__0_n_7 }),
         .S({i__carry__0_i_1__7_n_0,i__carry__0_i_2__6_n_0,i__carry__0_i_3__6_n_0,i__carry__0_i_4__5_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__9/i__carry__1 
        (.CI(\qsqrt/p_1_out_inferred__9/i__carry__0_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__9/i__carry__1_n_0 ,\qsqrt/p_1_out_inferred__9/i__carry__1_n_1 ,\qsqrt/p_1_out_inferred__9/i__carry__1_n_2 ,\qsqrt/p_1_out_inferred__9/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[10][12] ,\qsqrt/acc_r_reg_n_0_[10][11] ,\qsqrt/acc_r_reg_n_0_[10][10] ,\qsqrt/acc_r_reg_n_0_[10][9] }),
         .O({\qsqrt/p_1_out_inferred__9/i__carry__1_n_4 ,\qsqrt/p_1_out_inferred__9/i__carry__1_n_5 ,\qsqrt/p_1_out_inferred__9/i__carry__1_n_6 ,\qsqrt/p_1_out_inferred__9/i__carry__1_n_7 }),
         .S({i__carry__1_i_1__5_n_0,i__carry__1_i_2__4_n_0,i__carry__1_i_3__4_n_0,i__carry__1_i_4__3_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__9/i__carry__2 
        (.CI(\qsqrt/p_1_out_inferred__9/i__carry__1_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__9/i__carry__2_n_0 ,\qsqrt/p_1_out_inferred__9/i__carry__2_n_1 ,\qsqrt/p_1_out_inferred__9/i__carry__2_n_2 ,\qsqrt/p_1_out_inferred__9/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[10][16] ,\qsqrt/acc_r_reg_n_0_[10][15] ,\qsqrt/acc_r_reg_n_0_[10][14] ,\qsqrt/acc_r_reg_n_0_[10][13] }),
         .O({\qsqrt/p_1_out_inferred__9/i__carry__2_n_4 ,\qsqrt/p_1_out_inferred__9/i__carry__2_n_5 ,\qsqrt/p_1_out_inferred__9/i__carry__2_n_6 ,\qsqrt/p_1_out_inferred__9/i__carry__2_n_7 }),
         .S({i__carry__2_i_1__3_n_0,i__carry__2_i_2__2_n_0,i__carry__2_i_3__2_n_0,i__carry__2_i_4__1_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__9/i__carry__3 
        (.CI(\qsqrt/p_1_out_inferred__9/i__carry__2_n_0 ),
         .CO({\qsqrt/p_1_out_inferred__9/i__carry__3_n_0 ,\qsqrt/p_1_out_inferred__9/i__carry__3_n_1 ,\qsqrt/p_1_out_inferred__9/i__carry__3_n_2 ,\qsqrt/p_1_out_inferred__9/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qsqrt/acc_r_reg_n_0_[10][20] ,\qsqrt/acc_r_reg_n_0_[10][19] ,\qsqrt/acc_r_reg_n_0_[10][18] ,\qsqrt/acc_r_reg_n_0_[10][17] }),
         .O({\qsqrt/p_1_out_inferred__9/i__carry__3_n_4 ,\qsqrt/p_1_out_inferred__9/i__carry__3_n_5 ,\qsqrt/p_1_out_inferred__9/i__carry__3_n_6 ,\qsqrt/p_1_out_inferred__9/i__carry__3_n_7 }),
         .S({i__carry__3_i_1__1_n_0,i__carry__3_i_2__0_n_0,i__carry__3_i_3__0_n_0,i__carry__3_i_4_n_0}));
   CARRY4 \qsqrt/p_1_out_inferred__9/i__carry__4 
        (.CI(\qsqrt/p_1_out_inferred__9/i__carry__3_n_0 ),
-        .CO({\NLW_qsqrt/p_1_out_inferred__9/i__carry__4_CO_UNCONNECTED [3:1],\qsqrt/p_1_out_inferred__9/i__carry__4_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\qsqrt/acc_r_reg_n_0_[10][21] }),
-        .O({\NLW_qsqrt/p_1_out_inferred__9/i__carry__4_O_UNCONNECTED [3:2],\qsqrt/p_1_out_inferred__9/i__carry__4_n_6 ,\qsqrt/p_1_out_inferred__9/i__carry__4_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__4_i_1_n_0}));
+        .CO(\qsqrt/p_1_out_inferred__9/i__carry__4_n_3 ),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\qsqrt/acc_r_reg_n_0_[10][21] }),
+        .O({\qsqrt/p_1_out_inferred__9/i__carry__4_n_6 ,\qsqrt/p_1_out_inferred__9/i__carry__4_n_7 }),
+        .S({\<const0> ,\<const0> ,\<const1> ,i__carry__4_i_1_n_0}));
   CARRY4 \qsqrt/qout_r1_carry 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsqrt/qout_r1_carry_n_0 ,\qsqrt/qout_r1_carry_n_1 ,\qsqrt/qout_r1_carry_n_2 ,\qsqrt/qout_r1_carry_n_3 }),
         .CYINIT(\qsqrt/acc_r_reg[15] [0]),
         .DI(\qsqrt/acc_r_reg[15] [4:1]),
-        .O(\NLW_qsqrt/qout_r1_carry_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry_i_1_n_0,qout_r1_carry_i_2_n_0,qout_r1_carry_i_3_n_0,qout_r1_carry_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__0 
        (.CI(\qsqrt/qout_r1_carry_n_0 ),
         .CO({\qsqrt/qout_r1_carry__0_n_0 ,\qsqrt/qout_r1_carry__0_n_1 ,\qsqrt/qout_r1_carry__0_n_2 ,\qsqrt/qout_r1_carry__0_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(\qsqrt/acc_r_reg[15] [8:5]),
-        .O(\NLW_qsqrt/qout_r1_carry__0_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry__0_i_1_n_0,qout_r1_carry__0_i_2_n_0,qout_r1_carry__0_i_3_n_0,qout_r1_carry__0_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__1 
        (.CI(\qsqrt/qout_r1_carry__0_n_0 ),
         .CO({\qsqrt/qout_r1_carry__1_n_0 ,\qsqrt/qout_r1_carry__1_n_1 ,\qsqrt/qout_r1_carry__1_n_2 ,\qsqrt/qout_r1_carry__1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(\qsqrt/acc_r_reg[15] [12:9]),
-        .O(\NLW_qsqrt/qout_r1_carry__1_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry__1_i_1_n_0,qout_r1_carry__1_i_2_n_0,qout_r1_carry__1_i_3_n_0,qout_r1_carry__1_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__2 
        (.CI(\qsqrt/qout_r1_carry__1_n_0 ),
         .CO({\qsqrt/qout_r1_carry__2_n_0 ,\qsqrt/qout_r1_carry__2_n_1 ,\qsqrt/qout_r1_carry__2_n_2 ,\qsqrt/qout_r1_carry__2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(\qsqrt/acc_r_reg[15] [16:13]),
-        .O(\NLW_qsqrt/qout_r1_carry__2_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry__2_i_1_n_0,qout_r1_carry__2_i_2_n_0,qout_r1_carry__2_i_3_n_0,qout_r1_carry__2_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__3 
        (.CI(\qsqrt/qout_r1_carry__2_n_0 ),
         .CO({\qsqrt/qout_r1_carry__3_n_0 ,\qsqrt/qout_r1_carry__3_n_1 ,\qsqrt/qout_r1_carry__3_n_2 ,\qsqrt/qout_r1_carry__3_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(\qsqrt/acc_r_reg[15] [20:17]),
-        .O(\NLW_qsqrt/qout_r1_carry__3_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry__3_i_1_n_0,qout_r1_carry__3_i_2_n_0,qout_r1_carry__3_i_3_n_0,qout_r1_carry__3_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__4 
        (.CI(\qsqrt/qout_r1_carry__3_n_0 ),
         .CO({\qsqrt/qout_r1_carry__4_n_0 ,\qsqrt/qout_r1_carry__4_n_1 ,\qsqrt/qout_r1_carry__4_n_2 ,\qsqrt/qout_r1_carry__4_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(\qsqrt/acc_r_reg[15] [24:21]),
-        .O(\NLW_qsqrt/qout_r1_carry__4_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry__4_i_1_n_0,qout_r1_carry__4_i_2_n_0,qout_r1_carry__4_i_3_n_0,qout_r1_carry__4_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__5 
        (.CI(\qsqrt/qout_r1_carry__4_n_0 ),
         .CO({\qsqrt/qout_r1_carry__5_n_0 ,\qsqrt/qout_r1_carry__5_n_1 ,\qsqrt/qout_r1_carry__5_n_2 ,\qsqrt/qout_r1_carry__5_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(\qsqrt/acc_r_reg[15] [28:25]),
-        .O(\NLW_qsqrt/qout_r1_carry__5_O_UNCONNECTED [3:0]),
         .S({qout_r1_carry__5_i_1_n_0,qout_r1_carry__5_i_2_n_0,qout_r1_carry__5_i_3_n_0,qout_r1_carry__5_i_4_n_0}));
   CARRY4 \qsqrt/qout_r1_carry__6 
        (.CI(\qsqrt/qout_r1_carry__5_n_0 ),
-        .CO({\NLW_qsqrt/qout_r1_carry__6_CO_UNCONNECTED [3],\qsqrt/p_2_out ,\qsqrt/qout_r1_carry__6_n_2 ,\qsqrt/qout_r1_carry__6_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qsqrt/acc_r_reg[15] [31:29]}),
-        .O(\NLW_qsqrt/qout_r1_carry__6_O_UNCONNECTED [3:0]),
-        .S({1'b0,qout_r1_carry__6_i_1_n_0,qout_r1_carry__6_i_2_n_0,qout_r1_carry__6_i_3_n_0}));
+        .CO({\qsqrt/p_2_out ,\qsqrt/qout_r1_carry__6_n_2 ,\qsqrt/qout_r1_carry__6_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qsqrt/acc_r_reg[15] [31:29]}),
+        .S({\<const0> ,qout_r1_carry__6_i_1_n_0,qout_r1_carry__6_i_2_n_0,qout_r1_carry__6_i_3_n_0}));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/qout_r_reg[0] 
@@ -36192,10 +35321,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[0][28]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[26]),
@@ -36205,10 +35334,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[27]),
@@ -36234,10 +35363,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[10][28]_srl12___qsqrt_in_v_r_reg_r_5 
-       (.A0(1'b1),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const1> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[6]),
@@ -36247,10 +35376,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5 
-       (.A0(1'b1),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const1> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[7]),
@@ -36262,7 +35391,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[9][28]_srl11___qsqrt_in_v_r_reg_r_4_n_0 ),
         .Q(\qsqrt/x_r_reg[10][30]_qsqrt_in_v_r_reg_r_5_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[10][31]_qsqrt_in_v_r_reg_r_5 
@@ -36270,16 +35399,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[9][29]_srl11___qsqrt_in_v_r_reg_r_4_n_0 ),
         .Q(\qsqrt/x_r_reg[10][31]_qsqrt_in_v_r_reg_r_5_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[11] " *) 
   (* srl_name = "\qsqrt/x_r_reg[11][28]_srl13___qsqrt_in_v_r_reg_r_6 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[11][28]_srl13___qsqrt_in_v_r_reg_r_6 
-       (.A0(1'b0),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[4]),
@@ -36289,10 +35418,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[11][29]_srl13___qsqrt_in_v_r_reg_r_6 
-       (.A0(1'b0),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[5]),
@@ -36304,7 +35433,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[10][28]_srl12___qsqrt_in_v_r_reg_r_5_n_0 ),
         .Q(\qsqrt/x_r_reg[11][30]_qsqrt_in_v_r_reg_r_6_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[11][31]_qsqrt_in_v_r_reg_r_6 
@@ -36312,16 +35441,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_n_0 ),
         .Q(\qsqrt/x_r_reg[11][31]_qsqrt_in_v_r_reg_r_6_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[12] " *) 
   (* srl_name = "\qsqrt/x_r_reg[12][28]_srl14___qsqrt_in_v_r_reg_r_7 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[12][28]_srl14___qsqrt_in_v_r_reg_r_7 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b1),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[2]),
@@ -36331,10 +35460,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b1),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[3]),
@@ -36346,7 +35475,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[11][28]_srl13___qsqrt_in_v_r_reg_r_6_n_0 ),
         .Q(\qsqrt/x_r_reg[12][30]_qsqrt_in_v_r_reg_r_7_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[12][31]_qsqrt_in_v_r_reg_r_7 
@@ -36354,16 +35483,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[11][29]_srl13___qsqrt_in_v_r_reg_r_6_n_0 ),
         .Q(\qsqrt/x_r_reg[12][31]_qsqrt_in_v_r_reg_r_7_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[13] " *) 
   (* srl_name = "\qsqrt/x_r_reg[13][28]_srl15___qsqrt_in_v_r_reg_r_8 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[13][28]_srl15___qsqrt_in_v_r_reg_r_8 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b1),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const1> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[0]),
@@ -36373,10 +35502,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[13][29]_srl15___qsqrt_in_v_r_reg_r_8 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b1),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const1> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[1]),
@@ -36388,7 +35517,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[12][28]_srl14___qsqrt_in_v_r_reg_r_7_n_0 ),
         .Q(\qsqrt/x_r_reg[13][30]_qsqrt_in_v_r_reg_r_8_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[13][31]_qsqrt_in_v_r_reg_r_8 
@@ -36396,7 +35525,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_n_0 ),
         .Q(\qsqrt/x_r_reg[13][31]_qsqrt_in_v_r_reg_r_8_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[14][30]_qsqrt_in_v_r_reg_r_9 
@@ -36404,7 +35533,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[13][28]_srl15___qsqrt_in_v_r_reg_r_8_n_0 ),
         .Q(\qsqrt/x_r_reg[14][30]_qsqrt_in_v_r_reg_r_9_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[14][31]_qsqrt_in_v_r_reg_r_9 
@@ -36412,16 +35541,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[13][29]_srl15___qsqrt_in_v_r_reg_r_8_n_0 ),
         .Q(\qsqrt/x_r_reg[14][31]_qsqrt_in_v_r_reg_r_9_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[1] " *) 
   (* srl_name = "\qsqrt/x_r_reg[1][28]_srl3___qsqrt_in_v_r2_reg_r " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[1][28]_srl3___qsqrt_in_v_r2_reg_r 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[24]),
@@ -36431,10 +35560,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[1][29]_srl3___qsqrt_in_v_r2_reg_r 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[25]),
@@ -36446,7 +35575,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[0][28]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[1][30]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[1][31]_qsqrt_in_v_r2_reg_r 
@@ -36454,16 +35583,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[1][31]_qsqrt_in_v_r2_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[2] " *) 
   (* srl_name = "\qsqrt/x_r_reg[2][28]_srl4___qsqrt_in_v_r3_reg_r " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[2][28]_srl4___qsqrt_in_v_r3_reg_r 
-       (.A0(1'b1),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[22]),
@@ -36473,10 +35602,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r 
-       (.A0(1'b1),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[23]),
@@ -36488,7 +35617,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[1][28]_srl3___qsqrt_in_v_r2_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[2][30]_qsqrt_in_v_r3_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[2][31]_qsqrt_in_v_r3_reg_r 
@@ -36496,16 +35625,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[1][29]_srl3___qsqrt_in_v_r2_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[2][31]_qsqrt_in_v_r3_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[3] " *) 
   (* srl_name = "\qsqrt/x_r_reg[3][28]_srl5___qsqrt_in_v_r4_reg_r " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[3][28]_srl5___qsqrt_in_v_r4_reg_r 
-       (.A0(1'b0),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const0> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[20]),
@@ -36515,10 +35644,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[3][29]_srl5___qsqrt_in_v_r4_reg_r 
-       (.A0(1'b0),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const0> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[21]),
@@ -36530,7 +35659,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[2][28]_srl4___qsqrt_in_v_r3_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[3][30]_qsqrt_in_v_r4_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[3][31]_qsqrt_in_v_r4_reg_r 
@@ -36538,16 +35667,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[3][31]_qsqrt_in_v_r4_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[4] " *) 
   (* srl_name = "\qsqrt/x_r_reg[4][28]_srl6___qsqrt_in_v_r_reg_r " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[4][28]_srl6___qsqrt_in_v_r_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[18]),
@@ -36557,10 +35686,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[19]),
@@ -36572,7 +35701,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[3][28]_srl5___qsqrt_in_v_r4_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[4][30]_qsqrt_in_v_r_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[4][31]_qsqrt_in_v_r_reg_r 
@@ -36580,16 +35709,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[3][29]_srl5___qsqrt_in_v_r4_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[4][31]_qsqrt_in_v_r_reg_r_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[5] " *) 
   (* srl_name = "\qsqrt/x_r_reg[5][28]_srl7___qsqrt_in_v_r_reg_r_0 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[5][28]_srl7___qsqrt_in_v_r_reg_r_0 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[16]),
@@ -36599,10 +35728,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[5][29]_srl7___qsqrt_in_v_r_reg_r_0 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[17]),
@@ -36614,7 +35743,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[4][28]_srl6___qsqrt_in_v_r_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[5][30]_qsqrt_in_v_r_reg_r_0_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[5][31]_qsqrt_in_v_r_reg_r_0 
@@ -36622,16 +35751,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_n_0 ),
         .Q(\qsqrt/x_r_reg[5][31]_qsqrt_in_v_r_reg_r_0_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[6] " *) 
   (* srl_name = "\qsqrt/x_r_reg[6][28]_srl8___qsqrt_in_v_r_reg_r_1 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[6][28]_srl8___qsqrt_in_v_r_reg_r_1 
-       (.A0(1'b1),
-        .A1(1'b1),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const1> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[14]),
@@ -36641,10 +35770,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1 
-       (.A0(1'b1),
-        .A1(1'b1),
-        .A2(1'b1),
-        .A3(1'b0),
+       (.A0(\<const1> ),
+        .A1(\<const1> ),
+        .A2(\<const1> ),
+        .A3(\<const0> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[15]),
@@ -36656,7 +35785,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[5][28]_srl7___qsqrt_in_v_r_reg_r_0_n_0 ),
         .Q(\qsqrt/x_r_reg[6][30]_qsqrt_in_v_r_reg_r_1_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[6][31]_qsqrt_in_v_r_reg_r_1 
@@ -36664,16 +35793,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[5][29]_srl7___qsqrt_in_v_r_reg_r_0_n_0 ),
         .Q(\qsqrt/x_r_reg[6][31]_qsqrt_in_v_r_reg_r_1_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[7] " *) 
   (* srl_name = "\qsqrt/x_r_reg[7][28]_srl9___qsqrt_in_v_r_reg_r_2 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[7][28]_srl9___qsqrt_in_v_r_reg_r_2 
-       (.A0(1'b0),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[12]),
@@ -36683,10 +35812,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[7][29]_srl9___qsqrt_in_v_r_reg_r_2 
-       (.A0(1'b0),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[13]),
@@ -36698,7 +35827,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[6][28]_srl8___qsqrt_in_v_r_reg_r_1_n_0 ),
         .Q(\qsqrt/x_r_reg[7][30]_qsqrt_in_v_r_reg_r_2_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[7][31]_qsqrt_in_v_r_reg_r_2 
@@ -36706,16 +35835,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_n_0 ),
         .Q(\qsqrt/x_r_reg[7][31]_qsqrt_in_v_r_reg_r_2_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[8] " *) 
   (* srl_name = "\qsqrt/x_r_reg[8][28]_srl10___qsqrt_in_v_r_reg_r_3 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[8][28]_srl10___qsqrt_in_v_r_reg_r_3 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[10]),
@@ -36725,10 +35854,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const1> ),
+        .A1(\<const0> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[11]),
@@ -36740,7 +35869,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[7][28]_srl9___qsqrt_in_v_r_reg_r_2_n_0 ),
         .Q(\qsqrt/x_r_reg[8][30]_qsqrt_in_v_r_reg_r_3_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[8][31]_qsqrt_in_v_r_reg_r_3 
@@ -36748,16 +35877,16 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[7][29]_srl9___qsqrt_in_v_r_reg_r_2_n_0 ),
         .Q(\qsqrt/x_r_reg[8][31]_qsqrt_in_v_r_reg_r_3_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* srl_bus_name = "\qsqrt/x_r_reg[9] " *) 
   (* srl_name = "\qsqrt/x_r_reg[9][28]_srl11___qsqrt_in_v_r_reg_r_4 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[9][28]_srl11___qsqrt_in_v_r_reg_r_4 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[8]),
@@ -36767,10 +35896,10 @@ module layer_norm
   SRL16E #(
     .INIT(16'h0000)) 
     \qsqrt/x_r_reg[9][29]_srl11___qsqrt_in_v_r_reg_r_4 
-       (.A0(1'b0),
-        .A1(1'b1),
-        .A2(1'b0),
-        .A3(1'b1),
+       (.A0(\<const0> ),
+        .A1(\<const1> ),
+        .A2(\<const0> ),
+        .A3(\<const1> ),
         .CE(enable),
         .CLK(clk),
         .D(qvar0[9]),
@@ -36782,7 +35911,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[8][28]_srl10___qsqrt_in_v_r_reg_r_3_n_0 ),
         .Q(\qsqrt/x_r_reg[9][30]_qsqrt_in_v_r_reg_r_4_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \qsqrt/x_r_reg[9][31]_qsqrt_in_v_r_reg_r_4 
@@ -36790,7 +35919,7 @@ module layer_norm
         .CE(enable),
         .D(\qsqrt/x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_n_0 ),
         .Q(\qsqrt/x_r_reg[9][31]_qsqrt_in_v_r_reg_r_4_n_0 ),
-        .R(1'b0));
+        .R(\<const0> ));
   (* SOFT_HLUTNM = "soft_lutpair289" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -37024,7 +36153,7 @@ module layer_norm
     qsqrt_in_v_r_reg_r
        (.C(clk),
         .CE(enable),
-        .D(1'b1),
+        .D(\<const1> ),
         .Q(qsqrt_in_v_r_reg_r_n_0),
         .R(rst));
   LUT6 #(
@@ -38355,7 +37484,7 @@ module layer_norm
   CARRY4 \qsub_reg[11]_i_1 
        (.CI(\qsub_reg[7]_i_1_n_0 ),
         .CO({\qsub_reg[11]_i_1_n_0 ,\qsub_reg[11]_i_1_n_1 ,\qsub_reg[11]_i_1_n_2 ,\qsub_reg[11]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(acc_buf_rddata_r2[11:8]),
         .O(qsub0[11:8]),
         .S({\qsub[11]_i_2_n_0 ,\qsub[11]_i_3_n_0 ,\qsub[11]_i_4_n_0 ,\qsub[11]_i_5_n_0 }));
@@ -38395,7 +37524,7 @@ module layer_norm
   CARRY4 \qsub_reg[15]_i_1 
        (.CI(\qsub_reg[11]_i_1_n_0 ),
         .CO({\qsub_reg[15]_i_1_n_0 ,\qsub_reg[15]_i_1_n_1 ,\qsub_reg[15]_i_1_n_2 ,\qsub_reg[15]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(acc_buf_rddata_r2[15:12]),
         .O(qsub0[15:12]),
         .S({\qsub[15]_i_2_n_0 ,\qsub[15]_i_3_n_0 ,\qsub[15]_i_4_n_0 ,\qsub[15]_i_5_n_0 }));
@@ -38435,7 +37564,7 @@ module layer_norm
   CARRY4 \qsub_reg[19]_i_1 
        (.CI(\qsub_reg[15]_i_1_n_0 ),
         .CO({\qsub_reg[19]_i_1_n_0 ,\qsub_reg[19]_i_1_n_1 ,\qsub_reg[19]_i_1_n_2 ,\qsub_reg[19]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(acc_buf_rddata_r2[19:16]),
         .O(qsub0[19:16]),
         .S({\qsub[19]_i_2_n_0 ,\qsub[19]_i_3_n_0 ,\qsub[19]_i_4_n_0 ,\qsub[19]_i_5_n_0 }));
@@ -38483,7 +37612,7 @@ module layer_norm
   CARRY4 \qsub_reg[23]_i_1 
        (.CI(\qsub_reg[19]_i_1_n_0 ),
         .CO({\qsub_reg[23]_i_1_n_0 ,\qsub_reg[23]_i_1_n_1 ,\qsub_reg[23]_i_1_n_2 ,\qsub_reg[23]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(acc_buf_rddata_r2[23:20]),
         .O(qsub0[23:20]),
         .S({\qsub[23]_i_2_n_0 ,\qsub[23]_i_3_n_0 ,\qsub[23]_i_4_n_0 ,\qsub[23]_i_5_n_0 }));
@@ -38523,7 +37652,7 @@ module layer_norm
   CARRY4 \qsub_reg[27]_i_1 
        (.CI(\qsub_reg[23]_i_1_n_0 ),
         .CO({\qsub_reg[27]_i_1_n_0 ,\qsub_reg[27]_i_1_n_1 ,\qsub_reg[27]_i_1_n_2 ,\qsub_reg[27]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(acc_buf_rddata_r2[27:24]),
         .O(qsub0[27:24]),
         .S({\qsub[27]_i_2_n_0 ,\qsub[27]_i_3_n_0 ,\qsub[27]_i_4_n_0 ,\qsub[27]_i_5_n_0 }));
@@ -38570,9 +37699,9 @@ module layer_norm
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qsub_reg[31]_i_1 
        (.CI(\qsub_reg[27]_i_1_n_0 ),
-        .CO({\NLW_qsub_reg[31]_i_1_CO_UNCONNECTED [3],\qsub_reg[31]_i_1_n_1 ,\qsub_reg[31]_i_1_n_2 ,\qsub_reg[31]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,acc_buf_rddata_r2[30:28]}),
+        .CO({\qsub_reg[31]_i_1_n_1 ,\qsub_reg[31]_i_1_n_2 ,\qsub_reg[31]_i_1_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,acc_buf_rddata_r2[30:28]}),
         .O(qsub0[31:28]),
         .S({\qsub[31]_i_2_n_0 ,\qsub[31]_i_3_n_0 ,\qsub[31]_i_4_n_0 ,\qsub[31]_i_5_n_0 }));
   FDRE #(
@@ -38585,9 +37714,9 @@ module layer_norm
         .R(rst));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qsub_reg[3]_i_1 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\qsub_reg[3]_i_1_n_0 ,\qsub_reg[3]_i_1_n_1 ,\qsub_reg[3]_i_1_n_2 ,\qsub_reg[3]_i_1_n_3 }),
-        .CYINIT(1'b1),
+        .CYINIT(\<const1> ),
         .DI(acc_buf_rddata_r2[3:0]),
         .O(qsub0[3:0]),
         .S({\qsub[3]_i_2_n_0 ,\qsub[3]_i_3_n_0 ,\qsub[3]_i_4_n_0 ,\qsub[3]_i_5_n_0 }));
@@ -38627,7 +37756,7 @@ module layer_norm
   CARRY4 \qsub_reg[7]_i_1 
        (.CI(\qsub_reg[3]_i_1_n_0 ),
         .CO({\qsub_reg[7]_i_1_n_0 ,\qsub_reg[7]_i_1_n_1 ,\qsub_reg[7]_i_1_n_2 ,\qsub_reg[7]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(acc_buf_rddata_r2[7:4]),
         .O(qsub0[7:4]),
         .S({\qsub[7]_i_2_n_0 ,\qsub[7]_i_3_n_0 ,\qsub[7]_i_4_n_0 ,\qsub[7]_i_5_n_0 }));
@@ -38675,55 +37804,47 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qsum_mul
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1}),
-        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
+        .ACIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .ACOUT({qsum_mul_n_24,qsum_mul_n_25,qsum_mul_n_26,qsum_mul_n_27,qsum_mul_n_28,qsum_mul_n_29,qsum_mul_n_30,qsum_mul_n_31,qsum_mul_n_32,qsum_mul_n_33,qsum_mul_n_34,qsum_mul_n_35,qsum_mul_n_36,qsum_mul_n_37,qsum_mul_n_38,qsum_mul_n_39,qsum_mul_n_40,qsum_mul_n_41,qsum_mul_n_42,qsum_mul_n_43,qsum_mul_n_44,qsum_mul_n_45,qsum_mul_n_46,qsum_mul_n_47,qsum_mul_n_48,qsum_mul_n_49,qsum_mul_n_50,qsum_mul_n_51,qsum_mul_n_52,qsum_mul_n_53}),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({1'b0,qsum_mul_i_2_n_7,qsum_mul_i_3_n_4,qsum_mul_i_3_n_5,qsum_mul_i_3_n_6,qsum_mul_i_3_n_7,qsum_mul_i_4_n_4,qsum_mul_i_4_n_5,qsum_mul_i_4_n_6,qsum_mul_i_4_n_7,qsum_mul_i_5_n_4,qsum_mul_i_5_n_5,qsum_mul_i_5_n_6,qsum_mul_i_5_n_7,qsum_mul_i_6_n_4,qsum_mul_i_6_n_5,qsum_mul_i_6_n_6,qsum_mul_i_6_n_7}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qsum_mul_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qsum_mul_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qsum_mul_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
-        .CEA2(1'b0),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .B({\<const0> ,qsum_mul_i_2_n_7,qsum_mul_i_3_n_4,qsum_mul_i_3_n_5,qsum_mul_i_3_n_6,qsum_mul_i_3_n_7,qsum_mul_i_4_n_4,qsum_mul_i_4_n_5,qsum_mul_i_4_n_6,qsum_mul_i_4_n_7,qsum_mul_i_5_n_4,qsum_mul_i_5_n_5,qsum_mul_i_5_n_6,qsum_mul_i_5_n_7,qsum_mul_i_6_n_4,qsum_mul_i_6_n_5,qsum_mul_i_6_n_6,qsum_mul_i_6_n_7}),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
+        .CEA2(\<const0> ),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(enable),
         .CEB2(qacc_sq_out_r),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qsum_mul_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b0,1'b0,1'b0,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qsum_mul_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qsum_mul_n_58,qsum_mul_n_59,qsum_mul_n_60,qsum_mul_n_61,qsum_mul_n_62,qsum_mul_n_63,qsum_mul_n_64,qsum_mul_n_65,qsum_mul_n_66,qsum_mul_n_67,qsum_mul_n_68,qsum_mul_n_69,qsum_mul_n_70,qsum_mul_n_71,qsum_mul_n_72,qsum_mul_n_73,qsum_mul_n_74,qsum_mul_n_75,qsum_mul_n_76,qsum_mul_n_77,qsum_mul_n_78,qsum_mul_n_79,qsum_mul_n_80,qsum_mul_n_81,qsum_mul_n_82,qsum_mul_n_83,qsum_mul_n_84,qsum_mul_n_85,qsum_mul_n_86,qsum_mul_n_87,qsum_mul_n_88,qsum_mul_n_89,qsum_mul_n_90,qsum_mul_n_91,qsum_mul_n_92,qsum_mul_n_93,qsum_mul_n_94,qsum_mul_n_95,qsum_mul_n_96,qsum_mul_n_97,qsum_mul_n_98,qsum_mul_n_99,qsum_mul_n_100,qsum_mul_n_101,qsum_mul_n_102,qsum_mul_n_103,qsum_mul_n_104,qsum_mul_n_105}),
-        .PATTERNBDETECT(NLW_qsum_mul_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qsum_mul_PATTERNDETECT_UNCONNECTED),
-        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .PCOUT({qsum_mul_n_106,qsum_mul_n_107,qsum_mul_n_108,qsum_mul_n_109,qsum_mul_n_110,qsum_mul_n_111,qsum_mul_n_112,qsum_mul_n_113,qsum_mul_n_114,qsum_mul_n_115,qsum_mul_n_116,qsum_mul_n_117,qsum_mul_n_118,qsum_mul_n_119,qsum_mul_n_120,qsum_mul_n_121,qsum_mul_n_122,qsum_mul_n_123,qsum_mul_n_124,qsum_mul_n_125,qsum_mul_n_126,qsum_mul_n_127,qsum_mul_n_128,qsum_mul_n_129,qsum_mul_n_130,qsum_mul_n_131,qsum_mul_n_132,qsum_mul_n_133,qsum_mul_n_134,qsum_mul_n_135,qsum_mul_n_136,qsum_mul_n_137,qsum_mul_n_138,qsum_mul_n_139,qsum_mul_n_140,qsum_mul_n_141,qsum_mul_n_142,qsum_mul_n_143,qsum_mul_n_144,qsum_mul_n_145,qsum_mul_n_146,qsum_mul_n_147,qsum_mul_n_148,qsum_mul_n_149,qsum_mul_n_150,qsum_mul_n_151,qsum_mul_n_152,qsum_mul_n_153}),
-        .RSTA(1'b0),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTA(\<const0> ),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(NLW_qsum_mul_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-11 {cell *THIS*}}" *) 
   DSP48E1 #(
     .ACASCREG(0),
@@ -38752,61 +37873,51 @@ module layer_norm
     .USE_PATTERN_DETECT("NO_PATDET"),
     .USE_SIMD("ONE48")) 
     qsum_mul__0
-       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+       (.A({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .ACIN({qsum_mul_n_24,qsum_mul_n_25,qsum_mul_n_26,qsum_mul_n_27,qsum_mul_n_28,qsum_mul_n_29,qsum_mul_n_30,qsum_mul_n_31,qsum_mul_n_32,qsum_mul_n_33,qsum_mul_n_34,qsum_mul_n_35,qsum_mul_n_36,qsum_mul_n_37,qsum_mul_n_38,qsum_mul_n_39,qsum_mul_n_40,qsum_mul_n_41,qsum_mul_n_42,qsum_mul_n_43,qsum_mul_n_44,qsum_mul_n_45,qsum_mul_n_46,qsum_mul_n_47,qsum_mul_n_48,qsum_mul_n_49,qsum_mul_n_50,qsum_mul_n_51,qsum_mul_n_52,qsum_mul_n_53}),
-        .ACOUT(NLW_qsum_mul__0_ACOUT_UNCONNECTED[29:0]),
-        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+        .ALUMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
         .B({qsum_mul__0_i_1_n_4,qsum_mul__0_i_1_n_4,qsum_mul__0_i_1_n_4,qsum_mul__0_i_1_n_4,qsum_mul__0_i_1_n_5,qsum_mul__0_i_1_n_6,qsum_mul__0_i_1_n_7,qsum_mul__0_i_2_n_4,qsum_mul__0_i_2_n_5,qsum_mul__0_i_2_n_6,qsum_mul__0_i_2_n_7,qsum_mul__0_i_3_n_4,qsum_mul__0_i_3_n_5,qsum_mul__0_i_3_n_6,qsum_mul__0_i_3_n_7,qsum_mul_i_2_n_4,qsum_mul_i_2_n_5,qsum_mul_i_2_n_6}),
-        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .BCOUT(NLW_qsum_mul__0_BCOUT_UNCONNECTED[17:0]),
-        .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CARRYCASCIN(1'b0),
-        .CARRYCASCOUT(NLW_qsum_mul__0_CARRYCASCOUT_UNCONNECTED),
-        .CARRYIN(1'b0),
-        .CARRYINSEL({1'b0,1'b0,1'b0}),
-        .CARRYOUT(NLW_qsum_mul__0_CARRYOUT_UNCONNECTED[3:0]),
-        .CEA1(1'b0),
-        .CEA2(1'b0),
-        .CEAD(1'b0),
-        .CEALUMODE(1'b0),
+        .BCIN({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .C({VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2,VCC_2}),
+        .CARRYCASCIN(\<const0> ),
+        .CARRYIN(\<const0> ),
+        .CARRYINSEL({\<const0> ,\<const0> ,\<const0> }),
+        .CEA1(\<const0> ),
+        .CEA2(\<const0> ),
+        .CEAD(\<const0> ),
+        .CEALUMODE(\<const0> ),
         .CEB1(enable),
         .CEB2(qacc_sq_out_r),
-        .CEC(1'b0),
-        .CECARRYIN(1'b0),
-        .CECTRL(1'b0),
-        .CED(1'b0),
-        .CEINMODE(1'b0),
-        .CEM(1'b0),
-        .CEP(1'b0),
+        .CEC(\<const0> ),
+        .CECARRYIN(\<const0> ),
+        .CECTRL(\<const0> ),
+        .CED(\<const0> ),
+        .CEINMODE(\<const0> ),
+        .CEM(\<const0> ),
+        .CEP(\<const0> ),
         .CLK(clk),
-        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .MULTSIGNIN(1'b0),
-        .MULTSIGNOUT(NLW_qsum_mul__0_MULTSIGNOUT_UNCONNECTED),
-        .OPMODE({1'b1,1'b0,1'b1,1'b0,1'b1,1'b0,1'b1}),
-        .OVERFLOW(NLW_qsum_mul__0_OVERFLOW_UNCONNECTED),
+        .D({GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2,GND_2}),
+        .INMODE({\<const0> ,\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .MULTSIGNIN(\<const0> ),
+        .OPMODE({\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> ,\<const0> ,\<const1> }),
         .P({qsum_mul__0_n_58,qsum_mul__0_n_59,qsum_mul__0_n_60,qsum_mul__0_n_61,qsum_mul__0_n_62,qsum_mul__0_n_63,qsum_mul__0_n_64,qsum_mul__0_n_65,qsum_mul__0_n_66,qsum_mul__0_n_67,qsum_mul__0_n_68,p_0_in0,qsum_mul__0_n_70,qsum_mul__0_n_71,qsum_mul__0_n_72,qsum_mul__0_n_73,qsum_mul__0_n_74,qsum_mul__0_n_75,qsum_mul__0_n_76,qsum_mul__0_n_77,qsum_mul__0_n_78,qsum_mul__0_n_79,qsum_mul__0_n_80,qsum_mul__0_n_81,qsum_mul__0_n_82,qsum_mul__0_n_83,qsum_mul__0_n_84,qsum_mul__0_n_85,qsum_mul__0_n_86,qsum_mul__0_n_87,qsum_mul__0_n_88,qsum_mul__0_n_89,qsum_mul__0_n_90,qsum_mul__0_n_91,qsum_mul__0_n_92,qsum_mul__0_n_93,qsum_mul__0_n_94,qsum_mul__0_n_95,qsum_mul__0_n_96,qsum_mul__0_n_97,qsum_mul__0_n_98,qsum_mul__0_n_99,qsum_mul__0_n_100,qsum_mul__0_n_101,qsum_mul__0_n_102,qsum_mul__0_n_103,qsum_mul__0_n_104,qsum_mul__0_n_105}),
-        .PATTERNBDETECT(NLW_qsum_mul__0_PATTERNBDETECT_UNCONNECTED),
-        .PATTERNDETECT(NLW_qsum_mul__0_PATTERNDETECT_UNCONNECTED),
         .PCIN({qsum_mul_n_106,qsum_mul_n_107,qsum_mul_n_108,qsum_mul_n_109,qsum_mul_n_110,qsum_mul_n_111,qsum_mul_n_112,qsum_mul_n_113,qsum_mul_n_114,qsum_mul_n_115,qsum_mul_n_116,qsum_mul_n_117,qsum_mul_n_118,qsum_mul_n_119,qsum_mul_n_120,qsum_mul_n_121,qsum_mul_n_122,qsum_mul_n_123,qsum_mul_n_124,qsum_mul_n_125,qsum_mul_n_126,qsum_mul_n_127,qsum_mul_n_128,qsum_mul_n_129,qsum_mul_n_130,qsum_mul_n_131,qsum_mul_n_132,qsum_mul_n_133,qsum_mul_n_134,qsum_mul_n_135,qsum_mul_n_136,qsum_mul_n_137,qsum_mul_n_138,qsum_mul_n_139,qsum_mul_n_140,qsum_mul_n_141,qsum_mul_n_142,qsum_mul_n_143,qsum_mul_n_144,qsum_mul_n_145,qsum_mul_n_146,qsum_mul_n_147,qsum_mul_n_148,qsum_mul_n_149,qsum_mul_n_150,qsum_mul_n_151,qsum_mul_n_152,qsum_mul_n_153}),
-        .PCOUT(NLW_qsum_mul__0_PCOUT_UNCONNECTED[47:0]),
-        .RSTA(1'b0),
-        .RSTALLCARRYIN(1'b0),
-        .RSTALUMODE(1'b0),
+        .RSTA(\<const0> ),
+        .RSTALLCARRYIN(\<const0> ),
+        .RSTALUMODE(\<const0> ),
         .RSTB(rst),
-        .RSTC(1'b0),
-        .RSTCTRL(1'b0),
-        .RSTD(1'b0),
-        .RSTINMODE(1'b0),
-        .RSTM(1'b0),
-        .RSTP(1'b0),
-        .UNDERFLOW(NLW_qsum_mul__0_UNDERFLOW_UNCONNECTED));
+        .RSTC(\<const0> ),
+        .RSTCTRL(\<const0> ),
+        .RSTD(\<const0> ),
+        .RSTINMODE(\<const0> ),
+        .RSTM(\<const0> ),
+        .RSTP(\<const0> ));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 qsum_mul__0_i_1
        (.CI(qsum_mul__0_i_2_n_0),
-        .CO({NLW_qsum_mul__0_i_1_CO_UNCONNECTED[3],qsum_mul__0_i_1_n_1,qsum_mul__0_i_1_n_2,qsum_mul__0_i_1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,qin_r1[30:28]}),
+        .CO({qsum_mul__0_i_1_n_1,qsum_mul__0_i_1_n_2,qsum_mul__0_i_1_n_3}),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,qin_r1[30:28]}),
         .O({qsum_mul__0_i_1_n_4,qsum_mul__0_i_1_n_5,qsum_mul__0_i_1_n_6,qsum_mul__0_i_1_n_7}),
         .S({qsum_mul__0_i_4_n_0,qsum_mul__0_i_5_n_0,qsum_mul__0_i_6_n_0,qsum_mul__0_i_7_n_0}));
   LUT3 #(
@@ -38855,7 +37966,7 @@ module layer_norm
   CARRY4 qsum_mul__0_i_2
        (.CI(qsum_mul__0_i_3_n_0),
         .CO({qsum_mul__0_i_2_n_0,qsum_mul__0_i_2_n_1,qsum_mul__0_i_2_n_2,qsum_mul__0_i_2_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[27:24]),
         .O({qsum_mul__0_i_2_n_4,qsum_mul__0_i_2_n_5,qsum_mul__0_i_2_n_6,qsum_mul__0_i_2_n_7}),
         .S({qsum_mul__0_i_8_n_0,qsum_mul__0_i_9_n_0,qsum_mul__0_i_10_n_0,qsum_mul__0_i_11_n_0}));
@@ -38863,7 +37974,7 @@ module layer_norm
   CARRY4 qsum_mul__0_i_3
        (.CI(qsum_mul_i_2_n_0),
         .CO({qsum_mul__0_i_3_n_0,qsum_mul__0_i_3_n_1,qsum_mul__0_i_3_n_2,qsum_mul__0_i_3_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[23:20]),
         .O({qsum_mul__0_i_3_n_4,qsum_mul__0_i_3_n_5,qsum_mul__0_i_3_n_6,qsum_mul__0_i_3_n_7}),
         .S({qsum_mul__0_i_12_n_0,qsum_mul__0_i_13_n_0,qsum_mul__0_i_14_n_0,qsum_mul__0_i_15_n_0}));
@@ -38989,7 +38100,7 @@ module layer_norm
   CARRY4 qsum_mul_i_2
        (.CI(qsum_mul_i_3_n_0),
         .CO({qsum_mul_i_2_n_0,qsum_mul_i_2_n_1,qsum_mul_i_2_n_2,qsum_mul_i_2_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[19:16]),
         .O({qsum_mul_i_2_n_4,qsum_mul_i_2_n_5,qsum_mul_i_2_n_6,qsum_mul_i_2_n_7}),
         .S({qsum_mul_i_7_n_0,qsum_mul_i_8_n_0,qsum_mul_i_9_n_0,qsum_mul_i_10_n_0}));
@@ -39073,7 +38184,7 @@ module layer_norm
   CARRY4 qsum_mul_i_3
        (.CI(qsum_mul_i_4_n_0),
         .CO({qsum_mul_i_3_n_0,qsum_mul_i_3_n_1,qsum_mul_i_3_n_2,qsum_mul_i_3_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[15:12]),
         .O({qsum_mul_i_3_n_4,qsum_mul_i_3_n_5,qsum_mul_i_3_n_6,qsum_mul_i_3_n_7}),
         .S({qsum_mul_i_11_n_0,qsum_mul_i_12_n_0,qsum_mul_i_13_n_0,qsum_mul_i_14_n_0}));
@@ -39081,7 +38192,7 @@ module layer_norm
   CARRY4 qsum_mul_i_4
        (.CI(qsum_mul_i_5_n_0),
         .CO({qsum_mul_i_4_n_0,qsum_mul_i_4_n_1,qsum_mul_i_4_n_2,qsum_mul_i_4_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[11:8]),
         .O({qsum_mul_i_4_n_4,qsum_mul_i_4_n_5,qsum_mul_i_4_n_6,qsum_mul_i_4_n_7}),
         .S({qsum_mul_i_15_n_0,qsum_mul_i_16_n_0,qsum_mul_i_17_n_0,qsum_mul_i_18_n_0}));
@@ -39089,15 +38200,15 @@ module layer_norm
   CARRY4 qsum_mul_i_5
        (.CI(qsum_mul_i_6_n_0),
         .CO({qsum_mul_i_5_n_0,qsum_mul_i_5_n_1,qsum_mul_i_5_n_2,qsum_mul_i_5_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[7:4]),
         .O({qsum_mul_i_5_n_4,qsum_mul_i_5_n_5,qsum_mul_i_5_n_6,qsum_mul_i_5_n_7}),
         .S({qsum_mul_i_19_n_0,qsum_mul_i_20_n_0,qsum_mul_i_21_n_0,qsum_mul_i_22_n_0}));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 qsum_mul_i_6
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({qsum_mul_i_6_n_0,qsum_mul_i_6_n_1,qsum_mul_i_6_n_2,qsum_mul_i_6_n_3}),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qin_r1[3:0]),
         .O({qsum_mul_i_6_n_4,qsum_mul_i_6_n_5,qsum_mul_i_6_n_6,qsum_mul_i_6_n_7}),
         .S({qsum_mul_i_23_n_0,qsum_mul_i_24_n_0,qsum_mul_i_25_n_0,qsum_mul_i_26_n_0}));
@@ -41878,9 +40989,9 @@ module layer_norm
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \qvar_reg[31]_i_1 
        (.CI(\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_1_n_0 ),
-        .CO({\NLW_qvar_reg[31]_i_1_CO_UNCONNECTED [3],\qvar_reg[31]_i_1_n_1 ,\qvar_reg[31]_i_1_n_2 ,\qvar_reg[31]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,qacc_sq_out_r3[30:28]}),
+        .CO({\qvar_reg[31]_i_1_n_1 ,\qvar_reg[31]_i_1_n_2 ,\qvar_reg[31]_i_1_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,qacc_sq_out_r3[30:28]}),
         .O(qvar0[31:28]),
         .S({\qvar[31]_i_2_n_0 ,\qvar[31]_i_3_n_0 ,\qvar[31]_i_4_n_0 ,\qvar[31]_i_5_n_0 }));
   LUT1 #(
@@ -45074,9 +44185,9 @@ module layer_norm
         .O(\result[8]_i_5_n_0 ));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \result_reg[0]_i_1 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\result_reg[0]_i_1_n_0 ,\result_reg[0]_i_1_n_1 ,\result_reg[0]_i_1_n_2 ,\result_reg[0]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0__0_n_102 ,\qacc_sq/result0__0_n_103 ,\qacc_sq/result0__0_n_104 ,\qacc_sq/result0__0_n_105 }),
         .O({\result_reg[0]_i_1_n_4 ,\result_reg[0]_i_1_n_5 ,\result_reg[0]_i_1_n_6 ,\result_reg[0]_i_1_n_7 }),
         .S({\result[0]_i_2_n_0 ,\result[0]_i_3_n_0 ,\result[0]_i_4_n_0 ,\result[0]_i_5_n_0 }));
@@ -45084,7 +44195,7 @@ module layer_norm
   CARRY4 \result_reg[12]_i_1 
        (.CI(\result_reg[8]_i_1_n_0 ),
         .CO({\result_reg[12]_i_1_n_0 ,\result_reg[12]_i_1_n_1 ,\result_reg[12]_i_1_n_2 ,\result_reg[12]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0__0_n_90 ,\qacc_sq/result0__0_n_91 ,\qacc_sq/result0__0_n_92 ,\qacc_sq/result0__0_n_93 }),
         .O({\result_reg[12]_i_1_n_4 ,\result_reg[12]_i_1_n_5 ,\result_reg[12]_i_1_n_6 ,\result_reg[12]_i_1_n_7 }),
         .S({\result[12]_i_2_n_0 ,\result[12]_i_3_n_0 ,\result[12]_i_4_n_0 ,\result[12]_i_5_n_0 }));
@@ -45092,7 +44203,7 @@ module layer_norm
   CARRY4 \result_reg[16]_i_1 
        (.CI(\result_reg[12]_i_1_n_0 ),
         .CO({\result_reg[16]_i_1_n_0 ,\result_reg[16]_i_1_n_1 ,\result_reg[16]_i_1_n_2 ,\result_reg[16]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0_carry_n_4 ,\qacc_sq/result0_carry_n_5 ,\qacc_sq/result0_carry_n_6 ,\qacc_sq/result0_carry_n_7 }),
         .O({\result_reg[16]_i_1_n_4 ,\result_reg[16]_i_1_n_5 ,\result_reg[16]_i_1_n_6 ,\result_reg[16]_i_1_n_7 }),
         .S({\result[16]_i_2_n_0 ,\result[16]_i_3_n_0 ,\result[16]_i_4_n_0 ,\result[16]_i_5_n_0 }));
@@ -45100,7 +44211,7 @@ module layer_norm
   CARRY4 \result_reg[20]_i_1 
        (.CI(\result_reg[16]_i_1_n_0 ),
         .CO({\result_reg[20]_i_1_n_0 ,\result_reg[20]_i_1_n_1 ,\result_reg[20]_i_1_n_2 ,\result_reg[20]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0_carry__0_n_4 ,\qacc_sq/result0_carry__0_n_5 ,\qacc_sq/result0_carry__0_n_6 ,\qacc_sq/result0_carry__0_n_7 }),
         .O({\result_reg[20]_i_1_n_4 ,\result_reg[20]_i_1_n_5 ,\result_reg[20]_i_1_n_6 ,\result_reg[20]_i_1_n_7 }),
         .S({\result[20]_i_2_n_0 ,\result[20]_i_3_n_0 ,\result[20]_i_4_n_0 ,\result[20]_i_5_n_0 }));
@@ -45108,23 +44219,23 @@ module layer_norm
   CARRY4 \result_reg[24]_i_1 
        (.CI(\result_reg[20]_i_1_n_0 ),
         .CO({\result_reg[24]_i_1_n_0 ,\result_reg[24]_i_1_n_1 ,\result_reg[24]_i_1_n_2 ,\result_reg[24]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0_carry__1_n_4 ,\qacc_sq/result0_carry__1_n_5 ,\qacc_sq/result0_carry__1_n_6 ,\qacc_sq/result0_carry__1_n_7 }),
         .O({\result_reg[24]_i_1_n_4 ,\result_reg[24]_i_1_n_5 ,\result_reg[24]_i_1_n_6 ,\result_reg[24]_i_1_n_7 }),
         .S({\result[24]_i_2_n_0 ,\result[24]_i_3_n_0 ,\result[24]_i_4_n_0 ,\result[24]_i_5_n_0 }));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \result_reg[28]_i_1 
        (.CI(\result_reg[24]_i_1_n_0 ),
-        .CO({\NLW_result_reg[28]_i_1_CO_UNCONNECTED [3],\result_reg[28]_i_1_n_1 ,\result_reg[28]_i_1_n_2 ,\result_reg[28]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,\qacc_sq/result0_carry__2_n_5 ,\qacc_sq/result0_carry__2_n_6 ,\qacc_sq/result0_carry__2_n_7 }),
+        .CO({\result_reg[28]_i_1_n_1 ,\result_reg[28]_i_1_n_2 ,\result_reg[28]_i_1_n_3 }),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\qacc_sq/result0_carry__2_n_5 ,\qacc_sq/result0_carry__2_n_6 ,\qacc_sq/result0_carry__2_n_7 }),
         .O({\result_reg[28]_i_1_n_4 ,\result_reg[28]_i_1_n_5 ,\result_reg[28]_i_1_n_6 ,\result_reg[28]_i_1_n_7 }),
         .S({\result[28]_i_2_n_0 ,\result[28]_i_3_n_0 ,\result[28]_i_4_n_0 ,\result[28]_i_5_n_0 }));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \result_reg[4]_i_1 
        (.CI(\result_reg[0]_i_1_n_0 ),
         .CO({\result_reg[4]_i_1_n_0 ,\result_reg[4]_i_1_n_1 ,\result_reg[4]_i_1_n_2 ,\result_reg[4]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0__0_n_98 ,\qacc_sq/result0__0_n_99 ,\qacc_sq/result0__0_n_100 ,\qacc_sq/result0__0_n_101 }),
         .O({\result_reg[4]_i_1_n_4 ,\result_reg[4]_i_1_n_5 ,\result_reg[4]_i_1_n_6 ,\result_reg[4]_i_1_n_7 }),
         .S({\result[4]_i_2_n_0 ,\result[4]_i_3_n_0 ,\result[4]_i_4_n_0 ,\result[4]_i_5_n_0 }));
@@ -45132,7 +44243,7 @@ module layer_norm
   CARRY4 \result_reg[8]_i_1 
        (.CI(\result_reg[4]_i_1_n_0 ),
         .CO({\result_reg[8]_i_1_n_0 ,\result_reg[8]_i_1_n_1 ,\result_reg[8]_i_1_n_2 ,\result_reg[8]_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI({\qacc_sq/result0__0_n_94 ,\qacc_sq/result0__0_n_95 ,\qacc_sq/result0__0_n_96 ,\qacc_sq/result0__0_n_97 }),
         .O({\result_reg[8]_i_1_n_4 ,\result_reg[8]_i_1_n_5 ,\result_reg[8]_i_1_n_6 ,\result_reg[8]_i_1_n_7 }),
         .S({\result[8]_i_2_n_0 ,\result[8]_i_3_n_0 ,\result[8]_i_4_n_0 ,\result[8]_i_5_n_0 }));
@@ -45158,7 +44269,7 @@ module layer_norm
     .INIT(1'b0)) 
     sdiv_buf_read_reg
        (.C(clk),
-        .CE(1'b1),
+        .CE(\<const1> ),
         .D(sdiv_buf_read_i_1_n_0),
         .Q(sdiv_buf_read_reg_n_0),
         .R(rst));
@@ -45448,11 +44559,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[0]),
         .DIB(sdiv_buf_wrdata[1]),
         .DIC(sdiv_buf_wrdata[2]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[0]),
         .DOB(rddata[1]),
         .DOC(rddata[2]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_0_2_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45477,11 +44587,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[12]),
         .DIB(sdiv_buf_wrdata[13]),
         .DIC(sdiv_buf_wrdata[14]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[12]),
         .DOB(rddata[13]),
         .DOC(rddata[14]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_12_14_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45506,11 +44615,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[15]),
         .DIB(sdiv_buf_wrdata[16]),
         .DIC(sdiv_buf_wrdata[17]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[15]),
         .DOB(rddata[16]),
         .DOC(rddata[17]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_15_17_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45535,11 +44643,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[18]),
         .DIB(sdiv_buf_wrdata[19]),
         .DIC(sdiv_buf_wrdata[20]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[18]),
         .DOB(rddata[19]),
         .DOC(rddata[20]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_18_20_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45564,11 +44671,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[21]),
         .DIB(sdiv_buf_wrdata[22]),
         .DIC(sdiv_buf_wrdata[23]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[21]),
         .DOB(rddata[22]),
         .DOC(rddata[23]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_21_23_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45593,11 +44699,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[24]),
         .DIB(sdiv_buf_wrdata[25]),
         .DIC(sdiv_buf_wrdata[26]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[24]),
         .DOB(rddata[25]),
         .DOC(rddata[26]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_24_26_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45622,11 +44727,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[27]),
         .DIB(sdiv_buf_wrdata[28]),
         .DIC(sdiv_buf_wrdata[29]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[27]),
         .DOB(rddata[28]),
         .DOC(rddata[29]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_27_29_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45650,12 +44754,10 @@ module layer_norm
         .ADDRD(\sdiv_sreg/wraddr ),
         .DIA(sdiv_buf_wrdata[30]),
         .DIB(sdiv_buf_wrdata[31]),
-        .DIC(1'b0),
-        .DID(1'b0),
+        .DIC(\<const0> ),
+        .DID(\<const0> ),
         .DOA(rddata[30]),
         .DOB(rddata[31]),
-        .DOC(\NLW_sdiv_sreg/mem_reg_0_63_30_31_DOC_UNCONNECTED ),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_30_31_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45680,11 +44782,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[3]),
         .DIB(sdiv_buf_wrdata[4]),
         .DIC(sdiv_buf_wrdata[5]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[3]),
         .DOB(rddata[4]),
         .DOC(rddata[5]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_3_5_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45709,11 +44810,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[6]),
         .DIB(sdiv_buf_wrdata[7]),
         .DIC(sdiv_buf_wrdata[8]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[6]),
         .DOB(rddata[7]),
         .DOC(rddata[8]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_6_8_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
@@ -45738,11 +44838,10 @@ module layer_norm
         .DIA(sdiv_buf_wrdata[9]),
         .DIB(sdiv_buf_wrdata[10]),
         .DIC(sdiv_buf_wrdata[11]),
-        .DID(1'b0),
+        .DID(\<const0> ),
         .DOA(rddata[9]),
         .DOB(rddata[10]),
         .DOC(rddata[11]),
-        .DOD(\NLW_sdiv_sreg/mem_reg_0_63_9_11_DOD_UNCONNECTED ),
         .WCLK(clk),
         .WE(mem_reg_0_63_0_2_i_1__1_n_0));
   (* SOFT_HLUTNM = "soft_lutpair248" *) 
@@ -46171,7 +45270,7 @@ module layer_norm
   CARRY4 \x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_1 
        (.CI(\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_1_n_0 ),
         .CO({\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_1_n_0 ,\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_1_n_1 ,\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_1_n_2 ,\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qacc_sq_out_r3[27:24]),
         .O(qvar0[27:24]),
         .S({\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_2_n_0 ,\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_3_n_0 ,\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_4_n_0 ,\x_r_reg[0][29]_srl2___qsqrt_in_v_r1_reg_r_i_5_n_0 }));
@@ -46203,7 +45302,7 @@ module layer_norm
   CARRY4 \x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_1 
        (.CI(\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_1_n_0 ),
         .CO({\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_1_n_0 ,\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_1_n_1 ,\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_1_n_2 ,\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qacc_sq_out_r3[7:4]),
         .O(qvar0[7:4]),
         .S({\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_2_n_0 ,\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_3_n_0 ,\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_4_n_0 ,\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_5_n_0 }));
@@ -46233,9 +45332,9 @@ module layer_norm
         .O(\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_5_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_1 
-       (.CI(1'b0),
+       (.CI(\<const0> ),
         .CO({\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_1_n_0 ,\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_1_n_1 ,\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_1_n_2 ,\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_1_n_3 }),
-        .CYINIT(1'b1),
+        .CYINIT(\<const1> ),
         .DI(qacc_sq_out_r3[3:0]),
         .O(qvar0[3:0]),
         .S({\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_2_n_0 ,\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_3_n_0 ,\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_4_n_0 ,\x_r_reg[12][29]_srl14___qsqrt_in_v_r_reg_r_7_i_5_n_0 }));
@@ -46267,7 +45366,7 @@ module layer_norm
   CARRY4 \x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_1 
        (.CI(\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_1_n_0 ),
         .CO({\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_1_n_0 ,\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_1_n_1 ,\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_1_n_2 ,\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qacc_sq_out_r3[23:20]),
         .O(qvar0[23:20]),
         .S({\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_2_n_0 ,\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_3_n_0 ,\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_4_n_0 ,\x_r_reg[2][29]_srl4___qsqrt_in_v_r3_reg_r_i_5_n_0 }));
@@ -46299,7 +45398,7 @@ module layer_norm
   CARRY4 \x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_1 
        (.CI(\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_1_n_0 ),
         .CO({\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_1_n_0 ,\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_1_n_1 ,\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_1_n_2 ,\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qacc_sq_out_r3[19:16]),
         .O(qvar0[19:16]),
         .S({\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_2_n_0 ,\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_3_n_0 ,\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_4_n_0 ,\x_r_reg[4][29]_srl6___qsqrt_in_v_r_reg_r_i_5_n_0 }));
@@ -46331,7 +45430,7 @@ module layer_norm
   CARRY4 \x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_1 
        (.CI(\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_1_n_0 ),
         .CO({\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_1_n_0 ,\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_1_n_1 ,\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_1_n_2 ,\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qacc_sq_out_r3[15:12]),
         .O(qvar0[15:12]),
         .S({\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_2_n_0 ,\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_3_n_0 ,\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_4_n_0 ,\x_r_reg[6][29]_srl8___qsqrt_in_v_r_reg_r_1_i_5_n_0 }));
@@ -46363,7 +45462,7 @@ module layer_norm
   CARRY4 \x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_1 
        (.CI(\x_r_reg[10][29]_srl12___qsqrt_in_v_r_reg_r_5_i_1_n_0 ),
         .CO({\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_1_n_0 ,\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_1_n_1 ,\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_1_n_2 ,\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_1_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(\<const0> ),
         .DI(qacc_sq_out_r3[11:8]),
         .O(qvar0[11:8]),
         .S({\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_2_n_0 ,\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_3_n_0 ,\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_4_n_0 ,\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_5_n_0 }));
@@ -46392,86 +45491,3 @@ module layer_norm
         .I1(qmean_sq[8]),
         .O(\x_r_reg[8][29]_srl10___qsqrt_in_v_r_reg_r_3_i_5_n_0 ));
 endmodule
-`ifndef GLBL
-`define GLBL
-`timescale  1 ps / 1 ps
-
-module glbl ();
-
-    parameter ROC_WIDTH = 100000;
-    parameter TOC_WIDTH = 0;
-    parameter GRES_WIDTH = 10000;
-    parameter GRES_START = 10000;
-
-//--------   STARTUP Globals --------------
-    wire GSR;
-    wire GTS;
-    wire GWE;
-    wire PRLD;
-    wire GRESTORE;
-    tri1 p_up_tmp;
-    tri (weak1, strong0) PLL_LOCKG = p_up_tmp;
-
-    wire PROGB_GLBL;
-    wire CCLKO_GLBL;
-    wire FCSBO_GLBL;
-    wire [3:0] DO_GLBL;
-    wire [3:0] DI_GLBL;
-   
-    reg GSR_int;
-    reg GTS_int;
-    reg PRLD_int;
-    reg GRESTORE_int;
-
-//--------   JTAG Globals --------------
-    wire JTAG_TDO_GLBL;
-    wire JTAG_TCK_GLBL;
-    wire JTAG_TDI_GLBL;
-    wire JTAG_TMS_GLBL;
-    wire JTAG_TRST_GLBL;
-
-    reg JTAG_CAPTURE_GLBL;
-    reg JTAG_RESET_GLBL;
-    reg JTAG_SHIFT_GLBL;
-    reg JTAG_UPDATE_GLBL;
-    reg JTAG_RUNTEST_GLBL;
-
-    reg JTAG_SEL1_GLBL = 0;
-    reg JTAG_SEL2_GLBL = 0 ;
-    reg JTAG_SEL3_GLBL = 0;
-    reg JTAG_SEL4_GLBL = 0;
-
-    reg JTAG_USER_TDO1_GLBL = 1'bz;
-    reg JTAG_USER_TDO2_GLBL = 1'bz;
-    reg JTAG_USER_TDO3_GLBL = 1'bz;
-    reg JTAG_USER_TDO4_GLBL = 1'bz;
-
-    assign (strong1, weak0) GSR = GSR_int;
-    assign (strong1, weak0) GTS = GTS_int;
-    assign (weak1, weak0) PRLD = PRLD_int;
-    assign (strong1, weak0) GRESTORE = GRESTORE_int;
-
-    initial begin
-	GSR_int = 1'b1;
-	PRLD_int = 1'b1;
-	#(ROC_WIDTH)
-	GSR_int = 1'b0;
-	PRLD_int = 1'b0;
-    end
-
-    initial begin
-	GTS_int = 1'b1;
-	#(TOC_WIDTH)
-	GTS_int = 1'b0;
-    end
-
-    initial begin 
-	GRESTORE_int = 1'b0;
-	#(GRES_START);
-	GRESTORE_int = 1'b1;
-	#(GRES_WIDTH);
-	GRESTORE_int = 1'b0;
-    end
-
-endmodule
-`endif
