@@ -260,8 +260,7 @@ Description:
 
 * You need to stitch together the module instantiations through AXIs to build the `mm_ln` module as shown in the figure above.
 * Copy your solutions from the previous labs for the following modules: `systolic.sv`, `pe.sv`, `mem_write_A.sv`, `mem_write_B.sv`, and `mem_read_D.sv`.
-* Instantiate one `mm` module to calculate $Y=XW$. $X$ should go as input A and $W$ as B to mm module.
-* `mm` expects inverted clocks, so, you should invert `clk`, `fclk`, and `rst` when supplying them to `mm` instance. No inversion needed for other modules.
+* A `mm` module calculates $Y=XW$. $X$ should go as input A and $W$ as B to mm module.
 * There are three `requant` modules:
   1. `requant_Y` operates on the `mm` output $Y=XW$ and `W_bias`, `W_m`, and `W_e`, with `CLIP=0` and `OUT_BITS=D_W_ACC`
   2. `requant_R` requantizes the residual matrix $R$, with `CLIP=0` and `OUT_BITS=D_W_ACC`
@@ -333,6 +332,11 @@ Description:
   1. `requant_G` operates on `mm` output $G=AW$ and `W_bias`, with `CLIP=0` and `OUT_BITS=D_W_ACC`
   2. `requant_out` requantizes the `gelu` output with `out_m` and `out_e`, with `CLIP=1` and and `OUT_BITS=D_W`.
 * `gelu_top` is a wrapper to instantiate `gelu.sv`. It handles the AXI handshake with the module and stores gelu coefficients.
+
+### Inverted Resets
+
+The different varieties of `mm` modules expect inverted resets.
+Make sure to invert them as appropriate.
 
 ## Simulation
 
